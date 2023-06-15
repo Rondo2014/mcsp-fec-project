@@ -10,7 +10,8 @@
     "dev:server": "npm run dev --workspace=server",
     "host": "concurrently \"npm:host:*\"",
     "host:client": "npm run dev -- --host --workspace=client",
-    "host:server": "npm run host --workspace=server"
+    "host:server": "npm run host --workspace=server",
+    "postinstall": "cd client && npm install && cd server && npm install && cd .."
   },
   "workspaces": [
     "client",
