@@ -1,5 +1,5 @@
 import React from "react";
-import {LPCarousel} from "./LPCarousel"
+import LPCarousel from "./LPCarousel"
 
 const LandingPage = () => {
   return( 
