@@ -1,4 +1,7 @@
+
 import HpCarousel from "./components/landing-page/carousel";
+import React from "react";
+
 import Navbar from "./components/nav-footer/Navbar";
 import Footer from "./components/nav-footer/Footer";
 
