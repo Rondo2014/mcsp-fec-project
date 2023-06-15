@@ -4,8 +4,3 @@ export const NAVLINKS = [
   { name: "About", path: "/about" },
   { name: "Support", path: "/support" },
 ];
-
-export const GLOBAL_LINKS = [
-  { name: "login", path: "/login" },
-  { name: "language" },
-];

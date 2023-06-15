@@ -1,6 +1,6 @@
 import React from "react";
 import headerLogo from "../../assets/header_logo.png";
-import { NAVLINKS, GLOBAL_LINKS } from "./utils";
+import { NAVLINKS } from "./utils";
 import install from "../../assets/btn_header_installsteam.png";
 
 const Navbar = () => {
@@ -32,21 +32,26 @@ const Navbar = () => {
           className="relative right-0 left-48 top-[6px] h-[21px] leading-[21px] text-[#b8b6b4] text-[11px] z-[401]"
           id="global-actions"
         >
-          <div
-            id="global-actions-menu"
-            className=" leading-6 align-top inline-block"
-          >
+          <div id="global-actions-menu" className=" leading-6 align-top">
             <div
               id="header-install-steam"
-              className="inline-block relative h-[21px] leading-6 mr-[3px] bg-accent text-white "
+              className="inline-flex relative h-[24px] leading-6 mr-[3px] py-[1px] bg-accent text-white w-[100px] "
             >
+              <img src={install} className="py-[4px] mx-2" alt="" />
               <a
                 href="/install"
-                className="inline-block p-l-[35px] pr-[9px] font-normal align-middle"
+                className="p-l-[35px] font-normal align-middle"
               >
                 Install Steam
               </a>
             </div>
+            <a href="/login" className="text-[#b8b6b4] px-[4px] align-top">
+              <span className="hover:text-white">login</span>{" "}
+              <span className="px-2">|</span>{" "}
+              <span className="hover:text-white">
+                language<span className="text-[7px] ml-2">▼</span>
+              </span>
+            </a>
           </div>
         </div>
       </div>
