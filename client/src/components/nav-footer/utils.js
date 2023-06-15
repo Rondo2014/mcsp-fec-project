@@ -20,3 +20,11 @@ export const NAV_SUBLINKS_COMMUNITY = [
   { name: "Market", path: "/market" },
   { name: "Broadcasts", path: "/broadcasts" },
 ];
+
+export const FOOTER_LINKS = [
+  {
+    name: "About Valve",
+    name: "Valve Privacy Policy",
+    name: "Valve Software",
+  },
+];
