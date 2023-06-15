@@ -57,8 +57,11 @@ const Navbar = () => {
           ))}
           <div
             id="nav-content"
-            className="relative z-50 opacity-100 top-[64px] pointer-events-auto"
-            style={{ right: showStore ? "-220px" : "-275px" }}
+            className="relative z-50 opacity-100 top-[64px] pointer-events-auto transition-opacity duration-300 ease-out"
+            style={{
+              right: showStore ? "-220px" : "-275px",
+              opacity: showCommunity || showStore ? "1" : "0",
+            }}
           >
             {showStore && (
               <div

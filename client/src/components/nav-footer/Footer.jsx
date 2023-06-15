@@ -1,5 +1,3 @@
-import React from "react";
-
 const Footer = () => {
   return (
     <footer className="w-full bg-slate-800 absolute bottom-0">
