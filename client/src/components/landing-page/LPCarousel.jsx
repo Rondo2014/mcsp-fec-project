@@ -10,7 +10,7 @@ const carouselData = [{
 }
 ];
 
-const HpCarousel = () => {
+const LPCarousel = () => {
     return (
       <Carousel>
       {carouselData.map((item, index) => (
@@ -23,4 +23,4 @@ const HpCarousel = () => {
   };
 
 
-export default HpCarousel;
+export default LPCarousel;
