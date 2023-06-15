@@ -1,12 +1,13 @@
-import React from "react";
+import StoreNavBar from "./StoreNavBar";
 import LPCarousel from "./LPCarousel"
 
 const LandingPage = () => {
-  return( 
-  <div>LandingPage
-    <LPCarousel />
-  </div>
-  )
+  return (
+    <div className=" min-w-[972px] relative overflow-hidden">
+      <StoreNavBar />
+      <LPCarousel />
+    </div>
+  );
 };
 
 export default LandingPage;
