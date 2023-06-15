@@ -21,7 +21,7 @@ const Navbar = () => {
           {NAVLINKS.map((link) => (
             <a
               key={link.name}
-              className="block relative pt-[45px] px-[7px] pb-[7px] leading-4 float-left text-[14px] text-[#b8b6b4] uppercase"
+              className="block relative pt-[45px] px-[7px] pb-[7px] leading-4 float-left text-[14px] text-[#b8b6b4] uppercase hover:text-white"
               href={link.path}
             >
               {link.name}
