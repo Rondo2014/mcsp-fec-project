@@ -5,11 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "concurrently \"npm:dev:*\"",
+    "dev": "concurrently \"npm run dev:client\" \"npm run dev:server\"",
     "dev:client": "npm run dev --workspace=client",
     "dev:server": "npm run dev --workspace=server",
-    "host": "concurrently \"npm:host:*\"",
-    "host:client": "npm run dev -- --host --workspace=client",
+
+    "host": "concurrently \"npm run host:client\" \"npm run host:server\"",
+    "host:client": "npm run host --workspace=client",
+
     "host:server": "npm run host --workspace=server"
   },
   "workspaces": [
@@ -19,6 +21,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "concurrently": "^8.2.0"
+    "concurrently": "^8.2.0",
+    "cross-env": "^7.0.3"
   }
 }
