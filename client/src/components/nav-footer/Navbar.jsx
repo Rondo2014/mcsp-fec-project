@@ -4,8 +4,8 @@ import { NAVLINKS, NAV_SUBLINKS_STORE, NAV_SUBLINKS_COMMUNITY } from "./utils";
 import install from "../../assets/btn_header_installsteam.png";
 
 const Navbar = () => {
-  const [showStore, setShowStore] = React.useState(false);
-  const [showCommunity, setShowCommunity] = React.useState(false);
+  const [showStore, setShowStore] = useState(false);
+  const [showCommunity, setShowCommunity] = useState(false);
 
   const handleStoreEnter = () => {
     setShowStore(true);
