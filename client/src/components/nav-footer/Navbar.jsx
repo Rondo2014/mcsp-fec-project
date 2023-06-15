@@ -1,9 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import headerLogo from "../../assets/header_logo.png";
-import { NAVLINKS } from "./utils";
+import { NAVLINKS, NAV_SUBLINKS_STORE, NAV_SUBLINKS_COMMUNITY } from "./utils";
 import install from "../../assets/btn_header_installsteam.png";
 
 const Navbar = () => {
+  const [showStore, setShowStore] = React.useState(false);
+  const [showCommunity, setShowCommunity] = React.useState(false);
+
+  const handleStoreEnter = () => {
+    setShowStore(true);
+  };
+
+  const handleStoreLeave = () => {
+    setShowStore(false);
+  };
+  const handleCommunityEnter = () => {
+    setShowCommunity(true);
+  };
+  const handleCommunityLeave = () => {
+    setShowCommunity(false);
+  };
+
   return (
     <div className=" w-full text-[14px] font-normal bg-navbar px-4">
       <div id="content" className="w-[940px] h-[104px] m-auto z-50">
@@ -23,10 +40,63 @@ const Navbar = () => {
               key={link.name}
               className="block relative pt-[45px] px-[7px] pb-[7px] leading-4 float-left text-[14px] text-[#b8b6b4] uppercase hover:text-white"
               href={link.path}
+              onMouseEnter={() => {
+                if (link.name === "Store") {
+                  setShowStore(true);
+                } else if (link.name === "Community") {
+                  setShowCommunity(true);
+                }
+              }}
+              onMouseLeave={() => {
+                setShowStore(false);
+                setShowCommunity(false);
+              }}
             >
               {link.name}
             </a>
           ))}
+          <div
+            id="nav-content"
+            className="relative z-50 opacity-100 top-[64px] pointer-events-auto"
+            style={{ right: showStore ? "-220px" : "-275px" }}
+          >
+            {showStore && (
+              <div
+                id="sub-menu-store"
+                className="absolute block bg-navbar shadow-lg shadow-black"
+                onMouseEnter={handleStoreEnter}
+                onMouseLeave={handleStoreLeave}
+              >
+                {NAV_SUBLINKS_STORE.map((link) => (
+                  <a
+                    key={link.name}
+                    href="/"
+                    className="uppercase text-[11px] text-[#b8b6b4] px-[10px] block py-1 hover:text-white"
+                  >
+                    {link.name}
+                  </a>
+                ))}
+              </div>
+            )}
+            {showCommunity && (
+              <div
+                id="sub-menu-community"
+                className="absolute block bg-navbar shadow-lg shadow-black"
+                onMouseEnter={handleCommunityEnter}
+                onMouseLeave={handleCommunityLeave}
+              >
+                {NAV_SUBLINKS_COMMUNITY.map((link) => (
+                  <a
+                    key={link.name}
+                    href="/"
+                    className="uppercase text-[11px] text-[#b8b6b4] px-[10px] block py-1 hover:text-white"
+                  >
+                    {link.name}
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
         <div
           className="relative right-0 left-48 top-[6px] h-[21px] leading-[21px] text-[#b8b6b4] text-[11px] z-[401]"
