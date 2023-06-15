@@ -1,9 +1,13 @@
+import HpCarousel from "./components/landing-page/carousel";
 import Navbar from "./components/nav-footer/Navbar";
 
 function App() {
   return (
     // tailwindcss demo, just play around with it
-    <Navbar />
+    <main>
+      <Navbar />
+      <HpCarousel />
+    </main>
   );
 }
 
