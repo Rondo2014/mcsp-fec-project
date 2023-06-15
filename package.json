@@ -10,8 +10,7 @@
     "dev:server": "npm run dev --workspace=server",
     "host": "concurrently \"npm:host:*\"",
     "host:client": "npm run dev -- --host --workspace=client",
-    "host:server": "npm run host --workspace=server",
-    "postinstall": "cross-env OS=unix npm install --prefix client && cross-env OS=unix npm install --prefix server"
+    "host:server": "npm run host --workspace=server"
   },
   "workspaces": [
     "client",
