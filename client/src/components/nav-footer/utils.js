@@ -9,3 +9,11 @@ export const GLOBAL_LINKS = [
   { name: "login", path: "/login" },
   { name: "language" },
 ];
+
+export const FOOTER_LINKS = [
+  {
+    name: "About Valve",
+    name: "Valve Privacy Policy",
+    name: "Valve Software",
+  },
+];
