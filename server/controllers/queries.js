@@ -53,7 +53,7 @@ export const toWishlist = `UPDATE users SET wishlist = ARRAY_APPEND(wishlist, $1
 WHERE id = $2 RETURNING username, wishlist`;
 
 // query to check if game is already in the users wishlist
-export const wishGameCheck = `SELECT username, wishlist FROM users WHERE username = $1`; // use includes method on the array
+export const wishGameCheck = `SELECT username, wishlist FROM users WHERE id = $1`; // use includes method on the array
 
 // query to remove game from wishlist
 export const outWishlist = `UPDATE users SET wishlist = array_remove(wishlist, $1) WHERE id = $2 RETURNING username, wishlist`;
