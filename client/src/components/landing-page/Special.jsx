@@ -4,8 +4,24 @@ import { useState } from "react";
 const Special = () => {
   const [activeCarousel, setActiveCarousel] = useState(1);
 
+  const handleAddCarousel = () => {
+    if (activeCarousel < 4) {
+      setActiveCarousel((prev) => prev + 1);
+    } else {
+      setActiveCarousel(1);
+    }
+  };
+
+  const handleMinusCarousel = () => {
+    if (activeCarousel > 1) {
+      setActiveCarousel(activeCarousel - 1);
+    } else {
+      setActiveCarousel(4);
+    }
+  };
+  console.log(activeCarousel);
   return (
-    <div className="py-[20px] px-[2%] overflow-hidden">
+    <div className="py-[20px] px-[2%]">
       <div id="special offers" className="mb-[20px] relative z-auto">
         <h2
           id="title"
@@ -133,6 +149,42 @@ const Special = () => {
                       : "hsla(202,60%,100%,0.2)",
                 }}
               ></div>
+            </div>
+            <div
+              id="arrow-left"
+              className="left-[-46px] absolute top-[38%] w-auto h-auto py-9 px-[11px] cursor-pointer"
+              style={{
+                background:
+                  "linear-gradient( to right, rgba( 0, 0, 0, 0.3) 5%,rgba( 0, 0, 0, 0) 95%)",
+                backgroundSize: "cover",
+              }}
+              onClick={handleMinusCarousel}
+            >
+              <div
+                style={{
+                  backgroundImage:
+                    "url(https://store.cloudflare.steamstatic.com/public/images/v6/arrows.png)",
+                }}
+                className="w-[23px] h-9 transform rotate-180"
+              ></div>
+              <div
+                id="arrow-right"
+                className="left-[986px] absolute top-[5%] w-auto h-auto py-9 px-[11px] cursor-pointer"
+                style={{
+                  background:
+                    "linear-gradient( to left, rgba( 0, 0, 0, 0.3) 5%,rgba( 0, 0, 0, 0) 95%)",
+                  backgroundSize: "cover",
+                }}
+                onClick={handleAddCarousel}
+              >
+                <div
+                  style={{
+                    backgroundImage:
+                      "url(https://store.cloudflare.steamstatic.com/public/images/v6/arrows.png)",
+                  }}
+                  className="w-[23px] h-9"
+                ></div>
+              </div>
             </div>
           </div>
         </div>
