@@ -1,5 +1,9 @@
 import { Router } from "express";
-import { getAllGames, getGameById } from "../controllers/gameControllers.js";
+import {
+  getAllGames,
+  getFeaturedGames,
+  getGameById,
+} from "../controllers/gameControllers.js";
 import { logUserIn, registerUser } from "../controllers/logController.js";
 import { hasPasswordMiddleware, protectRoutes } from "../auth.js";
 import {
@@ -13,6 +17,7 @@ const router = Router();
  *  GAME ROUTES
  */
 router.get("/games", getAllGames); // fetch all games
+router.get("/games/featured", getFeaturedGames);
 router.get("/game/:id", getGameById); // fetch single game
 
 /**
