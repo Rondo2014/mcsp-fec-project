@@ -5,21 +5,15 @@ const Special = () => {
   const [activeCarousel, setActiveCarousel] = useState(1);
 
   const handleAddCarousel = () => {
-    if (activeCarousel < 4) {
-      setActiveCarousel((prev) => prev + 1);
-    } else {
-      setActiveCarousel(1);
-    }
+    setActiveCarousel((prev) => (prev % 4) + 1);
+    console.log(activeCarousel);
   };
 
   const handleMinusCarousel = () => {
-    if (activeCarousel > 1) {
-      setActiveCarousel(activeCarousel - 1);
-    } else {
-      setActiveCarousel(4);
-    }
+    activeCarousel > 1
+      ? setActiveCarousel((prev) => prev - 1)
+      : setActiveCarousel(4);
   };
-  console.log(activeCarousel);
   return (
     <div className="py-[20px] px-[2%]">
       <div id="special offers" className="mb-[20px] relative z-auto">
