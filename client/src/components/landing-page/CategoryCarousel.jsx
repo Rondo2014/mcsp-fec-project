@@ -21,11 +21,11 @@ const CategoryCarousel = () => {
     <div className="carousel-container overflow-x-auto p-4 text-cyan-50">
       <div className="carousel-content flex space-x-4">
         {categories.map((category) => (
-          <div key={category.id} className="carousel-item flex flex-col items-center">
+          <div key={category.id} className="carousel-item flex flex-col items-center ">
             <img
               src={category.image}
               alt={category.name}
-              className="w-48 h-32 object-cover rounded-lg"
+              className="w-48 h-32 object-cover rounded-lg hover:shadow-md hover:shadow-[#1A9FFF] mr-2"
             />
             <p className="mt-2 text-lg font-semibold">{category.name}</p>
           </div>
