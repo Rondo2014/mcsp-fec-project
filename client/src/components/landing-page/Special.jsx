@@ -1,8 +1,9 @@
-import { SPECIAL_CAROUSEL_DATA } from "./utils";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import api from "../../api/axios.js";
 
 const Special = () => {
   const [activeCarousel, setActiveCarousel] = useState(1);
+  const [featuredGames, setFeaturedGames] = useState([]);
 
   const handleAddCarousel = () => {
     activeCarousel < 4
@@ -16,6 +17,18 @@ const Special = () => {
       ? setActiveCarousel((prev) => prev - 1)
       : setActiveCarousel(4);
   };
+
+  useEffect(() => {
+    try {
+      api.get("/api/games/featured").then((res) => {
+        console.log(res.data);
+        setFeaturedGames(res.data);
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
+
   return (
     <div className="py-[20px] px-[2%]">
       <div id="special offers" className="mb-[20px] relative z-auto">
@@ -35,7 +48,7 @@ const Special = () => {
         </h2>
         <div id="carousel-container" className="relative">
           <div id="carousel-items" className="h-[390px] relative clear-both">
-            {SPECIAL_CAROUSEL_DATA.map((item, index) => {
+            {featuredGames.map((item, index) => {
               if (item.id === activeCarousel) {
                 return (
                   <div
