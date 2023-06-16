@@ -1,6 +1,9 @@
 import React from 'react';
+import { useState } from "react";
 
 const CategoryCarousel = () => {
+  const [activeCarousel, setActiveCarousel] = useState(1);
+
   const categories = [
     { id: 1, name: 'Action', image: 'https://staticg.sportskeeda.com/editor/2019/03/cedbb-15534102082658-800.jpg' },
     { id: 2, name: 'Adventure', image: 'https://ftw.usatoday.com/wp-content/uploads/sites/90/2022/10/God-of-War-2.jpg?w=1000&h=600&crop=1' },
