@@ -1,4 +1,4 @@
-import { validatePassword } from "../auth.js";
+import { createToken, validatePassword } from "../auth.js";
 import { db } from "../database/database.js";
 import { logIn, postUser } from "./queries.js";
 
@@ -25,6 +25,10 @@ export const logUserIn = async (req, res) => {
     // if no information is fetched from the database send an error
     if (results.rowCount === 0)
       return res.status(400).json({ message: "Username Or Password Invalid" });
+
+    const token = createToken(user);
+
+    console.log(token);
 
     res
       .status(200)

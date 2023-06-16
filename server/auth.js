@@ -1,5 +1,6 @@
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
+import { promisify } from "util";
 
 const saltRounds = 10;
 
@@ -24,6 +25,11 @@ export const hasPasswordMiddleware = (req, res, next) => {
   }
 };
 
+export const createToken = (username) => {
+  const token = jwt.sign({ id: username.id }, process.env.SECRET_ACCESS_TOKEN);
+  return token;
+};
+
 export const validateToken = (token, secretKey) => {
   try {
     // verify token using jwt
@@ -37,4 +43,31 @@ export const validateToken = (token, secretKey) => {
 export const validatePassword = (username, password) => {
   // compares password to hashed password using bcrypt
   return bcrypt.compare(password, username.password);
+};
+
+export const protectRoutes = async (req, res, next) => {
+  try {
+    let token;
+    if (
+      req.headers.authorization &&
+      req.headers.authorization.startsWith("Bearer")
+    ) {
+      token = req.headers.authorization.split(" ")[1];
+    }
+
+    if (!token)
+      return res
+        .status(401)
+        .json({ message: "Must be signed in to use this feature" });
+
+    const decoded = await promisify(jwt.verify)(
+      token,
+      process.env.SECRET_ACCESS_TOKEN
+    );
+
+    next();
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Error While Verifying Token" });
+  }
 };
