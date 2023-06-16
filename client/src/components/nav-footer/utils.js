@@ -40,3 +40,11 @@ export const FOOTER_LINKS = [
       "https://store.cloudflare.steamstatic.com/public/images/ico/ico_twitter.gif",
   },
 ];
+
+export const FOOTER_LEGAL_LINKS = [
+  { name: "Privacy Policy", path: "/privacy-policy" },
+  { name: "Legal", path: "/legal" },
+  { name: "Steam Subscriber Agreement", path: "/steam-subscriber-agreement" },
+  { name: "Refunds", path: "/refunds" },
+  { name: "Cookies", path: "/cookies" },
+];
