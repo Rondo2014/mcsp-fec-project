@@ -5,7 +5,7 @@ CREATE TABLE users(
     id          SERIAL PRIMARY KEY,
     username    VARCHAR(15) UNIQUE NOT NULL,
     email       VARCHAR(55) UNIQUE NOT NULL,
-    password    VARCHAR(25) NOT NULL,
+    password    VARCHAR(100) NOT NULL,
     cart        TEXT[],
     prev_viewed TEXT[],
     wishlist    TEXT[]

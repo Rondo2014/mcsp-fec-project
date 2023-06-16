@@ -1,5 +1,5 @@
-import { jwt } from "jsonwebtoken";
-import { bcrypt } from "bcrypt";
+import jwt from "jsonwebtoken";
+import bcrypt from "bcrypt";
 
 const saltRounds = 10;
 
@@ -15,7 +15,7 @@ export const hasPasswordMiddleware = (req, res, next) => {
         return res.status(500).json({ err: "Error hashing password" });
       }
       // set password to hashed password
-      req.body.password = hashedPassword;
+      req.body.password = hash;
       //continue with the post request
       next();
     });
@@ -36,5 +36,5 @@ export const validateToken = (token, secretKey) => {
 
 export const validatePassword = (username, password) => {
   // compares password to hashed password using bcrypt
-  return bcrypt.compare(password, user.password);
+  return bcrypt.compare(password, username.password);
 };
