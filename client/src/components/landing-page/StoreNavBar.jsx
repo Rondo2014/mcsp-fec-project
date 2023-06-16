@@ -18,7 +18,7 @@ const StoreNavBar = () => {
                 }}
                 className="h-[35px] my-8"
               >
-                {/* <div                        MADE BUT MESSES UP NAV BAR, CSS GODS PLS HELP
+                {/* <div                  WISHLIST BTN MADE BUT MESSES UP NAV BAR, CSS GODS PLS HELP
                   id="wishlist-button"
                   className="store_header_btn_gray store_header_btn"
                 >
