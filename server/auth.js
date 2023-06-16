@@ -64,6 +64,7 @@ export const protectRoutes = async (req, res, next) => {
       token,
       process.env.SECRET_ACCESS_TOKEN
     );
+    console.log(decoded.id);
 
     next();
   } catch (error) {
