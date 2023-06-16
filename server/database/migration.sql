@@ -15,8 +15,12 @@ CREATE TABLE games(
     id          SERIAL PRIMARY KEY,
     users_id    VARCHAR(15) REFERENCES users(username),
     title       VARCHAR(50) NOT NULL,
+    on_sale     BOOLEAN DEFAULT FALSE,
+    category    VARCHAR(25) NOT NULL,
     game_image  TEXT NOT NULL,
     price       MONEY NOT NULL,
+    sale_deal   INT ,
+    deal_ends   DATE ,
     description TEXT NOT NULL,
     developer   VARCHAR(50) NOT NULL,
     publisher   VARCHAR(50) NOT NULL,
@@ -24,3 +28,5 @@ CREATE TABLE games(
     images      TEXT[] NOT NULL,
     videos      TEXT[] 
 );
+
+

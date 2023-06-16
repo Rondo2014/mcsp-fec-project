@@ -1,6 +1,6 @@
 import { createToken, validatePassword } from "../auth.js";
 import { db } from "../database/database.js";
-import { logIn, postUser } from "./queries.js";
+import { logIn, postUser, usernameCheck } from "./queries.js";
 
 export const logUserIn = async (req, res) => {
   try {
@@ -48,6 +48,12 @@ export const registerUser = async (req, res) => {
       return res
         .status(400)
         .json({ message: "Provide Username, Email, and Password" });
+
+    // if username exists in database return message to user
+    const checkForUsername = await db.query(usernameCheck, [username]);
+    if (checkForUsername.rowCount !== 0)
+      return res.status(406).json({ message: "Username is Taken" });
+
     const results = await db.query(postUser, [username, email, password]);
 
     res.status(201).json({
