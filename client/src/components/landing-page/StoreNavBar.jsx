@@ -1,6 +1,14 @@
 import { STORE_NAV_LINKS_HOVER, STORE_NAV_LINKS } from "./utils";
 
 const StoreNavBar = () => {
+  const handleHover = (e) => {
+    e.target.style.background =
+      "linear-gradient(90deg,  rgba(58, 120, 177, 0.8) 40.38%, rgba(62, 103, 150, 0.919) 100.23%)";
+  };
+  const handleHoverLeave = (e) => {
+    e.target.style.background = "none";
+  };
+
   return (
     <div className="relative w-[940px] mx-auto">
       <div id="store-nav-bar" className="block">
@@ -18,7 +26,7 @@ const StoreNavBar = () => {
                 }}
                 className="h-[35px] my-8"
               >
-                {/* <div                        MADE BUT MESSES UP NAV BAR, CSS GODS PLS HELP
+                {/* <div                  WISHLIST BTN MADE BUT MESSES UP NAV BAR, CSS GODS PLS HELP
                   id="wishlist-button"
                   className="store_header_btn_gray store_header_btn"
                 >
@@ -38,6 +46,8 @@ const StoreNavBar = () => {
                       key={index}
                       className="p-[1px] inline-block cursor-pointer whitespace-nowrap text-[#e5e5e5] text-[13px] leading-8 font-bold pr-[10px] pl-[15px]"
                       style={{ textShadow: "0px 2px 3px rgba(0, 0, 0, 0.3)" }}
+                      onMouseEnter={handleHover}
+                      onMouseLeave={handleHoverLeave}
                     >
                       {link}
                     </div>
@@ -48,6 +58,8 @@ const StoreNavBar = () => {
                       key={index}
                       className="p-[1px] inline-block cur whitespace-nowrap text-[#e5e5e5] text-[13px] leading-8 font-bold pr-[10px] pl-[15px]"
                       style={{ textShadow: "0px 2px 3px rgba(0, 0, 0, 0.3)" }}
+                      onMouseEnter={handleHover}
+                      onMouseLeave={handleHoverLeave}
                     >
                       {link}
                     </a>

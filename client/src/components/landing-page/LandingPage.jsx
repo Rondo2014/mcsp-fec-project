@@ -3,6 +3,7 @@ import Sidebar from "./Sidebar";
 import LPCarousel from "./LPCarousel";
 import HomeHardware from "./HomeHardware";
 import LoginBar from "./LoginBar";
+import Special from "./Special";
 
 const LandingPage = () => {
   return (
@@ -11,6 +12,7 @@ const LandingPage = () => {
         <StoreNavBar />
         <Sidebar />
         <LPCarousel />
+        <Special />
         <HomeHardware />
       </div>
       <LoginBar />
