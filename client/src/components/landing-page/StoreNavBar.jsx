@@ -18,10 +18,24 @@ const StoreNavBar = () => {
                 }}
                 className="h-[35px] my-8"
               >
+                {/* <div                        MADE BUT MESSES UP NAV BAR, CSS GODS PLS HELP
+                  id="wishlist-button"
+                  className="store_header_btn_gray store_header_btn"
+                >
+                  <div className="store_header_btn_caps store_header_btn_leftcap"></div>
+                  <div className="store_header_btn_caps store_header_btn_rightcap"></div>
+                  <a
+                    id="wishlist_link"
+                    className="store_header_btn_content"
+                    href="https://store.steampowered.com/wishlist/?snr=1_4_4__12"
+                  >
+                    Wishlist (<span id="wishlist_item_count_value">32</span>)
+                  </a>
+                </div> */}
                 <div id="store-nav" className="flex h-[35px]">
                   {STORE_NAV_LINKS_HOVER.map((link, index) => (
                     <div
-                      key={link[index]}
+                      key={index}
                       className="p-[1px] inline-block cursor-pointer whitespace-nowrap text-[#e5e5e5] text-[13px] leading-8 font-bold pr-[10px] pl-[15px]"
                       style={{ textShadow: "0px 2px 3px rgba(0, 0, 0, 0.3)" }}
                     >
@@ -31,7 +45,7 @@ const StoreNavBar = () => {
                   {STORE_NAV_LINKS.map((link, index) => (
                     <a
                       href="/"
-                      key={link[index]}
+                      key={index}
                       className="p-[1px] inline-block cur whitespace-nowrap text-[#e5e5e5] text-[13px] leading-8 font-bold pr-[10px] pl-[15px]"
                       style={{ textShadow: "0px 2px 3px rgba(0, 0, 0, 0.3)" }}
                     >
@@ -44,11 +58,11 @@ const StoreNavBar = () => {
                   ></div>
                   <div
                     id="search-area"
-                    className=" flex-grow flex-shrink-0 max-w-[210px]"
+                    className="flex-grow flex-shrink-0 max-w-[210px]"
                   >
                     <div
                       id="store-search"
-                      className=" float-none px-1 pt=[3px] pb-[2px] h-[30px]"
+                      className="float-none px-1 pt=[3px] pb-[2px] h-[30px]"
                     >
                       <form action="/" id="search-form" className="block">
                         <input
@@ -65,7 +79,7 @@ const StoreNavBar = () => {
                           onMouseOut={(e) => {
                             e.target.style.border = "none";
                           }}
-                          className=" mt-[5px] inline-block bg-[#305d8a] text-white px-2 focus:outline-none rounded-sm placeholder:text-black placeholder:text-opacity-70 italic py-[1px] font-light"
+                          className="mt-[5px] inline-block bg-[#305d8a] text-white px-2 focus:outline-none rounded-sm placeholder:text-black placeholder:text-opacity-70 italic py-[1px] font-light"
                         />
                         <a href="#" className="absolute right-[2px] text-white">
                           <img
