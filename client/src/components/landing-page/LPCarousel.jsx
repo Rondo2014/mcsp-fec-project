@@ -5,12 +5,16 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 const carouselData = [
   {
     image:
-      "https://www.escapistmagazine.com/wp-content/uploads/2019/07/GOW-Feature-Image.jpg?resize=800%2C400",
+      "https://wallpaperaccess.com/full/158936.jpg",
   },
   {
     image:
       "https://images.nvidia.com/geforce-com/international/images/050616-geforce-dot-com/nvidia-ansel/nvidia-ansel-user-interface.png",
   },
+  {
+    image:
+      "https://wallpaperaccess.com/full/185915.jpg",
+  }
 ];
 
 const miniPics = [{
