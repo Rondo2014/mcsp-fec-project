@@ -6,9 +6,9 @@ CREATE TABLE users(
     username    VARCHAR(15) UNIQUE NOT NULL,
     email       VARCHAR(55) UNIQUE NOT NULL,
     password    VARCHAR(100) NOT NULL,
-    cart        TEXT[],
-    prev_viewed TEXT[],
-    wishlist    TEXT[]
+    cart        INT[],
+    prev_viewed INT[],
+    wishlist    INT[]
 );
 
 CREATE TABLE games(

@@ -27,7 +27,7 @@ INSERT INTO users(username, email, password)
 VALUES($1, $2, $3) RETURNING *`;
 
 // query to sign user in
-export const logIn = `SELECT password FROM users WHERE username = $1`;
+export const logIn = `SELECT id, password FROM users WHERE username = $1`;
 
 // query to add a game to users cart
 export const toCart = `UPDATE users SET cart = ARRAY_APPEND(cart, $1) 
@@ -40,8 +40,8 @@ export const cartGameCheck = `SELECT username, cart FROM users WHERE username = 
 export const outCart = `UPDATE users SET cart = array_remove(cart, $1) WHERE username = $2 RETURNING username, cart`;
 
 // query to add a game to the users wishlist
-export const toWishlist = `UPDATE users SET wishlist = ARRAY_APPEND(wishlist, $1) 
-WHERE username = $2 RETURNING username, wishlist`;
+export const toWishlist = `UPDATE users SET wishlist = ARRAY_APPEND(wishlist, $1 ::int) 
+WHERE id = $2 RETURNING username, wishlist`;
 
 // query to check if game is already in the users wishlist
 export const wishGameCheck = `SELECT username, cart FROM users WHERE username = $1`; // use includes method on the array
