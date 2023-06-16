@@ -88,6 +88,52 @@ const Special = () => {
                 );
               }
             })}
+            <div id="carousel-thumbs" className="text-center min-h-[37px] pb-1">
+              <div
+                className="inline-block w-[15px] h-[9px] rounded-sm  transition-colors duration-300 cursor-pointer my-3 mx-[2px]"
+                key={"thumb" + 1}
+                onClick={() => setActiveCarousel(1)}
+                style={{
+                  backgroundColor:
+                    1 === activeCarousel
+                      ? "hsla(202,60%,100%,0.4)"
+                      : "hsla(202,60%,100%,0.2)",
+                }}
+              ></div>
+              <div
+                className="inline-block w-[15px] h-[9px] rounded-sm  transition-colors duration-300 cursor-pointer my-3 mx-[2px]"
+                key={"thumb" + 2}
+                onClick={() => setActiveCarousel(2)}
+                style={{
+                  backgroundColor:
+                    2 === activeCarousel
+                      ? "hsla(202,60%,100%,0.4)"
+                      : "hsla(202,60%,100%,0.2)",
+                }}
+              ></div>
+              <div
+                className="inline-block w-[15px] h-[9px] rounded-sm  transition-colors duration-300 cursor-pointer my-3 mx-[2px]"
+                key={"thumb" + 3}
+                onClick={() => setActiveCarousel(3)}
+                style={{
+                  backgroundColor:
+                    3 === activeCarousel
+                      ? "hsla(202,60%,100%,0.4)"
+                      : "hsla(202,60%,100%,0.2)",
+                }}
+              ></div>
+              <div
+                className="inline-block w-[15px] h-[9px] rounded-sm  transition-colors duration-300 cursor-pointer my-3 mx-[2px]"
+                key={"thumb" + 4}
+                onClick={() => setActiveCarousel(4)}
+                style={{
+                  backgroundColor:
+                    4 === activeCarousel
+                      ? "hsla(202,60%,100%,0.4)"
+                      : "hsla(202,60%,100%,0.2)",
+                }}
+              ></div>
+            </div>
           </div>
         </div>
       </div>
