@@ -20,7 +20,7 @@ const LPCarousel = () => {
       <h2 className="text-l text-cyan-50">FEATURED & RECOMMENDED</h2>
     </div>
     <div className="carousel-container flex items-center justify-center bg-gray-800">
-      <Carousel className="w-2/5 pt-2">
+      <Carousel className="w-2/3" showThumbs={false}>
         {carouselData.map((item, index) => (
           <div key={index}>
             <img
@@ -30,7 +30,7 @@ const LPCarousel = () => {
           </div>
         ))}
       </Carousel>
-      <div className="grid grid-cols-2 gap-2 pb-20 pl-1">
+      <div className="grid grid-cols-2 gap-2 pb-5 pl-1">
         <img className="w-40 h-20 object-cover" src="https://lumiere-a.akamaihd.net/v1/images/star-wars-outlaws-key-art-square_b893fc9e.jpeg?region=0%2C0%2C1080%2C1080" alt="minipic"/>
         <img className="w-40 h-20 object-cover" src="https://lumiere-a.akamaihd.net/v1/images/star-wars-outlaws-key-art-square_b893fc9e.jpeg?region=0%2C0%2C1080%2C1080" alt="minipic"/>
         <img className="w-40 h-20 object-cover" src="https://lumiere-a.akamaihd.net/v1/images/star-wars-outlaws-key-art-square_b893fc9e.jpeg?region=0%2C0%2C1080%2C1080" alt="minipic"/>
