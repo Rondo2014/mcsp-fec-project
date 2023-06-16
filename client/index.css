@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --gradient-color-1: #2a475e;
+  --gradient-color-2: #1b2838;
+}
+
 body {
-  background-color: black;
+  background: linear-gradient(var(--gradient-color-1), var(--gradient-color-2));
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
 }

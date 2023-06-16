@@ -1,8 +1,6 @@
-import React from "react";
-
 const Footer = () => {
   return (
-    <footer className="w-full bg-slate-800">
+    <footer className="w-full bg-slate-800 absolute bottom-0">
       <div className="footer-bottom flex justify-center">
         <a
           className="block relative pt-[15px] px-[px] pb-[7px] leading-4 float-left text-[11px] text-[#b8b6b4] uppercase bg-slate-800"
