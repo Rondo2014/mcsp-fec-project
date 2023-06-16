@@ -5,7 +5,9 @@ const Special = () => {
   const [activeCarousel, setActiveCarousel] = useState(1);
 
   const handleAddCarousel = () => {
-    setActiveCarousel((prev) => (prev % 4) + 1);
+    activeCarousel < 4
+      ? setActiveCarousel((prev) => prev + 1)
+      : setActiveCarousel(1);
     console.log(activeCarousel);
   };
 
