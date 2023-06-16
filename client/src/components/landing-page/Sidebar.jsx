@@ -7,7 +7,10 @@ import {
 
 const Sidebar = () => {
   return (
-    <div id="sidebar" className="absolute left-[-225px] top-[-30px] pt-[31px] ">
+    <div
+      id="sidebar"
+      className="absolute left-[-225px] top-[-30px] pt-[31px] mb-10 "
+    >
       <div
         id="sidebar block"
         className="border-none bg-none pl-0 w-[210px] mb-5"
@@ -96,7 +99,7 @@ const Sidebar = () => {
           {SIDEBAR_RECOMMENDED.map((item, index) => (
             <a
               className="leading-4 mt-[2px] block w-fit text-[#7A8B9D] text-[12px] font-bold hover:text-[#00BBFF]"
-              key={item[index]}
+              key={item + index}
               href={item}
             >
               {item}
@@ -109,7 +112,7 @@ const Sidebar = () => {
         <div id="side-bar-categories">
           {SIDEBAR_CATEGORIES.map((item, index) => (
             <a
-              key={item[index]}
+              key={item + index}
               className="leading-4 mt-[2px] block w-fit text-[#7A8B9D] text-[12px] font-bold hover:text-[#00BBFF]"
               href={item}
             >
@@ -123,7 +126,7 @@ const Sidebar = () => {
         <div id="sidebar-hardware">
           {SIDE_BAR_HARDWARE.map((item, index) => (
             <a
-              key={item[index]}
+              key={item + index}
               className="leading-4 mt-[2px] block w-fit text-[#7A8B9D] text-[12px] font-bold hover:text-[#00BBFF]"
               href="item"
             >
@@ -137,7 +140,7 @@ const Sidebar = () => {
         <div id="sidebar-genres">
           {SIDE_BAR_GENRES.map((item, index) => (
             <a
-              key={item[index]}
+              key={item + index}
               className="leading-4 mt-[2px] block w-fit text-[#7A8B9D] text-[12px] font-bold hover:text-[#00BBFF]"
               href="item"
             >

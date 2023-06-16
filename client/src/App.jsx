@@ -4,7 +4,7 @@ import LandingPage from "./components/landing-page/LandingPage";
 
 function App() {
   return (
-    <div>
+    <div className=" min-h-screen">
       <Navbar />
       <LandingPage />
       <Footer />
