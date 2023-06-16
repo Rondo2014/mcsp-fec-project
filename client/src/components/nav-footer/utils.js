@@ -22,9 +22,21 @@ export const NAV_SUBLINKS_COMMUNITY = [
 ];
 
 export const FOOTER_LINKS = [
+  { name: "About Valve", image: null },
+  { name: "Jobs", image: null },
+  { name: "Steamworks", image: null },
+  { name: "Steam Distribution", image: null },
+  { name: "Support", image: null },
+  { name: "Recycling", image: null },
+  { name: "Gift Cards", image: null },
   {
-    name: "About Valve",
-    name: "Valve Privacy Policy",
-    name: "Valve Software",
+    name: "Steam",
+    image:
+      "https://store.cloudflare.steamstatic.com/public/images/ico/ico_facebook.gif",
+  },
+  {
+    name: "@steam",
+    image:
+      "https://store.cloudflare.steamstatic.com/public/images/ico/ico_twitter.gif",
   },
 ];
