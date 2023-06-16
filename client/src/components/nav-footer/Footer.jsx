@@ -1,39 +1,40 @@
+import { FOOTER_LINKS } from "./utils";
+
 const Footer = () => {
   return (
-    <footer className="w-full bg-slate-800 absolute bottom-0">
-      <div className="footer-bottom flex justify-center">
-        <a
-          className="block relative pt-[15px] px-[px] pb-[7px] leading-4 float-left text-[11px] text-[#b8b6b4] uppercase bg-slate-800"
-          href="/store"
+    <div
+      id="footer"
+      className="left-0 right-0 m-0 bg-[#171a21] pt-[16px] pb-[60px] absolute top-auto bottom-0"
+    >
+      <div id="footer-content" className="w-[940px] mx-auto pt-4">
+        <div
+          id="valve-links"
+          className=" mt-2 float-left font-normal text-[13px] text-[#61686D] flex flex-row items-center"
         >
-          Valve Software |
-        </a>
-        <a
-          className="block relative pt-[15px] px-[7px] pb-[7px] leading-4 float-left text-[11px] text-[#b8b6b4] uppercase  bg-slate-800"
-          href="/store"
-        >
-          Privacy Policy |
-        </a>
-        <a
-          className="block relative pt-[15px] px-[7px] pb-[7px] leading-4 float-left text-[11px] text-[#b8b6b4] uppercase  bg-slate-800"
-          href="/store"
-        >
-          Legal |
-        </a>
-        <a
-          className="block relative pt-[15px] px-[7px] pb-[7px] leading-4 float-left text-[11px] text-[#b8b6b4] uppercase  bg-slate-800"
-          href="/store"
-        >
-          Jobs |
-        </a>
-        <a
-          className="block relative pt-[15px] px-[7px] pb-[7px] leading-4 float-left text-[11px] text-[#b8b6b4] uppercase  bg-slate-800"
-          href="/store"
-        >
-          Steamworks |
-        </a>
+          {FOOTER_LINKS.map((link, index) => (
+            <>
+              <a
+                key={"footer" + link + index}
+                href={link}
+                className="text-[#C6D4DF] hover:text-white font-normal text-[13px] flex"
+              >
+                {link.image && (
+                  <img
+                    src={link.image}
+                    alt={link.name}
+                    className=" align-bottom overflow-clip bg-clip-content mr-2"
+                  />
+                )}
+                {link.name}
+              </a>
+              {index !== FOOTER_LINKS.length - 1 && (
+                <span> &nbsp; | &nbsp;</span>
+              )}
+            </>
+          ))}
+        </div>
       </div>
-    </footer>
+    </div>
   );
 };
 
