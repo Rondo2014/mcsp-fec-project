@@ -36,7 +36,7 @@ const LPCarousel = () => {
   const handleImageHover = (image) => {
     setCarouselImage(image);
   };
-
+  
   return (
     <>
     <div className="flex items-center justify-center">
