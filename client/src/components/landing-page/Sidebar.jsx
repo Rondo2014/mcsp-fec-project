@@ -7,7 +7,10 @@ import {
 
 const Sidebar = () => {
   return (
-    <div id="sidebar" className="absolute left-[-225px] top-[-30px] pt-[31px] ">
+    <div
+      id="sidebar"
+      className="absolute left-[-225px] top-[-30px] pt-[31px] mb-10 "
+    >
       <div
         id="sidebar block"
         className="border-none bg-none pl-0 w-[210px] mb-5"
