@@ -12,7 +12,7 @@ const FooterText = () => {
         {FOOTER_LEGAL_LINKS.map((link, index) => (
           <>
             <a
-              key={link + index}
+              key={"footer-text" + link + index}
               href={link.path}
               className="text-[#C6D4DF] hover:text-white font-normal text-[12px] leading-4"
             >

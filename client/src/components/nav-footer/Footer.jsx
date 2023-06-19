@@ -26,10 +26,13 @@ const Footer = () => {
         <FooterText />
         <div
           id="valve-links"
-          className=" mt-2 float-left font-normal text-[13px] text-[#61686D] flex flex-row items-center"
+          className=" mt-2 float-left font-normal text-[13px] text-[#61686D]"
         >
           {FOOTER_LINKS.map((link, index) => (
-            <>
+            <div
+              key={link + index}
+              className=" flex flex-row items-center float-left"
+            >
               <a
                 key={"footer" + link + index}
                 href={link}
@@ -37,6 +40,7 @@ const Footer = () => {
               >
                 {link.image && (
                   <img
+                    key={"footer" + link + index}
                     src={link.image}
                     alt={link.name}
                     className=" align-bottom overflow-clip bg-clip-content mr-2"
@@ -47,7 +51,7 @@ const Footer = () => {
               {index !== FOOTER_LINKS.length - 1 && (
                 <span> &nbsp; | &nbsp;</span>
               )}
-            </>
+            </div>
           ))}
         </div>
       </div>

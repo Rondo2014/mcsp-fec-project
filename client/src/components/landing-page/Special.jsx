@@ -5,19 +5,6 @@ const Special = () => {
   const [activeCarousel, setActiveCarousel] = useState(1);
   const [featuredGames, setFeaturedGames] = useState([]);
 
-  const handleAddCarousel = () => {
-    activeCarousel < 4
-      ? setActiveCarousel((prev) => prev + 1)
-      : setActiveCarousel(1);
-    console.log(activeCarousel);
-  };
-
-  const handleMinusCarousel = () => {
-    activeCarousel > 1
-      ? setActiveCarousel((prev) => prev - 1)
-      : setActiveCarousel(4);
-  };
-
   const chunk = (arr, size) => {
     const newArr = [];
     let id = 1;
@@ -36,7 +23,6 @@ const Special = () => {
     try {
       api.get("/api/games/featured").then((res) => {
         const featuredGames = chunk(res.data, 3);
-        console.log(featuredGames);
         setFeaturedGames(featuredGames);
       });
     } catch (error) {
@@ -44,7 +30,13 @@ const Special = () => {
     }
   }, []);
 
-  console.log(featuredGames);
+  const handleAddCarousel = () => {
+    setActiveCarousel((prev) => (prev % 4) + 1);
+  };
+
+  const handleMinusCarousel = () => {
+    setActiveCarousel((prev) => ((prev - 2 + 4) % 4) + 1);
+  };
 
   return (
     <div className="py-[20px] px-[2%]">
@@ -65,15 +57,15 @@ const Special = () => {
         </h2>
         <div id="carousel-container" className="relative">
           <div id="carousel-items" className="h-[390px] relative clear-both">
-            {featuredGames.map((item, index) => {
-              if (item.id === activeCarousel) {
+            {featuredGames.map((carousel) => {
+              if (carousel.id === activeCarousel) {
                 return (
                   <div
                     id="special-offers-group"
                     className="flex transition duration-[400ms]"
-                    key={item.id}
+                    key={carousel.id}
                   >
-                    {item.items.map((item, index) => {
+                    {carousel.items.map((item, index) => {
                       return (
                         <div
                           style={{
@@ -86,7 +78,7 @@ const Special = () => {
                           <div className="pl-0 pt-0 w-[306px] overflow-hidden">
                             <a href={item.link}>
                               <img
-                                className="overflow-clip h-[268px] w-full"
+                                className="overflow-clip h-[271px] w-full"
                                 src={item.special_img}
                                 alt=""
                               />
@@ -193,24 +185,24 @@ const Special = () => {
                 }}
                 className="w-[23px] h-9 transform rotate-180"
               ></div>
+            </div>
+            <div
+              id="arrow-right"
+              className="right-[-46px] absolute top-[38%] w-auto h-auto py-9 px-[11px] cursor-pointer"
+              style={{
+                background:
+                  "linear-gradient( to left, rgba( 0, 0, 0, 0.3) 5%,rgba( 0, 0, 0, 0) 95%)",
+                backgroundSize: "cover",
+              }}
+              onClick={handleAddCarousel}
+            >
               <div
-                id="arrow-right"
-                className="left-[986px] absolute top-[5%] w-auto h-auto py-9 px-[11px] cursor-pointer"
                 style={{
-                  background:
-                    "linear-gradient( to left, rgba( 0, 0, 0, 0.3) 5%,rgba( 0, 0, 0, 0) 95%)",
-                  backgroundSize: "cover",
+                  backgroundImage:
+                    "url(https://store.cloudflare.steamstatic.com/public/images/v6/arrows.png)",
                 }}
-                onClick={handleAddCarousel}
-              >
-                <div
-                  style={{
-                    backgroundImage:
-                      "url(https://store.cloudflare.steamstatic.com/public/images/v6/arrows.png)",
-                  }}
-                  className="w-[23px] h-9"
-                ></div>
-              </div>
+                className="w-[23px] h-9"
+              ></div>
             </div>
           </div>
         </div>

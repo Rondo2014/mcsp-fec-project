@@ -22,15 +22,21 @@ const Navbar = () => {
   };
 
   return (
-    <div className=" w-full text-[14px] font-normal bg-navbar px-4">
+    <div className=" w-full text-[14px] font-normal bg-navbar px-4 tracking-wider">
       <div id="content" className="w-[940px] h-[104px] m-auto z-50">
         <div
           id="logo"
-          className=" float-left pt-[30px] mr-[40px] w-[176px] h-[44px]"
+          className=" float-left pt-[30px] w-[176px] h-[44px] mr-5"
         >
           <span id="logo-holder">
             <a href="/">
-              <img src={headerLogo} alt="logo" />
+              <img
+                src={
+                  "https://store.cloudflare.steamstatic.com/public/shared/images/header/logo_steam.svg?t=962016"
+                }
+                alt="logo"
+                className="w-[200px] aspect-auto"
+              />
             </a>
           </span>
         </div>
@@ -105,10 +111,13 @@ const Navbar = () => {
           className="relative right-0 left-48 top-[6px] h-[21px] leading-[21px] text-[#b8b6b4] text-[11px] z-[401]"
           id="global-actions"
         >
-          <div id="global-actions-menu" className=" leading-6 align-top">
+          <div
+            id="global-actions-menu"
+            className=" leading-6 align-top tracking-normal"
+          >
             <div
               id="header-install-steam"
-              className="inline-flex relative h-[24px] leading-6 mr-[3px] py-[1px] bg-accent text-white w-[100px] "
+              className="inline-flex relative h-[24px] leading-6 mr-[5px] py-[1px] bg-accent text-white w-[108px] "
             >
               <img src={install} className="py-[4px] mx-2" alt="" />
               <a
@@ -118,7 +127,10 @@ const Navbar = () => {
                 Install Steam
               </a>
             </div>
-            <a href="/login" className="text-[#b8b6b4] px-[4px] align-top">
+            <a
+              href="/login"
+              className="text-[#b8b6b4] px-[4px] align-top font-normal"
+            >
               <span className="hover:text-white">login</span>{" "}
               <span className="px-2">|</span>{" "}
               <span className="hover:text-white">
