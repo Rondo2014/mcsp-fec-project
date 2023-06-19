@@ -19,7 +19,7 @@ CREATE TABLE games(
     category    VARCHAR(25) NOT NULL,
     game_image  TEXT NOT NULL,
     special_img TEXT,
-    price       MONEY NOT NULL,
+    price       INT NOT NULL,
     sale_deal   INT ,
     deal_ends   DATE ,
     description TEXT NOT NULL,

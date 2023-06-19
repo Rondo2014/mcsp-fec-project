@@ -3,6 +3,7 @@ import {
   getAllGames,
   getFeaturedGames,
   getGameById,
+  getRecommendedGames,
 } from "../controllers/gameControllers.js";
 import { logUserIn, registerUser } from "../controllers/logController.js";
 import { hasPasswordMiddleware, protectRoutes } from "../auth.js";
@@ -18,6 +19,7 @@ const router = Router();
  */
 router.get("/games", getAllGames); // fetch all games
 router.get("/games/featured", getFeaturedGames);
+router.get("/games/recommended", getRecommendedGames);
 router.get("/game/:id", getGameById); // fetch single game
 
 /**
