@@ -1,6 +1,6 @@
 import StoreNavBar from "./StoreNavBar";
 import Sidebar from "./Sidebar";
-import LPCarousel from "./LPCarousel";
+import TestCarousel from "./TestCarousel";
 import HomeHardware from "./HomeHardware";
 import LoginBar from "./LoginBar";
 import Special from "./Special";
@@ -31,7 +31,7 @@ const LandingPage = () => {
       <div className=" w-[972px] relative mx-auto">
         <StoreNavBar />
         <Sidebar />
-        <LPCarousel />
+        <TestCarousel />
         <Special />
         <HomeHardware />
         <CategoryCarousel />

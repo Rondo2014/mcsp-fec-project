@@ -111,7 +111,7 @@ const TestCarousel = () => {
                     'url("https://store.cloudflare.steamstatic.com/public/images/v6/home/background_maincap_2.jpg")',
                 }}
               >
-                <div className="absolute left-4 top-8 text-xl  fon">
+                <div className="absolute left-4 top-8 text-xl text-white font-semibold tracking-wider">
                   {title[carouselSlide]}
                 </div>
                 <div className="flex flex-wrap h-full">
