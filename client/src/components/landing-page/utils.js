@@ -113,3 +113,22 @@ export const BROWSE_STEAM = [
     link: "#",
   },
 ];
+
+export const BROWSE_LIST = [
+  {
+    id: 1,
+    name: "New & Trending",
+  },
+  {
+    id: 2,
+    name: "Top Sellers",
+  },
+  {
+    id: 3,
+    name: "Popular Upcoming",
+  },
+  {
+    id: 4,
+    name: "Specials",
+  },
+];
