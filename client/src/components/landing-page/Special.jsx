@@ -39,7 +39,7 @@ const Special = () => {
   };
   console.log(featuredGames);
   return (
-    <div className="py-[20px] px-[2%]">
+    <div className="py-[20px] px-[2%] my-12">
       <div id="special offers" className="mb-[20px] relative z-auto">
         <h2
           id="title"
@@ -62,10 +62,26 @@ const Special = () => {
                 return (
                   <div
                     id="special-offers-group"
-                    className="flex transition duration-[400ms]"
+                    className="flex transition duration-[400ms] cursor-pointer"
                     key={carousel.id}
                   >
                     {carousel.items.map((item, index) => {
+                      const salePrice =
+                        item.price - item.price * (item.sale_deal / 100);
+                      const formattedDate = new Date(
+                        item.deal_ends
+                      ).toLocaleDateString("en-US", {
+                        month: "short",
+                        day: "numeric",
+                      });
+                      const formattedTime = new Date(
+                        item.deal_ends
+                      ).toLocaleTimeString("en-US", {
+                        hour: "numeric",
+                        minute: "numeric",
+                      });
+                      const formattedDateTime = `${formattedDate} @ ${formattedTime}.`;
+
                       return (
                         <div
                           style={{
@@ -102,7 +118,7 @@ const Special = () => {
                               id="offer"
                               className="font-light text-[#acdbf5]"
                             >
-                              Offer ends {item.deal_ends}
+                              Offer ends {formattedDateTime}
                             </div>
                             <div id="sale-amount" className="mt-[10px]">
                               <div
@@ -120,12 +136,10 @@ const Special = () => {
                                     id="original_price"
                                     className="relative  w-fit text-[#738895] text-[11px] leading-3 line-through"
                                   >
-                                    ${item.price}.00
+                                    ${item.price}
                                   </div>
-                                  <div>
-                                    $
-                                    {item.price -
-                                      item.price * 0.01 * item.sale_deal}
+                                  <div className="text-[#BEEE11] leading-4 text-[15px]">
+                                    ${salePrice.toFixed(2)}
                                   </div>
                                 </div>
                               </div>
