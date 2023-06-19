@@ -8,6 +8,9 @@ export const allGames = `SELECT * FROM games`;
 // query to fetch featured games
 export const featuredGames = `SELECT * FROM games WHERE on_sale = TRUE`;
 
+// query to fetch recommended games
+export const recommendedGames = `SELECT * FROM games WHERE on_sale = FALSE`;
+
 // query to fetch a sigle game by id
 export const gameId = `SELECT * FROM games WHERE id = $1`;
 
