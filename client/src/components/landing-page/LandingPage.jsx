@@ -6,6 +6,10 @@ import LoginBar from "./LoginBar";
 import Special from "./Special";
 import CategoryCarousel from "./CategoryCarousel";
 import LoginCard from "./LoginCard";
+import BrowseSteam from "./BrowseSteam";
+import BrowseList from "./BrowseList";
+import { useState, useEffect } from "react";
+import api from "../../api/axios";
 
 const LandingPage = () => {
   const [allGames, setAllGames] = useState([]);
