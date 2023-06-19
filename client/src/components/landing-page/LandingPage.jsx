@@ -4,7 +4,8 @@ import LPCarousel from "./LPCarousel";
 import HomeHardware from "./HomeHardware";
 import LoginBar from "./LoginBar";
 import Special from "./Special";
-import CategoryCarousel from "./CategoryCarousel"
+import CategoryCarousel from "./CategoryCarousel";
+import LoginCard from "./LoginCard";
 
 const LandingPage = () => {
   return (
@@ -16,6 +17,7 @@ const LandingPage = () => {
         <Special />
         <HomeHardware />
         <CategoryCarousel />
+        <LoginCard />
       </div>
       <LoginBar />
     </div>

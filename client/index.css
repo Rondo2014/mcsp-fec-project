@@ -8,9 +8,8 @@
 }
 
 body {
-  background: linear-gradient(var(--gradient-color-1), var(--gradient-color-2));
+  background-image: url("https://store.cloudflare.steamstatic.com/public/images/v6/colored_body_top.png?v=2");
   background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-  background-position: center;
+  background-position: center top;
+  background-color: #1b2838;
 }

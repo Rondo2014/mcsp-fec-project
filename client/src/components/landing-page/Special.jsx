@@ -88,6 +88,10 @@ const Special = () => {
                               <img
                                 className="overflow-clip"
                                 src={item.game_image}
+                                style={{
+                                  width: "306px",
+                                  height: "180px",
+                                }}
                                 alt=""
                               />
                             </a>
