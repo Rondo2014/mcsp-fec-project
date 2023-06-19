@@ -20,7 +20,7 @@ const Special = () => {
 
   useEffect(() => {
     try {
-      api.get("/api/games/featured").then((res) => {
+      api.get("/games/featured").then((res) => {
         console.log(res.data);
         setFeaturedGames(res.data);
       });
