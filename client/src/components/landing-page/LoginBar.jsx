@@ -1,6 +1,6 @@
 const LoginBar = () => {
   return (
-    <div className="bottom-[-450px] bg-black py-[25px] relative w-full">
+    <div className="bottom-0 mb-0 mt-20 bg-black py-[25px] relative w-full">
       <div className="relative w-[940px] mx-auto">
         <div
           id="more-content-title"

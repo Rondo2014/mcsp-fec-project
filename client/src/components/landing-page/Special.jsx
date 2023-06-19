@@ -86,12 +86,8 @@ const Special = () => {
                           <div className="pl-0 pt-0 w-[306px] overflow-hidden">
                             <a href={item.link}>
                               <img
-                                className="overflow-clip"
-                                src={item.game_image}
-                                style={{
-                                  width: "306px",
-                                  height: "180px",
-                                }}
+                                className="overflow-clip h-[268px] w-full"
+                                src={item.special_img}
                                 alt=""
                               />
                             </a>
