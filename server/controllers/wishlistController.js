@@ -1,4 +1,10 @@
-import { gameId, outWishlist, toWishlist, wishlist } from "./queries.js";
+import {
+  gameId,
+  outWishlist,
+  toWishlist,
+  wishGameCheck,
+  wishlist,
+} from "./queries.js";
 import { db } from "../database/database.js";
 
 export const viewWishlist = async (req, res) => {
@@ -27,14 +33,18 @@ export const AddToWishlist = async (req, res) => {
     if (isNaN(gameId))
       return res.status(406).json({ message: "Invalid Game ID" });
 
-    const results = await db.query(toWishlist, [gameId, id]);
     // if game id exists already send an error
-    const wishlist = results.rows[0].wishlist;
-    console.log(wishlist);
-    if (wishlist.includes(gameId))
+    const wishlistCheck = await db.query(wishGameCheck, [id]);
+    console.log(wishlistCheck.rows[0].wishlist);
+    const wishlist = wishlistCheck.rows[0].wishlist;
+
+    if (wishlist.includes(Number(gameId)))
       return res
         .status(406)
         .json({ message: "Game Already Exists In Wishlist" });
+
+    const results = await db.query(toWishlist, [gameId, id]);
+
     res
       .status(200)
       .json({ message: "Game Added To Wishlist", results: results.rows });
@@ -52,6 +62,14 @@ export const removeFromWishlist = async (req, res) => {
     // if game ID is NaN return an error
     if (isNaN(gameId))
       return res.status(406).json({ message: "Invalid Game ID" });
+
+    // if wishlist is empty return the user a message
+    const wishlistCheck = await db.query(wishGameCheck, [id]);
+    console.log(wishlistCheck.rows[0].wishlist);
+    const wishlist = wishlistCheck.rows[0].wishlist;
+
+    if (wishlist.length === 0)
+      return res.status(406).json({ message: "Wishlist Is Empty" });
 
     const results = await db.query(outWishlist, [gameId, id]);
 
