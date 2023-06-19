@@ -37,7 +37,7 @@ const Special = () => {
   const handleMinusCarousel = () => {
     setActiveCarousel((prev) => ((prev - 2 + 4) % 4) + 1);
   };
-
+  console.log(featuredGames);
   return (
     <div className="py-[20px] px-[2%]">
       <div id="special offers" className="mb-[20px] relative z-auto">
@@ -46,9 +46,9 @@ const Special = () => {
           className="text-[14px] uppercase text-white mb-[10px] pt-[2px] font-semibold tracking-wider"
         >
           Special Offers
-          <span className="float-right inline-block relative top-[-3px] font-[400] tracking-normal border-[1px] border-white px-5">
+          <span className="float-right inline-block relative top-[-3px] font-[400] tracking-normal border-[1px] border-white border-opacity-50 hover:border-opacity-100 px-5 rounded-[3px]">
             <a
-              className="rounded-sm p-[1px] inline-block cursor-pointer text0white bg-transparent"
+              className="rounded-sm p-[1px] inline-block cursor-pointer text-white bg-transparent"
               href="https://store.steampowered.com/specials?snr=1_4_4_#tab=TopSellers"
             >
               <span>Browse More</span>
@@ -110,7 +110,19 @@ const Special = () => {
                                 className="relative flex"
                               >
                                 <div className="leading-[34px] px-[5px] text-[25px] font-bold text-[#BEEE11] bg-[#4c6b22] inline-block">
-                                  {item.sale_deal}%
+                                  -{item.sale_deal}%
+                                </div>
+                                <div
+                                  id="discount-prices"
+                                  className="leading-[13px] px-2 flex flex-col items-end content-center bg-[#344654]"
+                                >
+                                  <div
+                                    id="original_price"
+                                    className="relative  w-fit text-[#738895] text-[11px] leading-3 line-through"
+                                  >
+                                    {item.price}
+                                  </div>
+                                  <div></div>
                                 </div>
                               </div>
                             </div>
