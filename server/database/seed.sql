@@ -114,7 +114,12 @@ VALUES
     ('Sons Of The Forest', TRUE, 'Early Access', 'https://cdn.akamai.steamstatic.com/steam/apps/1326470/header.jpg?t=1679677298', 'https://cdn.akamai.steamstatic.com/steam/apps/1326470/hero_capsule.jpg?t=1679677298', '29.99', 35, '2023-08-12 12:00:00','Sent to find a missing billionaire on a remote island, you find yourself in a cannibal-infested hellscape. Craft, build, and struggle to survive, alone or with friends, in this terrifying new open-world survival horror simulator.',
     'Endnight Games Ltd', 'Newnight', ARRAY['Great game!', 'Highly addictive.'], 
     ARRAY['https://cdn.akamai.steamstatic.com/steam/apps/1326470/ss_e6e3ab1badfb287a77fb6eef7b1589a35371496b.1920x1080.jpg?t=1679677298','https://cdn.akamai.steamstatic.com/steam/apps/1326470/ss_4fa5d260318f0aa37754b00c5dc10d1b7b9b9b1d.1920x1080.jpg?t=1679677298','https://cdn.akamai.steamstatic.com/steam/apps/1326470/ss_2b67491ca913adea6953429e1a567824aaa0ed54.1920x1080.jpg?t=1679677298','https://cdn.akamai.steamstatic.com/steam/apps/1326470/ss_ba2c1f6e69c6c7d69f7965cbd4b78da59ec59d55.1920x1080.jpg?t=1679677298','https://cdn.akamai.steamstatic.com/steam/apps/1326470/ss_2c537a8c689dd6b21643b8054a64646334ef7391.1920x1080.jpg?t=1679677298'],
-    ARRAY['https://cdn.akamai.steamstatic.com/steam/apps/256932123/movie480_vp9.webm?t=1677175226']);
+    ARRAY['https://cdn.akamai.steamstatic.com/steam/apps/256932123/movie480_vp9.webm?t=1677175226']),
+
+    ('BattleBit Remastered', FALSE, 'Action', 'https://cdn.akamai.steamstatic.com/steam/apps/671860/header.jpg?t=1686877598', NULL, '0', NULL, '2023-08-12 12:00:00','BattleBit Remastered is a low-poly, massive multiplayer FPS, supporting 254 players per server. Battle on a near-fully destructible map with various vehicles!',
+    'dev', 'pub', ARRAY['Great game!', 'Highly addictive.'], 
+    ARRAY['https://cdn.akamai.steamstatic.com/steam/apps/671860/ss_08558f0aa02d2c03c47971cfb39e4af207ac18ff.1920x1080.jpg?t=1686877598','https://cdn.akamai.steamstatic.com/steam/apps/671860/ss_b4175c430cc50636e44a9e6f07fa3a91bfe01548.1920x1080.jpg?t=1686877598','https://cdn.akamai.steamstatic.com/steam/apps/671860/ss_9bb1de4c1890e9df6062b4180abd55b6efe07c8d.1920x1080.jpg?t=1686877598','https://cdn.akamai.steamstatic.com/steam/apps/671860/ss_a239c8b441c208285961c371e31d464cb89ca281.1920x1080.jpg?t=1686877598','https://cdn.akamai.steamstatic.com/steam/apps/671860/ss_894fb4283c024f09e204baca4955c9f287ec7f42.1920x1080.jpg?t=1686877598'],
+    ARRAY['https://cdn.akamai.steamstatic.com/steam/apps/256951968/movie480_vp9.webm?t=1686350007']);
 
     -- ('title', TRUE, 'cat', 'gameimg', 'spcimg' '29.99', 10, '2023-08-12 12:00:00','desc',
     -- 'dev', 'pub', ARRAY['Great game!', 'Highly addictive.'], 
