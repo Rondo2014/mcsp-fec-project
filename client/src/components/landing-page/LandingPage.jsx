@@ -6,6 +6,7 @@ import LoginBar from "./LoginBar";
 import Special from "./Special";
 import CategoryCarousel from "./CategoryCarousel";
 import LoginCard from "./LoginCard";
+import BrowseSteam from "./BrowseSteam";
 
 const LandingPage = () => {
   return (
@@ -18,6 +19,7 @@ const LandingPage = () => {
         <HomeHardware />
         <CategoryCarousel />
         <LoginCard />
+        <BrowseSteam />
       </div>
       <LoginBar />
     </div>

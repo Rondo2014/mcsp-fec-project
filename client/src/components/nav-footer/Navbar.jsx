@@ -1,5 +1,4 @@
 import { useState } from "react";
-import headerLogo from "../../assets/header_logo.png";
 import { NAVLINKS, NAV_SUBLINKS_STORE, NAV_SUBLINKS_COMMUNITY } from "./utils";
 import install from "../../assets/btn_header_installsteam.png";
 
