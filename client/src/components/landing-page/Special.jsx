@@ -134,8 +134,17 @@ const Special = () => {
                                 >
                                   <div
                                     id="original_price"
-                                    className="relative  w-fit text-[#738895] text-[11px] leading-3 line-through"
+                                    className="relative  w-fit text-[#738895] text-[11px] leading-3"
                                   >
+                                    <div
+                                      style={{
+                                        transform: "skewY(-8deg)",
+                                        boxShadow: "0 0 2px black",
+                                      }}
+                                      className="left-0 right-0 absolute top-[43%] border-b-[1.5px] border-b-[#738895]"
+                                    >
+                                      {" "}
+                                    </div>
                                     ${item.price}
                                   </div>
                                   <div className="text-[#BEEE11] leading-4 text-[15px]">
