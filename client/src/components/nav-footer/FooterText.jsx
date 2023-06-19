@@ -1,4 +1,5 @@
 import { FOOTER_LEGAL_LINKS } from "./utils";
+import React from "react";
 
 const FooterText = () => {
   return (
@@ -10,9 +11,8 @@ const FooterText = () => {
       <div>
         VAT included in all prices where applicable.&nbsp;&nbsp;
         {FOOTER_LEGAL_LINKS.map((link, index) => (
-          <>
+          <React.Fragment key={"footer-text" + link.name + index}>
             <a
-              key={"footer-text" + link + index}
               href={link.path}
               className="text-[#C6D4DF] hover:text-white font-normal text-[12px] leading-4"
             >
@@ -21,7 +21,7 @@ const FooterText = () => {
             {index !== FOOTER_LEGAL_LINKS.length - 1 && (
               <span> &nbsp; | &nbsp;</span>
             )}
-          </>
+          </React.Fragment>
         ))}
       </div>
       <div className="block text-center py-[20px]">
