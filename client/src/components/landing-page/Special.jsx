@@ -18,16 +18,33 @@ const Special = () => {
       : setActiveCarousel(4);
   };
 
+  const chunk = (arr, size) => {
+    const newArr = [];
+    let id = 1;
+    for (let i = 0; i < arr.length; i += size) {
+      const chunk = {
+        id: id,
+        items: arr.slice(i, i + size),
+      };
+      newArr.push(chunk);
+      id++;
+    }
+    return newArr;
+  };
+
   useEffect(() => {
     try {
       api.get("/api/games/featured").then((res) => {
-        console.log(res.data);
-        setFeaturedGames(res.data);
+        const featuredGames = chunk(res.data, 3);
+        console.log(featuredGames);
+        setFeaturedGames(featuredGames);
       });
     } catch (error) {
       console.log(error);
     }
   }, []);
+
+  console.log(featuredGames);
 
   return (
     <div className="py-[20px] px-[2%]">
@@ -64,13 +81,17 @@ const Special = () => {
                               "url(https://store.cloudflare.steamstatic.com/public/images/v6/spotlight_background.jpg?v=1)",
                           }}
                           className="mr-[11px] h-[390px] relative "
-                          key={index}
+                          key={item + index}
                         >
                           <div className="pl-0 pt-0 w-[306px] overflow-hidden">
                             <a href={item.link}>
                               <img
                                 className="overflow-clip"
-                                src={item.content}
+                                src={item.game_image}
+                                style={{
+                                  width: "306px",
+                                  height: "180px",
+                                }}
                                 alt=""
                               />
                             </a>
@@ -93,7 +114,7 @@ const Special = () => {
                               id="offer"
                               className="font-light text-[#acdbf5]"
                             >
-                              {item.offer}
+                              Offer ends {item.deal_ends}
                             </div>
                             <div id="sale-amount" className="mt-[10px]">
                               <div
@@ -101,7 +122,7 @@ const Special = () => {
                                 className="relative flex"
                               >
                                 <div className="leading-[34px] px-[5px] text-[25px] font-bold text-[#BEEE11] bg-[#4c6b22] inline-block">
-                                  {item.discount}
+                                  {item.sale_deal}%
                                 </div>
                               </div>
                             </div>
