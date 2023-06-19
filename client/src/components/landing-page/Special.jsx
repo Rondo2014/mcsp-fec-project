@@ -120,9 +120,13 @@ const Special = () => {
                                     id="original_price"
                                     className="relative  w-fit text-[#738895] text-[11px] leading-3 line-through"
                                   >
-                                    {item.price}
+                                    ${item.price}.00
                                   </div>
-                                  <div></div>
+                                  <div>
+                                    $
+                                    {item.price -
+                                      item.price * 0.01 * item.sale_deal}
+                                  </div>
                                 </div>
                               </div>
                             </div>
