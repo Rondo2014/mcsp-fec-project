@@ -90,3 +90,45 @@ export const CATEGORIES = [
   },
   // Add more categories as needed
 ];
+
+export const BROWSE_STEAM = [
+  {
+    id: 1,
+    name: "New Releases",
+    link: "#",
+  },
+  {
+    id: 2,
+    name: "Specials",
+    link: "#",
+  },
+  {
+    id: 3,
+    name: "Free Games",
+    link: "#",
+  },
+  {
+    id: 4,
+    name: "By User Tags",
+    link: "#",
+  },
+];
+
+export const BROWSE_LIST = [
+  {
+    id: 1,
+    name: "New & Trending",
+  },
+  {
+    id: 2,
+    name: "Top Sellers",
+  },
+  {
+    id: 3,
+    name: "Popular Upcoming",
+  },
+  {
+    id: 4,
+    name: "Specials",
+  },
+];
