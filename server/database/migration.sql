@@ -18,6 +18,7 @@ CREATE TABLE games(
     on_sale     BOOLEAN DEFAULT FALSE,
     category    VARCHAR(25) NOT NULL,
     game_image  TEXT NOT NULL,
+    special_img TEXT,
     price       MONEY NOT NULL,
     sale_deal   INT ,
     deal_ends   DATE ,
