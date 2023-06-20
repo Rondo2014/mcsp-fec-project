@@ -8,6 +8,7 @@ const TestCarousel = () => {
   const [title, setTitle] = useState([]);
   const [carouselSlide, setCarouselSlide] = useState(0);
   const [carouselHover, setCarouselHover] = useState(false);
+  const [miniHover, setMiniHover] = useState(null);
 
   const handleNext = () => {
     setCarouselSlide((prevIndex) => (prevIndex + 1) % carouselData.length);
@@ -71,9 +72,13 @@ const TestCarousel = () => {
             onMouseEnter={() => setCarouselHover(true)}
             onMouseLeave={() => setCarouselHover(false)}
           >
-            <div className=" flex flex-cols carousel  h-full ">
+            <div className=" flex flex-cols carousel h-full transition duration-300 ease-in-out">
               <img
-                src={bigImage[carouselSlide]}
+                src={
+                  miniHover === null
+                    ? bigImage[carouselSlide]
+                    : miniPics[carouselSlide][miniHover]
+                }
                 alt={`Image ${carouselSlide + 1}`}
                 className="my-auto w-[600px] h-full drop-shadow-lg z-10"
                 style={{
@@ -127,35 +132,21 @@ const TestCarousel = () => {
                 <div className="absolute left-4 top-8 text-[28px] text-white font-normal tracking-wide overflow-clip my-[-15px]">
                   {title[carouselSlide]}
                 </div>
-                <div className="flex flex-wrap h-full">
-                  <div className="w-1/2 self-end pb-3 pr-3">
-                    <img
-                      src={miniPics[carouselSlide][0]}
-                      alt={`MiniPic ${carouselSlide}`}
-                      className="h-[69px] w-[162px] hover:brightness-125 cursor-pointer"
-                    />
-                  </div>
-                  <div className="w-1/2 self-end pb-3">
-                    <img
-                      src={miniPics[carouselSlide][1]}
-                      alt={`MiniPic ${carouselSlide}`}
-                      className="h-[69px] w-[162px] hover:brightness-125 cursor-pointer"
-                    />
-                  </div>
-                  <div className="w-1/2 pr-3">
-                    <img
-                      src={miniPics[carouselSlide][2]}
-                      alt={`MiniPic ${carouselSlide}`}
-                      className="h-[69px] w-[162px] hover:brightness-125 cursor-pointer"
-                    />
-                  </div>
-                  <div className="w-1/2">
-                    <img
-                      src={miniPics[carouselSlide][3]}
-                      alt={`MiniPic ${carouselSlide}`}
-                      className="h-[69px] w-[162px] hover:brightness-125 cursor-pointer"
-                    />
-                  </div>
+                <div className="grid grid-cols-2 items-center mt-[100px]">
+                  {miniPics[carouselSlide].map((miniPic, index) => (
+                    <div
+                      className="w-full px-2 py-3 "
+                      key={`miniPic-${index}`}
+                      onMouseEnter={() => setMiniHover(index)}
+                      onMouseLeave={() => setMiniHover(null)}
+                    >
+                      <img
+                        src={miniPic}
+                        alt={`MiniPic ${carouselSlide}`}
+                        className="h-[69px] w-[162px] hover:brightness-125 cursor-pointer"
+                      />
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>

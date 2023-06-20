@@ -38,8 +38,8 @@ const BrowseList = ({ allGames }) => {
                   }}
                 >
                   <div
-                    className="text-[13px] text-[#4f94bc] leading-6 px-[10px] cursor-pointer align-top"
-                    style={{ color: selected === link.id ? "#fff" : "#2f89bc" }}
+                    className="text-[13px] text-[#2f89bc] hover:text-white leading-6 px-[10px] cursor-pointer align-top"
+                    style={{ color: selected === link.id ? "#fff" : "" }}
                     onClick={() => handleClick(link.id)}
                   >
                     {link.name}
@@ -145,6 +145,12 @@ const BrowseList = ({ allGames }) => {
                     <div
                       id="game-name"
                       className="text-[#c7d5e0] text-[1.25em] leading-[18px] text-ellipsis whitespace-nowrap block"
+                      style={{
+                        color:
+                          selectedGame && selectedGame.id === game.id
+                            ? "#202d39"
+                            : "",
+                      }}
                     >
                       {game.title}
                     </div>
