@@ -37,7 +37,7 @@ const Special = () => {
   const handleMinusCarousel = () => {
     setActiveCarousel((prev) => ((prev - 2 + 4) % 4) + 1);
   };
-  console.log(featuredGames);
+
   return (
     <div className="py-[20px] px-[2%] my-12">
       <div id="special offers" className="mb-[20px] relative z-auto">

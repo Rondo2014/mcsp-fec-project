@@ -7,6 +7,7 @@ const TestCarousel = () => {
   const [miniPics, setMiniPics] = useState([]);
   const [title, setTitle] = useState([]);
   const [carouselSlide, setCarouselSlide] = useState(0);
+  const [carouselHover, setCarouselHover] = useState(false);
 
   const handleNext = () => {
     setCarouselSlide((prevIndex) => (prevIndex + 1) % carouselData.length);
@@ -46,11 +47,14 @@ const TestCarousel = () => {
   }, []);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCarouselSlide((prevIndex) => (prevIndex + 1) % carouselData.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [carouselData.length]);
+    if (!carouselHover) {
+      const interval = setInterval(() => {
+        setCarouselSlide((prevIndex) => (prevIndex + 1) % carouselData.length);
+      }, 5000);
+
+      return () => clearInterval(interval);
+    }
+  }, [carouselHover, carouselData.length]);
 
   return (
     carouselData.length > 0 && (
@@ -60,10 +64,12 @@ const TestCarousel = () => {
             FEATURED & RECOMMENDED
           </div>
           <div
-            className=" h-full "
+            className=" h-full cursor-pointer"
             style={{
               boxShadow: "3px 2px 7px rgba(0, 0, 0, .8)",
             }}
+            onMouseEnter={() => setCarouselHover(true)}
+            onMouseLeave={() => setCarouselHover(false)}
           >
             <div className=" flex flex-cols carousel  h-full ">
               <img
