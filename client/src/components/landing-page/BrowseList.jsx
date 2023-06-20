@@ -1,5 +1,6 @@
 import { BROWSE_LIST } from "./utils";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const BrowseList = ({ allGames }) => {
   const [selected, setSelected] = useState(1);
@@ -15,6 +16,8 @@ const BrowseList = ({ allGames }) => {
   const handleClick = (id) => {
     setSelected(id);
   };
+
+  const navigate = useNavigate();
 
   return (
     <div
@@ -88,6 +91,7 @@ const BrowseList = ({ allGames }) => {
                         : "0px",
                   }}
                   onMouseEnter={() => handleGameHover(game.id)}
+                  onClick={() => navigate("/product/" + game.id)}
                 >
                   <div className="absolute left-0 top-0 z-10 leading-[69px]">
                     <img
