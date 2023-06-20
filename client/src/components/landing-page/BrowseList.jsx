@@ -78,7 +78,6 @@ const BrowseList = ({ allGames }) => {
               .map((game) => (
                 <a
                   key={"game " + game.id}
-                  href={game.id}
                   className="relative block h-[69px] pl-[198px] bg-opacity-50 my-2"
                   style={{
                     background:
