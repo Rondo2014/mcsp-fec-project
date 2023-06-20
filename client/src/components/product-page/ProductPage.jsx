@@ -28,7 +28,7 @@ const ProductPage = () => {
   return (
     <>
       <StoreNavBar />
-      <TitleBar game={game} />
+      {loading ? <div>Loading...</div> : <TitleBar game={game} />}
       {loading ? <div>Loading...</div> : <ProductCarousel game={game} />}
     </>
   );

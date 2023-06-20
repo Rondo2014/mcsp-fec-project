@@ -1,7 +1,7 @@
 import React from "react";
 
 const TitleBar = ({ game }) => {
-  const breadCrumbs = ["All Games", `${game.category}`, `${game.title}`];
+  const breadCrumbs = ["All Games", `${game.category[0]}`, `${game.title}`];
 
   return (
     <div className="mx-auto w-[940px]">

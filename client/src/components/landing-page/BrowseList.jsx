@@ -158,7 +158,12 @@ const BrowseList = ({ allGames }) => {
                       {game.title}
                     </div>
                     <div id="item-tags" className="text-[#384959] leading-5">
-                      {game.category}
+                      {game.tags.map((tag, index) => (
+                        <span key={tag + index}>
+                          {" "}
+                          {tag} {index === game.tags.length - 1 ? "" : ","}{" "}
+                        </span>
+                      ))}
                     </div>
                   </div>
                 </a>
@@ -189,13 +194,15 @@ const BrowseList = ({ allGames }) => {
                     {selectedGame.title}
                   </h2>
                   <div className="mt-[5px] h-[22px]">
-                    <a
-                      className="inline-block leading-[19px] px-[7px] mr-[2px] rounded-sm cursor-pointer mb-[3px] m-w-[200px] whitespace-nowrap text-ellipsis text-[11px]"
-                      href={selectedGame.id}
-                      style={{ backgroundColor: "rgba( 38, 54, 69, 0.6)" }}
-                    >
-                      {selectedGame.category}
-                    </a>
+                    {selectedGame.category.map((category, index) => (
+                      <a
+                        key={"category" + index}
+                        className="inline-block leading-[19px] px-[7px] mr-[2px] rounded-sm cursor-pointer mb-[3px] m-w-[200px] whitespace-nowrap text-ellipsis text-[11px]"
+                        style={{ backgroundColor: "rgba( 38, 54, 69, 0.6)" }}
+                      >
+                        {category}
+                      </a>
+                    ))}
                   </div>
                   {selectedGame.images.slice(0, 4).map((image, index) => (
                     <div
