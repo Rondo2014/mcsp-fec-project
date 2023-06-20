@@ -17,6 +17,7 @@ CREATE TABLE games(
     title       VARCHAR(50) NOT NULL,
     on_sale     BOOLEAN DEFAULT FALSE,
     category    VARCHAR(25) NOT NULL,
+    tags        TEXT[] NOT NULL,
     game_image  TEXT NOT NULL,
     special_img TEXT,
     price       FLOAT(2) NOT NULL,
