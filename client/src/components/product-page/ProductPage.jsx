@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import StoreNavBar from "../landing-page/StoreNavBar";
 import TitleBar from "./TitleBar";
+import ProductCarousel from "./ProductCarousel";
 import api from "../../api/axios";
 import { useParams } from "react-router-dom";
 
@@ -26,6 +27,7 @@ const ProductPage = () => {
     <>
       <StoreNavBar />
       <TitleBar game={game} />
+      <ProductCarousel game={game} />
     </>
   );
 };
