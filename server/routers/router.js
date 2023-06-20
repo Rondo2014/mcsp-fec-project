@@ -3,6 +3,7 @@ import {
   getAllGames,
   getFeaturedGames,
   getGameById,
+  getGameCategory,
   getRecommendedGames,
 } from "../controllers/gameControllers.js";
 import { logUserIn, registerUser } from "../controllers/logController.js";
@@ -18,8 +19,9 @@ const router = Router();
  *  GAME ROUTES
  */
 router.get("/games", getAllGames); // fetch all games
-router.get("/games/featured", getFeaturedGames);
-router.get("/games/recommended", getRecommendedGames);
+router.get("/games/featured", getFeaturedGames); // fetch featured games
+router.get("/games/recommended", getRecommendedGames); // fetch recommended games
+router.get("/games/:category", getGameCategory); // fetch games by category
 router.get("/game/:id", getGameById); // fetch single game
 
 /**
