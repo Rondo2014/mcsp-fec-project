@@ -12,7 +12,7 @@ export const featuredGames = `SELECT * FROM games WHERE on_sale = TRUE`;
 export const recommendedGames = `SELECT * FROM games WHERE on_sale = FALSE`;
 
 // query to fetch games by category
-export const gameCategory = `SELECT * FROM games WHERE category = $1`;
+export const gameCategory = `SELECT * FROM games WHERE $1 = ANY(category)`;
 
 // query to fetch a sigle game by id
 export const gameId = `SELECT * FROM games WHERE id = $1`;
