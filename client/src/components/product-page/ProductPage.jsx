@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom";
 
 const ProductPage = () => {
   const [game, setGame] = useState({});
+  const [loading, setIsLoading] = useState(true);
 
   const { id } = useParams();
 
@@ -14,20 +15,21 @@ const ProductPage = () => {
     const getGame = async () => {
       try {
         const res = await api.get(`/api/game/${id}`);
-        console.log(res.data);
         setGame(res.data);
+        setIsLoading(false);
       } catch (err) {
         console.log(err);
+        setIsLoading(false);
       }
     };
     getGame();
-  }, [id]);
+  }, []);
 
   return (
     <>
       <StoreNavBar />
       <TitleBar game={game} />
-      <ProductCarousel game={game} />
+      {loading ? <div>Loading...</div> : <ProductCarousel game={game} />}
     </>
   );
 };
