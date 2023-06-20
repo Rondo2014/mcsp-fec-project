@@ -6,9 +6,13 @@ import {
   wishlist,
 } from "./queries.js";
 import { db } from "../database/database.js";
+import jwt from "jsonwebtoken";
+import { promisify } from "util";
 
 export const viewWishlist = async (req, res) => {
   try {
+    const token = req.headers.authorization.split(" ")[1];
+    console.log(token);
     const id = Number(req.params.id);
 
     const results = await db.query(wishlist, [id]);
@@ -26,8 +30,13 @@ export const viewWishlist = async (req, res) => {
 
 export const AddToWishlist = async (req, res) => {
   try {
+    const token = req.headers.authorization.split(" ")[1];
     const { gameId } = req.body;
-    const id = Number(req.params.id);
+    const decoded = await promisify(jwt.verify)(
+      token,
+      process.env.SECRET_ACCESS_TOKEN
+    );
+    const id = decoded.id;
 
     // if game ID is NaN return an error
     if (isNaN(gameId))
@@ -38,11 +47,13 @@ export const AddToWishlist = async (req, res) => {
     console.log(wishlistCheck.rows[0].wishlist);
     const wishlist = wishlistCheck.rows[0].wishlist;
 
-    if (wishlist.includes(Number(gameId)))
+    // if wishist is not empty and does already include game id send user a message
+    if (wishlist != null && wishlist.includes(Number(gameId)))
       return res
         .status(406)
         .json({ message: "Game Already Exists In Wishlist" });
 
+    // send game to wishlist
     const results = await db.query(toWishlist, [gameId, id]);
 
     res

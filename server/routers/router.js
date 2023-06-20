@@ -30,7 +30,7 @@ router.get("/game/:id", getGameById); // fetch single game
 router.post("/login", logUserIn);
 router.post("/register", hasPasswordMiddleware, registerUser);
 router.get("/wishlist/:id", protectRoutes, viewWishlist);
-router.post("/wishlist/:id", protectRoutes, AddToWishlist);
+router.post("/add/wishlist", protectRoutes, AddToWishlist);
 router.post("/remove/wishlist/:id", protectRoutes, removeFromWishlist);
 
 export default router;
