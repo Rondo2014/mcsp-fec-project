@@ -26,7 +26,7 @@ const BrowseList = ({ allGames }) => {
     >
       <div className="flex flex-col w-[940px] mx-auto">
         <div className="mb-[8px]">
-          <div className="relative h-[31px] bg-[#1b2838] mt-[-33px] inset-0">
+          <div className="relative h-[31px] mt-[-33px] inset-0">
             <div className="relative overflow-x-auto whitespace-nowrap">
               {BROWSE_LIST.map((link) => (
                 <div
@@ -51,11 +51,11 @@ const BrowseList = ({ allGames }) => {
         </div>
         <div
           id="tab-content"
-          className="text-[#c6c4df] text-[12px] bg-[#202d39] bg-opacity-40 flex flex-row w-[700px]"
+          className="text-[#c6c4df] text-[12px] flex flex-row w-[625px]"
         >
           <div className="w-[940px]">
             {selected !== 2 && (
-              <div className="text-right bg-transparent p-1">
+              <div className="text-right bg-[#202d39] p-1 mb-[-10px]">
                 See more:
                 <a
                   className="rounded-sm border-none p-[1px] inline-block cursor-pointer text-[#fff] bg-transparent"
@@ -69,84 +69,91 @@ const BrowseList = ({ allGames }) => {
                 </a>
               </div>
             )}
-            {allGames.slice(0, 10).map((game) => (
-              <a
-                key={"game " + game.id}
-                href={game.id}
-                className="relative block h-[69px] pl-[198px] bg-opacity-50 my-2"
-                style={{
-                  background:
-                    selectedGame !== null && selectedGame.id === game.id
-                      ? "#95bbd4"
-                      : "#202d39",
-                  marginRight:
-                    selectedGame !== null && selectedGame.id === game.id
-                      ? "-31px"
-                      : "0px",
-                }}
-                onMouseEnter={() => handleGameHover(game.id)}
-              >
-                <div className="absolute left-0 top-0 z-10 leading-[69px]">
-                  <img
-                    src={game.game_image}
-                    alt="image"
-                    className="overflow-clip clip h-16 w-48"
-                  />
-                </div>
-                {!game.on_sale ? (
-                  <div
-                    id="discount-prices-block"
-                    className="mt-6 w-auto flex justify-between float-right mr-4 bg-none text-right relative"
-                  >
-                    <div className="bg-transparent flex flex-col items-end justify-center pl-1">
-                      <div className="px-[6px] text-white leading-4 text-[15px]">
-                        ${game.price}
-                      </div>
-                    </div>
+            {allGames
+              .filter((game) => (selected === 4 ? game.on_sale : true))
+              .slice(0, 10)
+              .map((game) => (
+                <a
+                  key={"game " + game.id}
+                  href={game.id}
+                  className="relative block h-[69px] pl-[198px] bg-opacity-50 my-2"
+                  style={{
+                    background:
+                      selectedGame !== null && selectedGame.id === game.id
+                        ? "#95bbd4"
+                        : "#202d39",
+                    marginRight:
+                      selectedGame !== null && selectedGame.id === game.id
+                        ? "-31px"
+                        : "0px",
+                  }}
+                  onMouseEnter={() => handleGameHover(game.id)}
+                >
+                  <div className="absolute left-0 top-0 z-10 leading-[69px]">
+                    <img
+                      src={game.game_image}
+                      alt="image"
+                      className="overflow-clip clip h-16 w-48"
+                    />
                   </div>
-                ) : (
-                  <div
-                    id="discount-prices-block"
-                    className="mt-6 w-auto flex justify-between float-right mr-4 bg-none text-right relative"
-                  >
-                    <div className="flex items-center text-right text-[14px] leading-[18px] px-1 rounded-[1px] font-medium text-[#BEEE11] bg-[#4c6b22]">
-                      -{game.sale_deal}%
-                    </div>
-                    <div className="bg-transparent flex flex-col items-end justify-center pl-1">
-                      <div
-                        id="original-price"
-                        className="relative w-fit text-[#738895] text-[11px] leading-3"
-                      >
-                        <div>
-                          <div
-                            style={{
-                              transform: "skewY(-8deg)",
-                              boxShadow: "0 0 2px black",
-                            }}
-                            className="right-0 absolute top-[20%] w-7 border-b-[#738895] border-b-[1.5px]"
-                          ></div>
-                          {game.price}
-                        </div>
-                        <div className="text-[15px] leading-4 text-[#BEEE11] border-none">
-                          ${(game.sale_deal * (game.price / 100)).toFixed(2)}
+                  {!game.on_sale ? (
+                    <div
+                      id="discount-prices-block"
+                      className="mt-6 w-auto flex justify-between float-right mr-4 bg-none text-right relative"
+                    >
+                      <div className="bg-transparent flex flex-col items-end justify-center pl-1">
+                        <div className="px-[6px] text-white leading-4 text-[15px]">
+                          ${game.price}
                         </div>
                       </div>
                     </div>
+                  ) : (
+                    <div
+                      id="discount-prices-block"
+                      className="mt-6 w-auto flex justify-between float-right mr-4 bg-none text-right relative"
+                    >
+                      <div className="flex items-center text-right text-[14px] leading-[18px] px-1 rounded-[1px] font-medium text-[#BEEE11] bg-[#4c6b22]">
+                        -{game.sale_deal}%
+                      </div>
+                      <div className="bg-transparent flex flex-col items-end justify-center pl-1">
+                        <div
+                          id="original-price"
+                          className="relative w-fit text-[#738895] text-[11px] leading-3"
+                        >
+                          <div>
+                            <div
+                              style={{
+                                transform: "skewY(-8deg)",
+                                boxShadow: "0 0 2px black",
+                              }}
+                              className="right-0 absolute top-[20%] w-7 border-b-[#738895] border-b-[1.5px]"
+                            ></div>
+                            {game.price}
+                          </div>
+                          <div className="text-[15px] leading-4 text-[#BEEE11] border-none">
+                            $
+                            {(
+                              game.price -
+                              game.price * (game.sale_deal / 100)
+                            ).toFixed(2)}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                  <div className="pt-[7px] whitespace-nowrap text-[12px] cursor-pointer">
+                    <div
+                      id="game-name"
+                      className="text-[#c7d5e0] text-[1.25em] leading-[18px] text-ellipsis whitespace-nowrap block"
+                    >
+                      {game.title}
+                    </div>
+                    <div id="item-tags" className="text-[#384959] leading-5">
+                      {game.category}
+                    </div>
                   </div>
-                )}
-                <div className="pt-[7px] whitespace-nowrap text-[12px] cursor-pointer">
-                  <div
-                    id="game-name"
-                    className="text-[#c7d5e0] text-[1.25em] leading-[18px] text-ellipsis whitespace-nowrap block"
-                  >
-                    {game.title}
-                  </div>
-                  <div id="item-tags" className="text-[#384959] leading-5">
-                    {game.category}
-                  </div>
-                </div>
-              </a>
-            ))}
+                </a>
+              ))}
           </div>
           {selectedGame && (
             <div
@@ -163,7 +170,7 @@ const BrowseList = ({ allGames }) => {
               >
                 <div
                   id="tab-preview"
-                  className="absolute top-[-37px] bottom-0 left-4 w-[292px] p-4"
+                  className="absolute top-[-39px] bottom-[3px] left-4 w-[292px] p-4"
                   style={{
                     background:
                       "linear-gradient(to right, rgb(149, 187, 212) 5%, rgb(133, 155, 172) 95%)",
@@ -183,7 +190,7 @@ const BrowseList = ({ allGames }) => {
                   </div>
                   {selectedGame.images.slice(0, 4).map((image, index) => (
                     <div
-                      key={"immage" + index}
+                      key={"image" + index}
                       className="w-[258px] h-[134px] mt-[3px] bg-cover bg-center p-2"
                       style={{ backgroundImage: `url(${image})` }}
                     ></div>

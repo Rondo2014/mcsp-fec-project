@@ -45,6 +45,13 @@ const TestCarousel = () => {
     getData();
   }, []);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCarouselSlide((prevIndex) => (prevIndex + 1) % carouselData.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [carouselData.length]);
+
   return (
     carouselData.length > 0 && (
       <>
@@ -111,7 +118,7 @@ const TestCarousel = () => {
                     'url("https://store.cloudflare.steamstatic.com/public/images/v6/home/background_maincap_2.jpg")',
                 }}
               >
-                <div className="absolute left-4 top-8 text-xl text-white font-semibold tracking-wider">
+                <div className="absolute left-4 top-8 text-[28px] text-white font-normal tracking-wide overflow-clip my-[-15px]">
                   {title[carouselSlide]}
                 </div>
                 <div className="flex flex-wrap h-full">
@@ -146,6 +153,23 @@ const TestCarousel = () => {
                 </div>
               </div>
             </div>
+          </div>
+          <div id="carousel-thumbs" className="text-center min-h-[37px] pb-1">
+            {carouselData.map((item, index) => {
+              return (
+                <div
+                  className="inline-block w-[15px] h-[9px] rounded-sm  transition-colors duration-300 cursor-pointer my-3 mx-[2px]"
+                  key={"thumb" + item.id}
+                  onClick={() => setCarouselSlide(index)}
+                  style={{
+                    backgroundColor:
+                      index === carouselSlide
+                        ? "hsla(202,60%,100%,0.4)"
+                        : "hsla(202,60%,100%,0.2)",
+                  }}
+                ></div>
+              );
+            })}
           </div>
         </div>
       </>
