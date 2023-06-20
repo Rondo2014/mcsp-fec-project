@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import api from "../../api/axios.js";
+import { Link } from "react-router-dom";
 
 const Special = () => {
   const [activeCarousel, setActiveCarousel] = useState(1);
@@ -92,13 +93,13 @@ const Special = () => {
                           key={item + index}
                         >
                           <div className="pl-0 pt-0 w-[306px] overflow-hidden">
-                            <a href={item.link}>
+                            <Link to={`/product/${item.id}`}>
                               <img
                                 className="overflow-clip h-[271px] w-full"
                                 src={item.special_img}
                                 alt=""
                               />
-                            </a>
+                            </Link>
                           </div>
                           <div
                             id="spotlight-content"
