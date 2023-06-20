@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import api from "../../api/axios.js";
+import { useNavigate } from "react-router-dom";
 
 const TestCarousel = () => {
   const [carouselData, setCarouselData] = useState([]);
@@ -12,6 +13,7 @@ const TestCarousel = () => {
   const [gamePrice, setGamePrice] = useState([]);
   const [hasSale, setHasSale] = useState(false);
   const [gameSale, setGameSale] = useState([]);
+  const [id, setId] = useState([]);
 
   const handleNext = () => {
     setCarouselSlide((prevIndex) => (prevIndex + 1) % carouselData.length);
@@ -48,7 +50,11 @@ const TestCarousel = () => {
         const gameSale = data.map((sale_deal) => {
           return sale_deal.sale_deal;
         });
+        const id = data.map((id) => {
+          return id.id;
+        });
 
+        setId(id);
         setGameSale(gameSale);
         setHasSale(hasSale);
         setGamePrice(gamePrices);
@@ -73,6 +79,8 @@ const TestCarousel = () => {
       return () => clearInterval(interval);
     }
   }, [carouselHover, carouselData.length]);
+
+  const navigate = useNavigate(id);
 
   return (
     carouselData.length > 0 && (
@@ -101,6 +109,7 @@ const TestCarousel = () => {
                 style={{
                   boxShadow: "8px 0px 5px rgba(0, 0, 0, .8)",
                 }}
+                onClick={() => navigate(`product/${id[carouselSlide]}`)}
               />
 
               <div
@@ -157,6 +166,7 @@ const TestCarousel = () => {
                       key={`miniPic-${index}`}
                       onMouseEnter={() => setMiniHover(index)}
                       onMouseLeave={() => setMiniHover(null)}
+                      onClick={() => navigate(`product/${id[carouselSlide]}`)}
                     >
                       <img
                         src={miniPic}
