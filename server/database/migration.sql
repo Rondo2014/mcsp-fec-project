@@ -15,7 +15,7 @@ CREATE TABLE games(
     id          SERIAL PRIMARY KEY,
     users_id    VARCHAR(15) REFERENCES users(username),
     title       VARCHAR(50) NOT NULL,
-    pub_date
+    pub_date    TEXT NOT NULL,
     on_sale     BOOLEAN DEFAULT FALSE,
     category    TEXT[] NOT NULL,
     tags        TEXT[] NOT NULL,
