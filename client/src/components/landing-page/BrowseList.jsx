@@ -97,7 +97,7 @@ const BrowseList = ({ allGames }) => {
                     <img
                       src={game.game_image}
                       alt="image"
-                      className="overflow-clip clip h-16 w-48"
+                      className="overflow-clip clip h-[69px] w-48"
                     />
                   </div>
                   {!game.on_sale ? (
