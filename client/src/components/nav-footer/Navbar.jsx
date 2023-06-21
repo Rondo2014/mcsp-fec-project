@@ -124,12 +124,12 @@ const Navbar = () => {
           </div>
         </div>
         <div
-          className="absolute right-0 left-[1000px] top-[6px] h-[21px] leading-[21px] text-[#b8b6b4] text-[11px] z-[401]"
+          className="relative top-[6px] h-[21px] leading-[21px] text-[#b8b6b4] text-[11px] z-[401]"
           id="global-actions"
         >
           <div
             id="global-actions-menu"
-            className=" leading-6 align-top tracking-normal"
+            className=" leading-6 align-top tracking-normal relative"
           >
             <div
               id="header-install-steam"
@@ -170,7 +170,7 @@ const Navbar = () => {
                 {showUser && (
                   <div
                     id="popup"
-                    className="top-[25px] left-[106px] block align-top z-50 absolute shadow-sm shadow-black"
+                    className="top-[25px] right-[210px] block align-top z-50 absolute shadow-sm shadow-black"
                   >
                     <div
                       id="menu"
@@ -200,7 +200,7 @@ const Navbar = () => {
                 )}
                 <div
                   id="wallet"
-                  className="text-right pr-[15px] leading-normal align-top text-[#b8b6b4] text-[11px] absolute left-[195px] top-7"
+                  className="text-right pr-[15px] leading-normal align-top text-[#b8b6b4] text-[11px] absolute right-[210px] top-7"
                 >
                   <a href="">$0.00</a>
                 </div>
