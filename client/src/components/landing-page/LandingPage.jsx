@@ -10,9 +10,13 @@ import BrowseSteam from "./BrowseSteam";
 import BrowseList from "./BrowseList";
 import { useState, useEffect } from "react";
 import api from "../../api/axios";
+import AuthContext from "../context/AuthProvider";
 
 const LandingPage = () => {
   const [allGames, setAllGames] = useState([]);
+  const { auth } = useState(AuthContext);
+
+  const isLoggedIn = auth?.token;
 
   useEffect(() => {
     const getGames = async () => {
@@ -35,11 +39,11 @@ const LandingPage = () => {
         <Special />
         <HomeHardware />
         <CategoryCarousel />
-        <LoginCard />
+        {!isLoggedIn && <LoginCard />}
         <BrowseSteam />
       </div>
       <BrowseList allGames={allGames} />
-      <LoginBar />
+      {!isLoggedIn && <LoginBar />}
     </div>
   );
 };
