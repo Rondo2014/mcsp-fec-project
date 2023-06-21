@@ -3,6 +3,7 @@ import Footer from "./components/nav-footer/Footer";
 import ProductPage from "./components/product-page/ProductPage";
 import LandingPage from "./components/landing-page/LandingPage";
 import { Routes, Route } from "react-router-dom";
+import CategoryPage from "./components/CategoryPage/CategoryPage";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/product/:id" element={<ProductPage />} />
+        <Route path="/category" element={<CategoryPage />} />
       </Routes>
       <Footer />
     </div>
