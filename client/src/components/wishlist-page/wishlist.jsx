@@ -24,48 +24,51 @@ const Wishlist = () => {
 
   const WishlistRow = ({ item }) => {
     return (
-      <div className="wishlist-row bg-gray-800 bg-opacity-90 text-gray-500 flex-direction:rowpx-6 py-4 mb-10 w-full rounded-lg shadow-md transition-colors duration-300">
+      <div className="wishlist-row bg-gray-800 bg-opacity-90 text-gray-500 px-6 py-4 mb-10 h-full w-full rounded-lg shadow-md transition-colors duration-300">
         <div className="flex items-center mb-4">
-          <div className="w-20 h-20 flex-shrink-0 overflow-hidden rounded-full">
+          <div className="w-60 h-50 flex-shrink-0 overflow-hidden ">
             <img
               src={item.image}
               alt={item.title}
               className="h-full w-full object-cover"
             />
           </div>
-          <div className="ml-4">
-            <h2 className="text-white text-lg font-normal mb-2 truncate">
-              {item.title}
-            </h2>
-            <p className="text-gray-600">Rank: {item.rank}</p>
-            <p className="text-gray-600">
-              Tags:{" "}
-              {item.tags.map((tag, index) => (
-                <span
-                  key={index}
-                  className="wishlist-tag inline-block mr-3 px-2 py-1 border border-white border-opacity-20 text-gray-500 rounded cursor-pointer h-5"
-                >
-                  {tag}
-                </span>
-              ))}
-            </p>
-            <p className="text-gray-600">
-              Overall Reviews:{" "}
-              {item.reviews.length === 0
-                ? "NO USER REVIEWS"
-                : item.reviews.length}
-            </p>
-            <p className="text-gray-600">
-              Release Date:{" "}
-              {item.releaseDate ? item.releaseDate : "TO BE ANNOUNCED"}
-            </p>
+          <div className="ml-4 flex flex-col justify-between">
+            <div>
+              <h2 className="text-white text-lg font-normal mb-2 truncate">
+                {item.title}
+              </h2>
+              <p className="text-gray-600">Rank: {item.rank}</p>
+              <p className="text-gray-600 ">
+                Tags:{" "}
+                {item.tags.map((tag, index) => (
+                  <span
+                    key={index}
+                    className="wishlist-tag inline-block mr-3 px-2 py-1 border border-white border-opacity-20 text-gray-500 rounded cursor-pointer h-5"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </p>
+              <p className="text-white">
+                Overall Reviews:{" "}
+                {item.reviews.length === 0
+                  ? "NO USER REVIEWS"
+                  : item.reviews.length}
+              </p>
+              <p className="text-white">
+                Release Date:{" "}
+                {item.releaseDate ? item.releaseDate : "TO BE ANNOUNCED"}
+              </p>
+            </div>
+            <div className="flex justify-end">
+              <button className=" flex-box bg-green-700 hover:bg-green-800 text-white font-semibold py-2 px-4 rounded">
+                Add to Cart
+              </button>
+            </div>
           </div>
         </div>
-        <p className="text-gray-600">Coming soon</p>
-        <button className="mt-4 bg-green-700 hover:bg-green-800 text-white font-semibold py-2 px-4 rounded">
-          Add to Cart
-        </button>
-        <p className="text-gray-600 mt-2">Added on 6/15/2023 (remove)</p>
+        <p className="text-gray-600 ">Added on 6/15/2023 (remove)</p>
       </div>
     );
   };
@@ -73,7 +76,7 @@ const Wishlist = () => {
   return (
     <div className="container mx-auto py-8">
       <h1 className="text-3xl font-bold mb-4">My Wishlist</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:flex md:flex-col">
         {wishlistItems.map((item) => (
           <WishlistRow key={item.id} item={item} />
         ))}
