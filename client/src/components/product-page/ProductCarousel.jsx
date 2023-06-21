@@ -42,7 +42,7 @@ const ProductCarousel = ({ game }) => {
 
   console.log(carouselData);
   return (
-    <div className="w-[940px] mx-auto mb-[500px]">
+    <div className="w-[940px] mx-auto mb-[100px]">
       <div
         id="bg-glow"
         style={{
