@@ -5,6 +5,7 @@ import LandingPage from "./components/landing-page/LandingPage";
 import Login from "./components/user/login/Login";
 import Signup from "./components/user/signup/Signup";
 import { Routes, Route } from "react-router-dom";
+import Wishlist from "./components/wishlist-page/wishlist";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/product/:id" element={<ProductPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/wishlist" element={<Wishlist />} />
       </Routes>
       <Footer />
     </div>
