@@ -1,13 +1,5 @@
-import {
-  gameId,
-  outWishlist,
-  toWishlist,
-  wishGameCheck,
-  wishlist,
-} from "./queries.js";
+import { outWishlist, toWishlist, wishGameCheck, wishlist } from "./queries.js";
 import { db } from "../database/database.js";
-import jwt from "jsonwebtoken";
-import { promisify } from "util";
 import { headerDecoder } from "../authorization/auth.js";
 
 export const viewWishlist = async (req, res) => {
@@ -24,7 +16,7 @@ export const viewWishlist = async (req, res) => {
 
     res.status(200).json(results.rows);
   } catch (error) {
-    console.lerror(error);
+    console.error(error);
     res.status(500).json({ message: "Error Fetching Wishlist" });
   }
 };
