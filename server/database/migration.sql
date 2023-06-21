@@ -7,6 +7,7 @@ CREATE TABLE users(
     email       VARCHAR(55) UNIQUE NOT NULL,
     password    VARCHAR(100) NOT NULL,
     cart        INT[],
+    purchased   INT[],
     prev_viewed INT[],
     wishlist    INT[]
 );

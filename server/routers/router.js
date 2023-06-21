@@ -7,7 +7,7 @@ import {
   getRecommendedGames,
 } from "../controllers/gameControllers.js";
 import { logUserIn, registerUser } from "../controllers/logController.js";
-import { hasPasswordMiddleware, protectRoutes } from "../auth.js";
+import { hasPasswordMiddleware, protectRoutes } from "../authorization/auth.js";
 import {
   AddToWishlist,
   removeFromWishlist,

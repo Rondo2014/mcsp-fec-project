@@ -35,8 +35,11 @@ export const postUser = `
 INSERT INTO users(username, email, password)
 VALUES($1, $2, $3) RETURNING *`;
 
-// query to get username by username
+// query to get username from database
 export const usernameCheck = `SELECT username FROM users WHERE username = $1`;
+
+// query to get email from database
+export const emailCheck = `SELECT email FROM users WHERE email = $1`;
 
 // query to sign user in
 export const logIn = `SELECT id, password FROM users WHERE username = $1`;
