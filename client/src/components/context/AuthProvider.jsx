@@ -10,8 +10,9 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    if (token) {
-      setAuth({ token });
+    const username = localStorage.getItem("username");
+    if ((token, username)) {
+      setAuth({ token, username });
     }
   }, []);
 
@@ -31,10 +32,10 @@ export const AuthProvider = ({ children }) => {
         },
       }
     );
-    console.log(response.data);
     const token = response?.data?.token;
 
     localStorage.setItem("token", token);
+    localStorage.setItem("username", username);
 
     setAuth({ token });
     return true;

@@ -1,11 +1,16 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { NAVLINKS, NAV_SUBLINKS_STORE, NAV_SUBLINKS_COMMUNITY } from "./utils";
 import install from "../../assets/btn_header_installsteam.png";
 import { Link } from "react-router-dom";
+import AuthContext from "../context/AuthProvider";
 
 const Navbar = () => {
   const [showStore, setShowStore] = useState(false);
   const [showCommunity, setShowCommunity] = useState(false);
+
+  const { auth, handleLogout } = useContext(AuthContext);
+  const isLoggedIn = auth?.token;
+  const username = localStorage.getItem("username");
 
   const handleStoreEnter = () => {
     setShowStore(true);
@@ -117,7 +122,9 @@ const Navbar = () => {
           >
             <div
               id="header-install-steam"
-              className="inline-flex relative h-[24px] leading-6 mr-[5px] py-[1px] bg-accent text-white w-[108px] "
+              className={`inline-flex relative h-[24px] leading-6 mr-[5px] py-[1px] ${
+                !isLoggedIn ? "bg-accent" : "bg-[#67707b33]"
+              } text-white w-[108px]`}
             >
               <img src={install} className="py-[4px] mx-2" alt="" />
               <a
@@ -127,16 +134,38 @@ const Navbar = () => {
                 Install Steam
               </a>
             </div>
-            <Link
-              to="/login"
-              className="text-[#b8b6b4] px-[4px] align-top font-normal"
-            >
-              <span className="hover:text-white">login</span>{" "}
-              <span className="px-2">|</span>{" "}
-              <span className="hover:text-white">
-                language<span className="text-[7px] ml-2">▼</span>
-              </span>
-            </Link>
+            {isLoggedIn ? (
+              <>
+                <div
+                  id="notification-area"
+                  className="relative inline-block align-top"
+                >
+                  <div className="px-8 text-white text-xs font-bold inline-block leading-6 ml-[3px] mr-[8px] cursor-pointer">
+                    <span id="envelope">
+                      <img
+                        className="border-none w-[11px] aspect-[11/8] h-[8px]"
+                        src="https://store.cloudflare.steamstatic.com/public/shared/images/responsive/header_menu_notifications.png"
+                        alt="envolope"
+                      />
+                    </span>
+                  </div>
+                </div>
+                <span className="inline-block pl-1 leading-[25px] align-top mr-[5px] text-[11px] text-[#b8b6b4] font-normal">
+                  {username}
+                </span>
+              </>
+            ) : (
+              <Link
+                to="/login"
+                className="text-[#b8b6b4] px-[4px] align-top font-normal"
+              >
+                <span className="hover:text-white">login</span>{" "}
+                <span className="px-2">|</span>{" "}
+                <span className="hover:text-white">
+                  language<span className="text-[7px] ml-2">▼</span>
+                </span>
+              </Link>
+            )}
           </div>
         </div>
       </div>
