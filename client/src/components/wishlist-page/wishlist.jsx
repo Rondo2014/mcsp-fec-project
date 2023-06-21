@@ -68,7 +68,7 @@ const Wishlist = () => {
             </div>
           </div>
         </div>
-        <p className="text-gray-600 mt-2">Added on 6/15/2023 (remove)</p>
+        <p className="text-gray-600 ">Added on 6/15/2023 (remove)</p>
       </div>
     );
   };
