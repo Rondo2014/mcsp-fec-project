@@ -42,7 +42,7 @@ export const usernameCheck = `SELECT username FROM users WHERE username = $1`;
 export const emailCheck = `SELECT email FROM users WHERE email = $1`;
 
 // query to sign user in
-export const logIn = `SELECT id, password, username FROM users WHERE username = $1`;
+export const logIn = `SELECT id, password, username, profile_pic FROM users WHERE username = $1`;
 
 // query to add a game to users cart
 export const toCart = `UPDATE users SET cart = ARRAY_APPEND(cart, $1) 
