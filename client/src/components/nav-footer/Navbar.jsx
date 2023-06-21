@@ -170,7 +170,7 @@ const Navbar = () => {
                 {showUser && (
                   <div
                     id="popup"
-                    className="top-[25px] left-[106px] block align-top z-50 absolute shadow-sm shadow-black"
+                    className="top-[25px] right-[210px] block align-top z-50 absolute shadow-sm shadow-black"
                   >
                     <div
                       id="menu"
