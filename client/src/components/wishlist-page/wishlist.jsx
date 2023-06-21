@@ -24,7 +24,7 @@ const Wishlist = () => {
 
   const WishlistRow = ({ item }) => {
     return (
-      <div className="wishlist-row bg-blue-900 bg-opacity-90 text-gray-300 px-6 py-4 mb-10 w-full rounded-lg shadow-md transition-colors duration-300">
+      <div className="wishlist-row bg-gray-800 bg-opacity-90 text-gray-500 flex-direction:rowpx-6 py-4 mb-10 w-full rounded-lg shadow-md transition-colors duration-300">
         <div className="flex items-center mb-4">
           <div className="w-20 h-20 flex-shrink-0 overflow-hidden rounded-full">
             <img
