@@ -48,3 +48,31 @@ export const FOOTER_LEGAL_LINKS = [
   { name: "Refunds", path: "/refunds" },
   { name: "Cookies", path: "/cookies" },
 ];
+
+export const USER_MENU = [
+  {
+    id: 1,
+    name: "View profile",
+    link: "#",
+  },
+  {
+    id: 2,
+    name: "Account details",
+    link: "#",
+  },
+  {
+    id: 3,
+    name: "Logout",
+    link: "#",
+  },
+  {
+    id: 4,
+    name: "Preferences",
+    link: "#",
+  },
+  {
+    id: 5,
+    name: "Change Language",
+    link: "#",
+  },
+];
