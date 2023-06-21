@@ -44,6 +44,13 @@ export const validateToken = async (token, secretKey) => {
   }
 };
 
+// decodes header token and returns an obj containing the users id
+export const headerDecoder = (header) => {
+  const token = header.split(" ")[1];
+  const decoded = jwt.verify(token, process.env.SECRET_ACCESS_TOKEN);
+  return decoded;
+};
+
 // ensures user provided correct password
 export const validatePassword = (username, password) => {
   // compares password to hashed password using bcrypt
@@ -101,11 +108,9 @@ export const protectRoutes = async (req, res, next) => {
     next();
   } catch (error) {
     console.error(error);
-    res
-      .status(500)
-      .json({
-        error: "Error While Verifying Token",
-        expiredAt: error?.expiredAt,
-      });
+    res.status(500).json({
+      error: "Error While Verifying Token",
+      expiredAt: error?.expiredAt,
+    });
   }
 };

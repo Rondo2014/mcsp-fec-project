@@ -39,7 +39,7 @@ export const logUserIn = async (req, res) => {
     // send user a message when login is successful
     res.status(200).json({
       message: "Logged In Successfully",
-      user_id: results.rows[0].id,
+      results: { id: results.rows[0].id, username: results.rows[0].username },
       token: token,
     });
   } catch (error) {
