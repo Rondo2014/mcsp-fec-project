@@ -79,7 +79,7 @@ const Sidebar = ({ recentlyViewed }) => {
               Recently Viewed
             </div>
             <div id="sidebar-items">
-              {recentlyViewed.map((item, index) => (
+              {recentlyViewed.slice(0, 7).map((item, index) => (
                 <div
                   key={item + index}
                   id="recent-item"
