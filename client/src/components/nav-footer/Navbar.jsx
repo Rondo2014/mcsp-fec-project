@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { NAVLINKS, NAV_SUBLINKS_STORE, NAV_SUBLINKS_COMMUNITY } from "./utils";
 import install from "../../assets/btn_header_installsteam.png";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [showStore, setShowStore] = useState(false);
@@ -126,8 +127,8 @@ const Navbar = () => {
                 Install Steam
               </a>
             </div>
-            <a
-              href="/login"
+            <Link
+              to="/login"
               className="text-[#b8b6b4] px-[4px] align-top font-normal"
             >
               <span className="hover:text-white">login</span>{" "}
@@ -135,7 +136,7 @@ const Navbar = () => {
               <span className="hover:text-white">
                 language<span className="text-[7px] ml-2">▼</span>
               </span>
-            </a>
+            </Link>
           </div>
         </div>
       </div>
