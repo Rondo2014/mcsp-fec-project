@@ -12,7 +12,7 @@ import { useState, useEffect } from "react";
 import api from "../../api/axios";
 import AuthContext from "../context/AuthProvider";
 
-const LandingPage = () => {
+const LandingPage = ({ recentlyViewed }) => {
   const [allGames, setAllGames] = useState([]);
   const { auth } = useState(AuthContext);
 
@@ -34,7 +34,7 @@ const LandingPage = () => {
     <div className="w-full">
       <div className=" w-[972px] relative mx-auto">
         <StoreNavBar />
-        <Sidebar />
+        <Sidebar recentlyViewed={recentlyViewed} />
         <TestCarousel />
         <Special />
         <HomeHardware />

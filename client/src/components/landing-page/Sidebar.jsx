@@ -5,7 +5,7 @@ import {
   SIDE_BAR_GENRES,
 } from "./utils";
 
-const Sidebar = () => {
+const Sidebar = ({ recentlyViewed }) => {
   return (
     <div
       id="sidebar"
@@ -78,18 +78,15 @@ const Sidebar = () => {
             Recently Viewed
           </div>
           <div id="sidebar-items">
-            <div
-              id="recent-item"
-              className="leading-4 mt-[2px] block w-fit text-[#7A8B9D] text-[12px] font-medium hover:text-[#00BBFF] cursor-pointer"
-            >
-              Place Holder
-            </div>
-            <div
-              id="recent-item-2"
-              className="leading-4 mt-[2px] block w-fit text-[#7A8B9D] text-[12px] font-bold hover:text-[#00BBFF] cursor-pointer"
-            >
-              Place Holder
-            </div>
+            {recentlyViewed.map((item, index) => (
+              <div
+                key={item + index}
+                id="recent-item"
+                className="leading-4 mt-[2px] block w-fit text-[#7A8B9D] text-[12px] font-medium hover:text-[#00BBFF] cursor-pointer"
+              >
+                {item}
+              </div>
+            ))}
           </div>
         </div>
         <div className="leadint-4 mt-[7px] text-[14px] uppercase font-medium text-[#536f86] ">

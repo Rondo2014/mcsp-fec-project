@@ -4,15 +4,37 @@ import ProductPage from "./components/product-page/ProductPage";
 import LandingPage from "./components/landing-page/LandingPage";
 import Login from "./components/user/login/Login";
 import Signup from "./components/user/signup/Signup";
+import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 
 function App() {
+  const storedRecentlyViewed = sessionStorage.getItem("recentlyViewed");
+  const initialRecentlyViewed = storedRecentlyViewed
+    ? JSON.parse(storedRecentlyViewed)
+    : [];
+  const [recentlyViewed, setRecentlyViewed] = useState(initialRecentlyViewed);
+
+  useEffect(() => {
+    sessionStorage.setItem("recentlyViewed", JSON.stringify(recentlyViewed));
+  }, [recentlyViewed]);
+
   return (
-    <div className=" min-h-screen">
+    <div className="min-h-screen">
       <Navbar />
       <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/product/:id" element={<ProductPage />} />
+        <Route
+          path="/"
+          element={<LandingPage recentlyViewed={recentlyViewed} />}
+        />
+        <Route
+          path="/product/:id"
+          element={
+            <ProductPage
+              recentlyViewed={recentlyViewed}
+              setRecentlyViewed={setRecentlyViewed}
+            />
+          }
+        />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
       </Routes>

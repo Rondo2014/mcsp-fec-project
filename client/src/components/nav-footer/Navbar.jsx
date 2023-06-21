@@ -133,8 +133,8 @@ const Navbar = () => {
           >
             <div
               id="header-install-steam"
-              className={`inline-flex relative top-[-9px] h-[24px] leading-6 mr-[5px] py-[1px] ${
-                !isLoggedIn ? "bg-accent" : "bg-[#67707b33]"
+              className={`inline-flex relative h-[24px] leading-6 mr-[5px] py-[1px] ${
+                !isLoggedIn ? "bg-accent top[0px]" : "bg-[#67707b33] top-[-9px]"
               } text-white w-[108px]`}
             >
               <img src={install} className="py-[4px] mx-2" alt="" />
