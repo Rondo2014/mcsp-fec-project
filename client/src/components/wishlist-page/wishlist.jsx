@@ -26,7 +26,7 @@ const Wishlist = () => {
     return (
       <div className="wishlist-row bg-gray-800 bg-opacity-90 text-gray-500 px-6 py-4 mb-10 h-full w-full rounded-lg shadow-md transition-colors duration-300">
         <div className="flex items-center mb-4">
-          <div className="w-20 h-20 flex-shrink-0 overflow-hidden rounded-full">
+          <div className="w-60 h-50 flex-shrink-0 overflow-hidden ">
             <img
               src={item.image}
               alt={item.title}
@@ -39,7 +39,7 @@ const Wishlist = () => {
                 {item.title}
               </h2>
               <p className="text-gray-600">Rank: {item.rank}</p>
-              <p className="text-gray-600 bottom-72">
+              <p className="text-gray-600 ">
                 Tags:{" "}
                 {item.tags.map((tag, index) => (
                   <span
@@ -62,7 +62,7 @@ const Wishlist = () => {
               </p>
             </div>
             <div className="flex justify-end">
-              <button className="mt-4 bg-green-700 hover:bg-green-800 text-white font-semibold py-2 px-4 rounded">
+              <button className=" flex-box bg-green-700 hover:bg-green-800 text-white font-semibold py-2 px-4 rounded">
                 Add to Cart
               </button>
             </div>
