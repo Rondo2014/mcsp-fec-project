@@ -9,7 +9,7 @@ const LoginBottom = () => {
         </div>
         <a
           href=""
-          className="max-w-[60%] text-center text-[14px] mt-[10px] text-[#FFFFFF]"
+          className="w-full text-center text-[14px] mt-[10px] text-[#FFFFFF]"
         >
           Learn More
         </a>
