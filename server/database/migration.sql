@@ -6,7 +6,9 @@ CREATE TABLE users(
     username    VARCHAR(15) UNIQUE NOT NULL,
     email       VARCHAR(55) UNIQUE NOT NULL,
     password    VARCHAR(100) NOT NULL,
+    profile_pic TEXT DEFAULT 'https://avatars.akamai.steamstatic.com/edaa20340d62693f770abe27f02efffd58013d6a.jpg',
     cart        INT[],
+    purchased   INT[],
     prev_viewed INT[],
     wishlist    INT[]
 );

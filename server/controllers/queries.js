@@ -35,24 +35,46 @@ export const postUser = `
 INSERT INTO users(username, email, password)
 VALUES($1, $2, $3) RETURNING *`;
 
-// query to get username by username
+// query to get username from database
 export const usernameCheck = `SELECT username FROM users WHERE username = $1`;
 
-// query to sign user in
-export const logIn = `SELECT id, password FROM users WHERE username = $1`;
+// query to get email from database
+export const emailCheck = `SELECT email FROM users WHERE email = $1`;
 
+// query to sign user in
+export const logIn = `SELECT id, password, username, profile_pic FROM users WHERE username = $1`;
+
+/**
+ * QUERIES FOR CART
+ */
+
+// query to view cart
+export const cart = `
+SELECT games.id, games.title, games.pub_date, games.on_sale, games.category, games.tags, games.game_image, games.special_img, games.price, games.sale_deal, games.deal_ends, games.description, games.developer, games.publisher, games.reviews, games.images, games.videos
+FROM users 
+JOIN games 
+ON games.id = ANY(users.cart) 
+WHERE users.id = $1`;
 // query to add a game to users cart
-export const toCart = `UPDATE users SET cart = ARRAY_APPEND(cart, $1) 
-WHERE username = $2 RETURNING username, cart`;
+export const toCart = `UPDATE users SET cart = ARRAY_APPEND(cart, $1 ::int) 
+WHERE id = $2 RETURNING username, cart`;
 
 // query to check if game is already in the users cart
-export const cartGameCheck = `SELECT username, cart FROM users WHERE username = $1`; // use includes method on the array
+export const cartGameCheck = `SELECT username, cart FROM users WHERE id = $1`; // use includes method on the array
 
 // query to remove game from users cart
-export const outCart = `UPDATE users SET cart = array_remove(cart, $1) WHERE id = $2 RETURNING username, cart`;
+export const outCart = `UPDATE users SET cart = array_remove(cart, $1 ::int) WHERE id = $2 RETURNING username, cart`;
+/**
+ * QUERIES FOR WISHLIST
+ */
 
 // query to view wishlist items
-export const wishlist = `SELECT username, wishlist FROM users WHERE id = $1`;
+export const wishlist = `
+SELECT games.id, games.title, games.pub_date, games.on_sale, games.category, games.tags, games.game_image, games.special_img, games.price, games.sale_deal, games.deal_ends, games.description, games.developer, games.publisher, games.reviews, games.images, games.videos
+FROM users 
+JOIN games 
+ON games.id = ANY(users.wishlist) 
+WHERE users.id = $1`;
 
 // query to add a game to the users wishlist
 export const toWishlist = `UPDATE users SET wishlist = ARRAY_APPEND(wishlist, $1 ::int) 

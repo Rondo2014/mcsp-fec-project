@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import StoreNavBar from "../landing-page/StoreNavBar";
 import TitleBar from "./TitleBar";
 import ProductCarousel from "./ProductCarousel";
+import Purchase from "./Purchase";
 import api from "../../api/axios";
 import { useParams } from "react-router-dom";
 
-const ProductPage = () => {
+const ProductPage = ({ setRecentlyViewed, recentlyViewed }) => {
   const [game, setGame] = useState({});
   const [loading, setIsLoading] = useState(true);
 
@@ -25,11 +26,21 @@ const ProductPage = () => {
     getGame();
   }, []);
 
+  useEffect(() => {
+    if (game?.title && !recentlyViewed.includes(game.title)) {
+      const newRecentlyViewed = recentlyViewed.filter(
+        (item) => item.id !== game.title
+      );
+      setRecentlyViewed([game.title, ...newRecentlyViewed]);
+    }
+  }, [game]);
+
   return (
     <>
       <StoreNavBar />
       {loading ? <div>Loading...</div> : <TitleBar game={game} />}
       {loading ? <div>Loading...</div> : <ProductCarousel game={game} />}
+      {loading ? <div>Loading...</div> : <Purchase game={game} />}
     </>
   );
 };

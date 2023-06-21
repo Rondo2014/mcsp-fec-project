@@ -10,9 +10,13 @@ import BrowseSteam from "./BrowseSteam";
 import BrowseList from "./BrowseList";
 import { useState, useEffect } from "react";
 import api from "../../api/axios";
+import AuthContext from "../context/AuthProvider";
 
-const LandingPage = () => {
+const LandingPage = ({ recentlyViewed }) => {
   const [allGames, setAllGames] = useState([]);
+  const { auth } = useState(AuthContext);
+
+  const isLoggedIn = auth?.token;
 
   useEffect(() => {
     const getGames = async () => {
@@ -30,16 +34,16 @@ const LandingPage = () => {
     <div className="w-full">
       <div className=" w-[972px] relative mx-auto">
         <StoreNavBar />
-        <Sidebar />
+        <Sidebar recentlyViewed={recentlyViewed} />
         <TestCarousel />
         <Special />
         <HomeHardware />
         <CategoryCarousel />
-        <LoginCard />
+        {!isLoggedIn && <LoginCard />}
         <BrowseSteam />
       </div>
       <BrowseList allGames={allGames} />
-      <LoginBar />
+      {!isLoggedIn && <LoginBar />}
     </div>
   );
 };

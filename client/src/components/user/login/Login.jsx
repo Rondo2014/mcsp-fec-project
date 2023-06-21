@@ -1,8 +1,36 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import QR from "../../../assets/QR.png";
 import LoginBottom from "./LoginBottom";
+import AuthContext from "../../context/AuthProvider";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const { handleLogin } = useContext(AuthContext);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState("");
+
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const success = await handleLogin(username, password);
+      if (success) {
+        setSuccess(true);
+        setTimeout(() => {
+          navigate("/");
+        }, 2000);
+      }
+    } catch (error) {
+      console.log(error);
+      !error.response
+        ? setError("Network Error")
+        : setError(error.response.data.message);
+    }
+  };
+
   return (
     <div
       style={{
@@ -39,6 +67,8 @@ const Login = () => {
                       <input
                         className="rounded-sm p-[10px] text-[15px] border-[#32353c] border-[1px] outline-none"
                         type="text"
+                        onChange={(e) => setUsername(e.target.value)}
+                        value={username}
                       />
                     </div>
                     <div
@@ -51,6 +81,8 @@ const Login = () => {
                       <input
                         className="rounded-sm p-[10px] text-[15px] border-[#32353c] border-[1px] outline-none"
                         type="password"
+                        onChange={(e) => setPassword(e.target.value)}
+                        value={password}
                       />
                     </div>
                     <div id="button" className="flex flex-col items-center">
@@ -60,11 +92,19 @@ const Login = () => {
                             "linear-gradient(90deg, #06BFFF 0%, #2D73FF 100%)",
                         }}
                         className="w-[270px] relative rounded-sm border-none outline-none p-3 text-[#fff] text-base font-normal text-center cursor-pointer"
+                        onClick={handleSubmit}
                       >
                         Sign in
                       </button>
                     </div>
-                    <div id="form-error">&nbsp;</div>
+                    <div
+                      className={`text-center ${error && "text-[#c15755]"} ${
+                        success && "text-[#1999ff]"
+                      } text-[12px] font-medium`}
+                      id="form-error"
+                    >
+                      {error ? error : success ? "Success!" : ""}
+                    </div>
                     <a
                       href="/signup"
                       className="text-[#afafaf] text-[12px] cursor-pointer underline text-center"

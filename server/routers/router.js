@@ -7,12 +7,17 @@ import {
   getRecommendedGames,
 } from "../controllers/gameControllers.js";
 import { logUserIn, registerUser } from "../controllers/logController.js";
-import { hasPasswordMiddleware, protectRoutes } from "../auth.js";
+import { hasPasswordMiddleware, protectRoutes } from "../authorization/auth.js";
 import {
   AddToWishlist,
   removeFromWishlist,
   viewWishlist,
 } from "../controllers/wishlistController.js";
+import {
+  AddToCart,
+  removeFromCart,
+  viewCart,
+} from "../controllers/cartController.js";
 
 const router = Router();
 /**
@@ -29,8 +34,19 @@ router.get("/game/:id", getGameById); // fetch single game
  */
 router.post("/login", logUserIn);
 router.post("/register", hasPasswordMiddleware, registerUser);
-router.get("/wishlist/:id", protectRoutes, viewWishlist);
+
+/**
+ * WISHLIST ROUTES
+ */
+router.get("/wishlist", protectRoutes, viewWishlist);
 router.post("/add/wishlist", protectRoutes, AddToWishlist);
-router.post("/remove/wishlist/:id", protectRoutes, removeFromWishlist);
+router.post("/remove/wishlist", protectRoutes, removeFromWishlist);
+
+/**
+ * CART ROUTES
+ */
+router.get("/cart", protectRoutes, viewCart);
+router.post("/add/cart", protectRoutes, AddToCart);
+router.post("/remove/cart", protectRoutes, removeFromCart);
 
 export default router;

@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const LoginBar = () => {
   return (
     <div className="bottom-0 mb-0 mt-20 bg-black py-[25px] relative w-full">
@@ -17,28 +19,25 @@ const LoginBar = () => {
               Sign in to view personalized recommendations
             </p>
             <div id="sign-in-button" className="mt-[15px]">
-              <a
+              <Link
                 style={{
                   background:
                     "linear-gradient( to bottom, #a4d007 5%, #536904 95%)",
                 }}
                 className="rounded-sm border-[2px] border-[#172030] p-[1px] inline-block cursor-pointer text-[#D2E885] hover:text-white"
-                href="https://store.steampowered.com/login/?snr=1_4_4__more-content-login"
+                to="/login"
               >
                 <span className="px-[15px] text-[15px] leading-[30px]">
                   Sign In
                 </span>
-              </a>
+              </Link>
               <br />
               <br />
               or
-              <a
-                className="text-white hover:text-[#67c1f5]"
-                href="https://store.steampowered.com/join/?snr=1_4_4__more-content-login"
-              >
+              <Link className="text-white hover:text-[#67c1f5]" to="/signup">
                 {" "}
                 sign up{" "}
-              </a>
+              </Link>
               and join Steam for free
             </div>
           </div>

@@ -5,7 +5,7 @@ import {
   SIDE_BAR_GENRES,
 } from "./utils";
 
-const Sidebar = () => {
+const Sidebar = ({ recentlyViewed }) => {
   return (
     <div
       id="sidebar"
@@ -63,35 +63,34 @@ const Sidebar = () => {
             Give the Gift of the Game
           </div>
         </div>
-        <div
-          id="home-sidebar-block"
-          className="w-[85%] py-[15px] "
-          style={{
-            background:
-              "radial-gradient(circle at 0%, rgba(83,111,134,0) 20%, rgba(83,111,134,0.25) 100%)",
-          }}
-        >
+        {recentlyViewed.length > 0 && (
           <div
-            id="sidebar-pad"
-            className="m-0 mb-[7px] text-[#536f86] text-[14px] uppercase font-bold"
+            id="home-sidebar-block"
+            className="w-[85%] py-[15px] "
+            style={{
+              background:
+                "radial-gradient(circle at 0%, rgba(83,111,134,0) 20%, rgba(83,111,134,0.25) 100%)",
+            }}
           >
-            Recently Viewed
-          </div>
-          <div id="sidebar-items">
             <div
-              id="recent-item"
-              className="leading-4 mt-[2px] block w-fit text-[#7A8B9D] text-[12px] font-medium hover:text-[#00BBFF] cursor-pointer"
+              id="sidebar-pad"
+              className="m-0 mb-[7px] text-[#536f86] text-[14px] uppercase font-bold"
             >
-              Place Holder
+              Recently Viewed
             </div>
-            <div
-              id="recent-item-2"
-              className="leading-4 mt-[2px] block w-fit text-[#7A8B9D] text-[12px] font-bold hover:text-[#00BBFF] cursor-pointer"
-            >
-              Place Holder
+            <div id="sidebar-items">
+              {recentlyViewed.slice(0, 7).map((item, index) => (
+                <div
+                  key={item + index}
+                  id="recent-item"
+                  className="leading-4 mt-[2px] block w-fit text-[#7A8B9D] text-[12px] font-medium hover:text-[#00BBFF] cursor-pointer"
+                >
+                  {item}
+                </div>
+              ))}
             </div>
           </div>
-        </div>
+        )}
         <div className="leadint-4 mt-[7px] text-[14px] uppercase font-medium text-[#536f86] ">
           Recommended
         </div>
