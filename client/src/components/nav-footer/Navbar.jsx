@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import {
   NAVLINKS,
   NAV_SUBLINKS_STORE,
@@ -13,6 +13,7 @@ const Navbar = () => {
   const [showStore, setShowStore] = useState(false);
   const [showCommunity, setShowCommunity] = useState(false);
   const [showUser, setShowUser] = useState(false);
+  const [navLinks, setNavLinks] = useState(NAVLINKS);
 
   const { auth, handleLogout } = useContext(AuthContext);
   const isLoggedIn = auth?.token;
@@ -37,6 +38,18 @@ const Navbar = () => {
     setShowUser(!showUser);
   };
 
+  useEffect(() => {
+    if (isLoggedIn) {
+      const updatedNavLinks = [...NAVLINKS];
+      updatedNavLinks.splice(2, 0, { name: username, link: "#" });
+      setNavLinks(updatedNavLinks);
+    } else {
+      setNavLinks(NAVLINKS);
+    }
+  }, [isLoggedIn, username]);
+
+  console.log(NAVLINKS);
+
   return (
     <div className=" w-full text-[14px] font-normal bg-navbar px-4 tracking-wider">
       <div id="content" className="w-[940px] h-[104px] m-auto z-50">
@@ -57,10 +70,10 @@ const Navbar = () => {
           </span>
         </div>
         <div id="nav-container">
-          {NAVLINKS.map((link) => (
+          {navLinks.map((link) => (
             <a
               key={link.name}
-              className="block relative pt-[45px] px-[7px] pb-[7px] leading-4 float-left text-[14px] text-[#b8b6b4] uppercase hover:text-white"
+              className="block cursor-pointer relative pt-[45px] px-[7px] pb-[7px] leading-4 float-left text-[14px] text-[#b8b6b4] uppercase hover:text-white"
               href={link.path}
               onMouseEnter={() => {
                 if (link.name === "Store") {
@@ -170,7 +183,7 @@ const Navbar = () => {
                 {showUser && (
                   <div
                     id="popup"
-                    className="top-[25px] right-[210px] block align-top z-50 absolute shadow-sm shadow-black"
+                    className="top-[25px] right-[75px] block align-top z-50 absolute shadow-sm shadow-black"
                   >
                     <div
                       id="menu"
@@ -200,7 +213,7 @@ const Navbar = () => {
                 )}
                 <div
                   id="wallet"
-                  className="text-right pr-[15px] leading-normal align-top text-[#b8b6b4] text-[11px] absolute right-[210px] top-7"
+                  className="text-right pr-[15px] leading-normal align-top text-[#b8b6b4] text-[11px] absolute right-[110px] top-7"
                 >
                   <a href="">$0.00</a>
                 </div>
