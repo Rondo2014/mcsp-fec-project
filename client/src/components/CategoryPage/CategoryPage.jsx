@@ -13,7 +13,7 @@ const CategoryPage = () => {
       {/* game w/in category carousel */}
       {/* navebar of categories */}
       {/* Popular titles */}
-      <div id='popular-titles-container' className='grid-cols-3'>
+      <div id='popular-titles-container'>
       <PopularTitles />
       </div>
 

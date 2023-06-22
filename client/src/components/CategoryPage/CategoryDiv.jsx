@@ -4,7 +4,7 @@ import api from "../../api/axios";
 import { useParams } from "react-router-dom";
 
 function CategoryDiv() {
-
+  const [games, setGames] = useState({});
   const { category } = useParams();
 
   
@@ -22,13 +22,13 @@ function CategoryDiv() {
       >
         <img
           src="https://cdn.akamai.steamstatic.com/steam/apps/292030/header.jpg?t=1675178392"
-          className='w-full h-full mix-blend-overlay'
+          className='w-full h-[700px] mix-blend-overlay'
           alt="Category Image"
         />
       </div>
       <div id='carousel-container relative'>
-      <div id='carousel-title' className='text-white text-6xl font-bold
-      absolute top-[240px] left-[200px] drop-shadow-lg'>
+      <div id='carousel-title' className='text-white text-5xl font-bold
+      absolute top-[240px] left-[480px] drop-shadow-lg'>
           CATEGORY TITLE
         </div>
         <Carousel />
