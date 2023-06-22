@@ -2,13 +2,9 @@ import React from 'react'
 
 function PopularTitles() {
   return (
-    <div id='PopularTitles-container'>Popular Titles
-        <div id='row-container' className='grid-cols-3'>
-            <div id='title'>
+    // map over titles fetched and create pop-title div
+    <div id='PopularTitles-container' className='text-white text-4xl font-bold'>Popular Titles
 
-            </div>
-
-        </div>
       
     </div>
   )
