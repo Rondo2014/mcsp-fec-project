@@ -63,6 +63,9 @@ export const AuthProvider = ({ children }) => {
     localStorage.setItem("token", token);
     localStorage.setItem("username", username);
     localStorage.setItem("profile_picture", profilePic);
+
+    setAuth({ token });
+
     return true;
   };
 

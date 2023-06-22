@@ -8,13 +8,13 @@ import CategoryCarousel from "./CategoryCarousel";
 import LoginCard from "./LoginCard";
 import BrowseSteam from "./BrowseSteam";
 import BrowseList from "./BrowseList";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import api from "../../api/axios";
 import AuthContext from "../context/AuthProvider";
 
 const LandingPage = ({ recentlyViewed }) => {
   const [allGames, setAllGames] = useState([]);
-  const { auth } = useState(AuthContext);
+  const { auth } = useContext(AuthContext);
 
   const isLoggedIn = auth?.token;
 
