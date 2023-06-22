@@ -46,8 +46,30 @@ export const AuthProvider = ({ children }) => {
     return true;
   };
 
+  const handleRegister = async (username, password, email) => {
+    const response = await api.post(
+      "/api/register",
+      JSON.stringify({ username, password, email }),
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    console.log(response.data);
+    const token = response?.data?.token;
+    const profilePic = response?.data?.results.profile_pic;
+
+    localStorage.setItem("token", token);
+    localStorage.setItem("username", username);
+    localStorage.setItem("profile_picture", profilePic);
+    return true;
+  };
+
   return (
-    <AuthContext.Provider value={{ auth, setAuth, handleLogout, handleLogin }}>
+    <AuthContext.Provider
+      value={{ auth, setAuth, handleLogout, handleLogin, handleRegister }}
+    >
       {children}
     </AuthContext.Provider>
   );
