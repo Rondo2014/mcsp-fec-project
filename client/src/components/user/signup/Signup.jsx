@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { COUNTRY_LIST } from "./utils";
 import AuthContext from "../../context/AuthProvider";
 import { useNavigate } from "react-router-dom";
@@ -42,6 +42,10 @@ const Signup = () => {
     }
   };
 
+  useEffect(() => {
+    setError(null);
+  }, [form]);
+
   return (
     <div
       style={{
@@ -51,15 +55,23 @@ const Signup = () => {
     >
       <div className="w-[940px] mx-auto">
         <div className="p-[50px] min-h-[600px] max-w-[700px] mb-[250px]">
-          {error ||
-            (success && (
+          {error ? (
+            <div
+              id="error-dispay"
+              className="border-[2px] border-[#b44040] p-[10px] text-[15px] bg-[#00000080] text-white mb-8"
+            >
+              {error}
+            </div>
+          ) : (
+            success && (
               <div
                 id="error-dispay"
-                className="border-[2px] border-[#b44040] p-[10px] text-[15px] bg-[#00000080] text-white mb-8"
+                className="border-[2px] border-[#57cbde] p-[10px] text-[15px] bg-[#00000080] text-white mb-8"
               >
-                {error ? error : success && "Account created successfully!"}
+                {"Account created successfully!"}
               </div>
-            ))}
+            )
+          )}
           <div id="account-container">
             <form>
               <div id="form-box">
@@ -94,6 +106,7 @@ const Signup = () => {
                         onChange={(e) =>
                           setForm({ ...form, username: e.target.value })
                         }
+                        autoComplete="none"
                         className="bg-[#32353C] rounded-[3px] text-[#E9E9E9] py-2 px-[6px] block w-full font-normal"
                       ></input>
                     </div>
@@ -109,6 +122,7 @@ const Signup = () => {
                           setForm({ ...form, password: e.target.value })
                         }
                         type="password"
+                        autoComplete="new-password"
                         className="bg-[#32353C] rounded-[3px] text-[#E9E9E9] py-2 px-[6px] block w-full font-normal"
                       ></input>
                     </div>
@@ -124,6 +138,7 @@ const Signup = () => {
                         onChange={(e) =>
                           setForm({ ...form, confirmPassword: e.target.value })
                         }
+                        autoComplete="none"
                         className="bg-[#32353C] rounded-[3px] text-[#E9E9E9] py-2 px-[6px] block w-full font-normal"
                       ></input>
                     </div>
@@ -133,7 +148,13 @@ const Signup = () => {
                       <label className="text-[14px] text-[#b8b6b4] align-top">
                         Country of Residence
                       </label>
-                      <select className="bg-[#32353C] rounded-[3px] text-[#E9E9E9] py-2 px-[6px] block w-full font-normal">
+                      <select
+                        value={form.country || "US"}
+                        onChange={(e) =>
+                          setForm({ ...form, country: e.target.value })
+                        }
+                        className="bg-[#32353C] rounded-[3px] text-[#E9E9E9] py-2 px-[6px] block w-full font-normal"
+                      >
                         {COUNTRY_LIST.map((country) => (
                           <option key={country.value} value={country.value}>
                             {country.label}
