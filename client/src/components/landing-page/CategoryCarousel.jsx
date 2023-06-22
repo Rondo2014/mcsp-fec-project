@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { CATEGORIES } from "./utils";
+import { Link } from "react-router-dom";
 
 const CategoryCarousel = () => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -16,14 +17,14 @@ const CategoryCarousel = () => {
     const slicedCategories = CATEGORIES.slice(activeIndex, activeIndex + 4);
 
     return slicedCategories.map((category) => (
-      <div key={category.id} className="carousel-item flex flex-col items-center">
+      <Link to={`/category/${category.name}`} key={category.id} className="carousel-item flex flex-col items-center">
         <img
           src={category.image}
           alt={category.name}
           className="w-48 h-32 object-cover rounded-lg hover:shadow-md hover:shadow-[#1A9FFF] mr-2 hover:scale-105 transition duration-300 ease-in-out cursor-pointer"
         />
         <p className="mt-2 text-lg font-semibold">{category.name}</p>
-      </div>
+      </Link>
     ));
   };
 

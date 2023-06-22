@@ -40,7 +40,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/wishlist" element={<Wishlist />} />
-        <Route path="/category" element={<CategoryPage />} />
+        <Route path="/category/:id" element={<CategoryPage />} />
       </Routes>
       <Footer />
     </div>
