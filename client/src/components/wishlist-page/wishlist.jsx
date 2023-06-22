@@ -49,13 +49,13 @@ const Wishlist = () => {
                 {item.title}
               </h2>
 
-              <p className="text-white">
+              <p className="text-white relative left-10">
                 Overall Reviews:{" "}
                 {item.reviews.length === 0
                   ? "NO USER REVIEWS"
                   : item.reviews.length}
               </p>
-              <p className="text-white">
+              <p className="text-white relative left-10">
                 Release Date:{" "}
                 {item.releaseDate ? item.releaseDate : "TO BE ANNOUNCED"}
               </p>
@@ -67,11 +67,11 @@ const Wishlist = () => {
             </div>
           </div>
         </div>
-        <p className="text-[#b2b8bd] float-right p-10 absolute bottom-0 right-0">
+        <p className="text-[#b2b8bd]  p-10 absolute bottom-0 right-0">
           Added on 6/15/2023 (remove)
         </p>
         <p className="text-gray-600 ">
-          Tags:{" "}
+          {" "}
           {item.tags.map((tag, index) => (
             <span
               key={index}
