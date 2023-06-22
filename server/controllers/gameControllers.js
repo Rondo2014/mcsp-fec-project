@@ -60,7 +60,7 @@ export const getFeaturedGames = async (req, res) => {
 // fetches games by a specific category
 export const getGameCategory = async (req, res) => {
   try {
-    const category = req.params.category;
+    const category = req.params.id;
     const results = await db.query(gameCategory, [category]);
     // if no game data is returned from the database send user a message
     if (results.rowCount === 0)

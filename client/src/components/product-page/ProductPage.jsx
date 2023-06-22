@@ -4,14 +4,18 @@ import TitleBar from "./TitleBar";
 import ProductCarousel from "./ProductCarousel";
 import Purchase from "./Purchase";
 import api from "../../api/axios";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 const ProductPage = ({ setRecentlyViewed, recentlyViewed }) => {
   const [game, setGame] = useState({});
   const [loading, setIsLoading] = useState(true);
-  const history = useNavigate()
+
 
   const { id } = useParams();
+
+
+    
+  
 
   useEffect(() => {
     const getGame = async () => {
@@ -36,9 +40,7 @@ const ProductPage = ({ setRecentlyViewed, recentlyViewed }) => {
     }
   }, [game]);
 
-  useEffect(()=>{
-    history()
-  },[])
+ 
 
   return (
     <>

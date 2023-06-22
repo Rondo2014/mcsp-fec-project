@@ -26,7 +26,7 @@ const router = Router();
 router.get("/games", getAllGames); // fetch all games
 router.get("/games/featured", getFeaturedGames); // fetch featured games
 router.get("/games/recommended", getRecommendedGames); // fetch recommended games
-router.get("/games/:category", getGameCategory); // fetch games by category
+router.get("/games/:id", getGameCategory); // fetch games by category
 router.get("/game/:id", getGameById); // fetch single game
 
 /**
