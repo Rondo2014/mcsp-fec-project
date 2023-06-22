@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const LoginBottom = () => {
   return (
@@ -20,14 +21,14 @@ const LoginBottom = () => {
         className="flex-1 flex flex-col justify-center text-center max-w-[200px] overflow-clip"
       />
       <div className=" flex-1 flex flex-col justify-center text-center max-w-[200px] mt-[20px]">
-        <a
-          href="/signup"
+        <Link
+          to="/signup"
           className="mx-[40px] block text-center rounded-sm border-none p-[1px] cursor-pointer text-[#fff] bg-transparent"
         >
           <span className="block bg-transparent border-[1px] border-[#ffffff66] text-center">
             Join Steam
           </span>
-        </a>
+        </Link>
         <div className="text-[14px] text-[#b8b6b4] mt-[10px]">
           It's Free and easy to use.
         </div>
