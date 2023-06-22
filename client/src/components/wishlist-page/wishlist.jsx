@@ -45,7 +45,7 @@ const Wishlist = () => {
           </div>
           <div className="ml-4 flex flex-col justify-between">
             <div>
-              <h2 className="text-white text-lg font-normal mb-2 truncate">
+              <h2 className="text-white text-lg font-normal absolute top-2">
                 {item.title}
               </h2>
 
@@ -61,13 +61,13 @@ const Wishlist = () => {
               </p>
             </div>
             <div className="flex justify-end">
-              <button className=" text-white font-semibold py-2 px-4 rounded absolute right-1 top-14">
-                Coming Soon
+              <button className="text-white font-semibold py-2 px-4 rounded absolute right-1 top-14">
+                {item.price !== 0 ? `$${item.price}` : "Coming Soon"}
               </button>
             </div>
           </div>
         </div>
-        <p className="text-[#b2b8bd] float-right p-10 float absolute bottom-0 right-0">
+        <p className="text-[#b2b8bd] float-right p-10 absolute bottom-0 right-0">
           Added on 6/15/2023 (remove)
         </p>
         <p className="text-gray-600 ">
@@ -75,7 +75,7 @@ const Wishlist = () => {
           {item.tags.map((tag, index) => (
             <span
               key={index}
-              className=" inline-block mr-3 px-2 py-1 border border-white border-opacity-20 text-gray-500 rounded cursor-pointer "
+              className="inline-block mr-3 px-2 py-1 border border-white border-opacity-20 text-gray-500 rounded cursor-pointer"
             >
               {tag}
             </span>
@@ -91,7 +91,9 @@ const Wishlist = () => {
 
   return (
     <div className="container mx-auto py-8">
-      <h1 className="text-3xl font-bold mb-4">Placeholder Wishlist</h1>
+      <div className="mb-6">
+        <h1 className="text-3xl font-bold mb-2">Placeholder Wishlist</h1>
+      </div>
       <div className="grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:flex md:flex-col">
         {wishlistItems.map((item) => (
           <WishlistRow key={item.id} item={item} />
