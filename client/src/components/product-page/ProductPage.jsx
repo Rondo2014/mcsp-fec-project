@@ -9,7 +9,6 @@ import { useParams } from "react-router-dom";
 const ProductPage = ({ setRecentlyViewed, recentlyViewed }) => {
   const [game, setGame] = useState({});
   const [loading, setIsLoading] = useState(true);
- 
 
   const { id } = useParams();
 
@@ -28,15 +27,18 @@ const ProductPage = ({ setRecentlyViewed, recentlyViewed }) => {
   }, []);
 
   useEffect(() => {
-    if (game?.title && !recentlyViewed.includes(game.title)) {
+    if (!recentlyViewed.includes(game.title && game.id)) {
       const newRecentlyViewed = recentlyViewed.filter(
-        (item) => item.id !== game.title
+        (item) => item.id !== game.id
       );
-      setRecentlyViewed([game.title, ...newRecentlyViewed]);
+      setRecentlyViewed([
+        { title: game.title, id: game.id },
+        ...newRecentlyViewed,
+      ]);
+    } else {
+      return;
     }
-  }, [game]);
-
-  
+  }, [!loading]);
 
   return (
     <>

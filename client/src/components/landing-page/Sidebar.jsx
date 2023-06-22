@@ -4,6 +4,7 @@ import {
   SIDE_BAR_HARDWARE,
   SIDE_BAR_GENRES,
 } from "./utils";
+import { Link } from "react-router-dom";
 
 const Sidebar = ({ recentlyViewed }) => {
   return (
@@ -80,13 +81,14 @@ const Sidebar = ({ recentlyViewed }) => {
             </div>
             <div id="sidebar-items">
               {recentlyViewed.slice(0, 7).map((item, index) => (
-                <div
+                <Link
+                  to={`/product/${item.id}`}
                   key={item + index}
                   id="recent-item"
                   className="leading-4 mt-[2px] block w-fit text-[#7A8B9D] text-[12px] font-medium hover:text-[#00BBFF] cursor-pointer"
                 >
-                  {item}
-                </div>
+                  {item.title}
+                </Link>
               ))}
             </div>
           </div>
