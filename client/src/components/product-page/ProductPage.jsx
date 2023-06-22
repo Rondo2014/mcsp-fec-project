@@ -37,7 +37,7 @@ const ProductPage = ({ setRecentlyViewed, recentlyViewed }) => {
   }, [game]);
 
   useEffect(()=>{
-    history(`api/game/${id}`)
+    history()
   })
 
   return (
