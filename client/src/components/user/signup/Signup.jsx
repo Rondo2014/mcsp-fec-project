@@ -1,7 +1,47 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { COUNTRY_LIST } from "./utils";
+import AuthContext from "../../context/AuthProvider";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
+  const [form, setForm] = useState({});
+  const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(false);
+
+  const { handleRegister } = useContext(AuthContext);
+
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError(null);
+
+    form.password !== form.confirmPassword &&
+      setError("Passwords do not match");
+
+    form.age === false &&
+      setError("You must be 13 years or older to register for an account");
+
+    if (error !== null) return;
+
+    try {
+      const res = await handleRegister(
+        form.username,
+        form.password,
+        form.email
+      );
+      if (res) {
+        setSuccess(true);
+        setTimeout(() => {
+          navigate("/");
+        }, 2000);
+      }
+    } catch (error) {
+      console.log(error);
+      setError(error.response.data.message);
+    }
+  };
+
   return (
     <div
       style={{
@@ -11,10 +51,15 @@ const Signup = () => {
     >
       <div className="w-[940px] mx-auto">
         <div className="p-[50px] min-h-[600px] max-w-[700px] mb-[250px]">
-          <div
-            id="error-dispay"
-            className="hidden border-[2px] border-[#b44040] p-[10px] text-[15px] mb-[10px] bg-[#00000080] text-white"
-          ></div>
+          {error ||
+            (success && (
+              <div
+                id="error-dispay"
+                className="border-[2px] border-[#b44040] p-[10px] text-[15px] bg-[#00000080] text-white mb-8"
+              >
+                {error ? error : success && "Account created successfully!"}
+              </div>
+            ))}
           <div id="account-container">
             <form>
               <div id="form-box">
@@ -30,7 +75,13 @@ const Signup = () => {
                       <label className="text-[14px] text-[#b8b6b4] align-top">
                         Email Address
                       </label>
-                      <input className="bg-[#32353C] rounded-[3px] text-[#E9E9E9] py-2 px-[6px] block w-full font-normal"></input>
+                      <input
+                        value={form.email || ""}
+                        onChange={(e) =>
+                          setForm({ ...form, email: e.target.value })
+                        }
+                        className="bg-[#32353C] rounded-[3px] text-[#E9E9E9] py-2 px-[6px] block w-full font-normal"
+                      ></input>
                     </div>
                   </div>
                   <div className="flex items-center flex-wrap my-[25px]">
@@ -38,7 +89,13 @@ const Signup = () => {
                       <label className="text-[14px] text-[#b8b6b4] align-top">
                         Username
                       </label>
-                      <input className="bg-[#32353C] rounded-[3px] text-[#E9E9E9] py-2 px-[6px] block w-full font-normal"></input>
+                      <input
+                        value={form.username || ""}
+                        onChange={(e) =>
+                          setForm({ ...form, username: e.target.value })
+                        }
+                        className="bg-[#32353C] rounded-[3px] text-[#E9E9E9] py-2 px-[6px] block w-full font-normal"
+                      ></input>
                     </div>
                   </div>
                   <div className="flex items-center flex-wrap my-[25px]">
@@ -47,6 +104,10 @@ const Signup = () => {
                         Password
                       </label>
                       <input
+                        value={form.password || ""}
+                        onChange={(e) =>
+                          setForm({ ...form, password: e.target.value })
+                        }
                         type="password"
                         className="bg-[#32353C] rounded-[3px] text-[#E9E9E9] py-2 px-[6px] block w-full font-normal"
                       ></input>
@@ -59,6 +120,10 @@ const Signup = () => {
                       </label>
                       <input
                         type="password"
+                        value={form.confirmPassword || ""}
+                        onChange={(e) =>
+                          setForm({ ...form, confirmPassword: e.target.value })
+                        }
                         className="bg-[#32353C] rounded-[3px] text-[#E9E9E9] py-2 px-[6px] block w-full font-normal"
                       ></input>
                     </div>
@@ -83,6 +148,10 @@ const Signup = () => {
                         <input
                           className="inline w-[18px] h-[18px] bg-[#32352C] rounded-[3px] text-[#E9E9E9] py-2 px-[6px] font-normal mr-2"
                           type="checkbox"
+                          value={form.age || false}
+                          onChange={() =>
+                            setForm({ ...form, age: form.age ? false : true })
+                          }
                         />
                         I am 13 years of age or older and I agree to the
                         <a className="text-[white] hover:text-[#57cbde] text-[14px] cursor-pointer">
@@ -98,7 +167,10 @@ const Signup = () => {
                       </label>
                     </div>
                     <div className="mt-[35px]">
-                      <button className="rounded-sm border-none p-[1px] inline-block cursor-pointer text-[#c3e1f8]">
+                      <button
+                        onClick={handleSubmit}
+                        className="rounded-sm border-none p-[1px] inline-block cursor-pointer text-[#c3e1f8]"
+                      >
                         <span
                           style={{
                             background:
