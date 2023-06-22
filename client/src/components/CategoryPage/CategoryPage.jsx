@@ -6,15 +6,19 @@ import { useParams } from 'react-router-dom';
 import api from '../../api/axios';
 
 const CategoryPage = () => {
-  const [category, setCategory] = useState([]);
+  const [allGames, setAllGames] = useState([]);
+  const [currentGame, setCurrentGame] = useState(0)
+  const [loading, setLoading] = useState(true)
+  // current game state at page level as useState([0]);
+    //pass game state down to category div
   const { id } = useParams();
-  console.log(useParams())
   useEffect(() => {
     const getCategories = async () => {
       try {
-        const res = api.get(`/api/games/${id}`);
-        setCategory(res.data);
-        console.log(res.data);
+        const res = await api.get(`/api/games/${id}`);
+        setAllGames(res.data);
+        setLoading(false);
+    
       }
       catch (error) {
         console.log(error)
@@ -28,7 +32,11 @@ const CategoryPage = () => {
     <div className='bg-[#030406]'>
       <StoreNavBar />
       {/* category div w/ bg image from game */}
-      <CategoryDiv />
+      {loading ? <div>loading...</div> :       <CategoryDiv 
+        allGames={allGames}
+        currentGame={currentGame}
+        setCurrentGame={setCurrentGame}
+      />}
       {/* game w/in category carousel */}
       {/* navebar of categories */}
       {/* Popular titles */}

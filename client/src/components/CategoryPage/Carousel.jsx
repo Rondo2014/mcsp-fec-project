@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
-import api from "../../api/axios.js";
-import { useNavigate } from "react-router-dom";
 
-function Carousel() {
-
+function Carousel({ currentGame, setCurrentGame, allGames }) {
+//all games is an array of objects,
+//currentGame is an index of an object in the array
   return (
     <div id="carousel-container" className="static">
       <div id="left-arrow" className="absolute left-[400px] top-[410px] mb-5 bg-cover flex-grow h-full flex items-center justify-center" style={{
@@ -43,6 +42,7 @@ function Carousel() {
             backdropFilter: "blur(20px)"
           }}
           >
+
             <img src="https://upload.wikimedia.org/wikipedia/en/0/0c/Witcher_3_cover_art.jpg"
             className="object-left object-none h-90 w-70 drop-shadow-lg"/>
             <div id="price-compatibility" className="w-[258px] h-10 bg-black">
