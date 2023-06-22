@@ -38,7 +38,7 @@ const ProductPage = ({ setRecentlyViewed, recentlyViewed }) => {
 
   useEffect(()=>{
     history()
-  })
+  },[])
 
   return (
     <>
