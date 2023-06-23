@@ -105,7 +105,7 @@ function Carousel({
             >
               <div
                 id="game-title"
-                className="text-white text-4xl font-bold px-4 tracking-wider pt-5"
+                className="text-white text-4xl font-bold px-4 tracking-wider pt-3 pb-1"
               >
                 {categories[currentGame].title}
               </div>

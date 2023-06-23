@@ -27,6 +27,7 @@ const CategoryPage = () => {
 
   return (
     <div className="w-full bg-[black]">
+      <div className="w-full h-[1px]"/>
       <StoreNavBar />
       <div
         className={`${
