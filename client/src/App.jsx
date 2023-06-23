@@ -21,7 +21,7 @@ function App() {
   }, [recentlyViewed]);
 
   return (
-    <div className="min-h-screen">
+    <div className="">
       <Navbar />
       <Routes>
         <Route

@@ -1,17 +1,36 @@
 import React, { useState, useEffect } from "react";
 
-function Carousel({ currentGame, setCurrentGame, categories }) {
+function Carousel({
+  currentGame,
+  setCurrentGame,
+  categories,
+  transition,
+  setTransition,
+}) {
   //all games is an array of objects,
   //currentGame is an index of an object in the array
   const handleRightClick = () => {
-    currentGame === categories.length - 1
-      ? setCurrentGame(0)
-      : setCurrentGame(currentGame + 1);
+    setTransition(true);
+    setTimeout(() => {
+      currentGame === categories.length - 1
+        ? setCurrentGame(0)
+        : setCurrentGame(currentGame + 1);
+      setTimeout(() => {
+        setTransition(false);
+      }, 10);
+    }, 600);
   };
+
   const handleLeftClick = () => {
-    currentGame === 0
-      ? setCurrentGame(categories.length - 1)
-      : setCurrentGame(currentGame - 1);
+    setTransition(true);
+    setTimeout(() => {
+      currentGame === 0
+        ? setCurrentGame(categories.length - 1)
+        : setCurrentGame(currentGame - 1);
+      setTimeout(() => {
+        setTransition(false);
+      }, 10);
+    }, 600);
   };
 
   return (
@@ -21,7 +40,7 @@ function Carousel({ currentGame, setCurrentGame, categories }) {
     >
       <div
         id="left-arrow"
-        className="relative left-[-60px] top-[500px] z-50 mb-5 bg-cover flex-grow h-full flex items-center justify-center"
+        className="relative left-[-60px] top-[500px] mb-5 bg-cover flex-grow h-full flex items-center justify-center"
         style={{
           background:
             "linear-gradient( to right, rgba( 0, 0, 0, 0.3) 5%,rgba( 0, 0, 0, 0) 95%)",
@@ -40,7 +59,7 @@ function Carousel({ currentGame, setCurrentGame, categories }) {
       </div>
       <div
         id="right-arrow"
-        className=" mb-5 relative top-[270px] left-[950px] z-50 bg-cover flex-grow h-full flex items-center justify-center"
+        className=" mb-5 relative top-[270px] left-[950px] bg-cover flex-grow h-full flex items-center justify-center"
         style={{
           background:
             "linear-gradient( to left, rgba( 0, 0, 0, 0.3) 5%,rgba( 0, 0, 0, 0) 95%)",
@@ -57,7 +76,7 @@ function Carousel({ currentGame, setCurrentGame, categories }) {
           className="w-[23px] h-9 transform"
         ></div>
       </div>
-      <div className="z-10">
+      <div className="">
         <div
           id="carousel"
           className="h-[400px] w-[940px] mx-auto relative flex grid-cols-2"
@@ -89,6 +108,9 @@ function Carousel({ currentGame, setCurrentGame, categories }) {
               background: "rgba(0,0,0,.3098039216)",
               backdropFilter: "blur(20px)",
             }}
+            className={`${
+              transition ? "opacity-0" : "opacity-100"
+            } transition-opacity duration-300 ease-in-out"}`}
           >
             <div
               id="game-title"
