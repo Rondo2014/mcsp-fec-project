@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 function Carousel({
   currentGame,
@@ -49,7 +50,7 @@ function Carousel({
       <div className="flex flex-row">
         <div
           id="left-arrow"
-          className="relative mb-5 bg-cover flex-grow h-full flex items-center justify-center"
+          className="relative bg-cover flex-grow h-full flex items-center justify-center m-auto"
           style={{
             background:
               "linear-gradient( to right, rgba( 0, 0, 0, 0.3) 5%,rgba( 0, 0, 0, 0) 95%)",
@@ -67,7 +68,7 @@ function Carousel({
           ></div>
         </div>
         <div className="mx-[20px]">
-          <div
+        <Link to={`/product/${categories[currentGame].id}`} ><div
             id="carousel"
             className="h-[340px] w-[940px] mx-auto relative flex grid-cols-2"
           >
@@ -104,7 +105,7 @@ function Carousel({
             >
               <div
                 id="game-title"
-                className="text-white text-4xl font-bold px-4 tracking-wider"
+                className="text-white text-4xl font-bold px-4 tracking-wider pt-5"
               >
                 {categories[currentGame].title}
               </div>
@@ -125,11 +126,11 @@ function Carousel({
                 {categories[currentGame].description}
               </div>
             </div>
-          </div>
+          </div></Link>
         </div>
         <div
           id="right-arrow"
-          className=" mb-5 relative right-0 bg-cover flex-grow h-full flex items-center justify-center"
+          className="relative right-0 bg-cover flex-grow h-full flex items-center justify-center m-auto"
           style={{
             background:
               "linear-gradient( to left, rgba( 0, 0, 0, 0.3) 5%,rgba( 0, 0, 0, 0) 95%)",

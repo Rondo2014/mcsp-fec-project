@@ -17,7 +17,7 @@ function PopularTitles({ categories }) {
             key={category.id}
             className="h-[170px] w-[300px] mt-[0px] rounded-lg hover:shadow-md hover:shadow-[#fafafa9b] mr-2 hover:scale-105 transition duration-300 ease-in-out cursor-pointer"
           >
-            <Link to={`/product/${category.id}`} ><img src={category.game_image} className="" /></Link>
+            <Link to={`/product/${category.id}`} ><img src={category.game_image} className="rounded-t-[5px]" /></Link>
             <div className="text-white text-center mt-[3px]">
               {category.title}
             </div>
