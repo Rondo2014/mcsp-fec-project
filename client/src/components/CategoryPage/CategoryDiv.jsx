@@ -26,7 +26,7 @@ function CategoryDiv({
       <div
         id="carousel-title"
         className="text-white text-5xl font-bold
-      relative bottom-[670px] right-[800px] drop-shadow-lg"
+      relative top-[-850px] left-5 drop-shadow-lg"
       >
         {id}
       </div>

@@ -36,11 +36,11 @@ function Carousel({
   return (
     <div
       id="carousel"
-      className="absolute w-[940px] mx-auto top-0 left-0 right-0"
+      className="relative w-[940px] mx-auto top-[-600px] left-[-130px]  h-full flex flex-row items-center justify-center"
     >
       <div
         id="left-arrow"
-        className="relative left-[-60px] top-[500px] mb-5 bg-cover flex-grow h-full flex items-center justify-center"
+        className="relative mb-5 bg-cover flex-grow h-full flex items-center justify-center"
         style={{
           background:
             "linear-gradient( to right, rgba( 0, 0, 0, 0.3) 5%,rgba( 0, 0, 0, 0) 95%)",
@@ -57,26 +57,7 @@ function Carousel({
           className="w-[23px] h-9 transform rotate-180"
         ></div>
       </div>
-      <div
-        id="right-arrow"
-        className=" mb-5 relative top-[290px] left-[950px] bg-cover flex-grow h-full flex items-center justify-center"
-        style={{
-          background:
-            "linear-gradient( to left, rgba( 0, 0, 0, 0.3) 5%,rgba( 0, 0, 0, 0) 95%)",
-          height: "200px",
-          width: "50px",
-        }}
-        onClick={handleRightClick}
-      >
-        <div
-          style={{
-            backgroundImage:
-              "url(https://store.cloudflare.steamstatic.com/public/images/v6/arrows.png)",
-          }}
-          className="w-[23px] h-9 transform"
-        ></div>
-      </div>
-      <div className="">
+      <div className="mx-[20px]">
         <div
           id="carousel"
           className="h-[400px] w-[940px] mx-auto relative flex grid-cols-2"
@@ -136,6 +117,25 @@ function Carousel({
             </div>
           </div>
         </div>
+      </div>
+      <div
+        id="right-arrow"
+        className=" mb-5 relative right-0 bg-cover flex-grow h-full flex items-center justify-center"
+        style={{
+          background:
+            "linear-gradient( to left, rgba( 0, 0, 0, 0.3) 5%,rgba( 0, 0, 0, 0) 95%)",
+          height: "200px",
+          width: "50px",
+        }}
+        onClick={handleRightClick}
+      >
+        <div
+          style={{
+            backgroundImage:
+              "url(https://store.cloudflare.steamstatic.com/public/images/v6/arrows.png)",
+          }}
+          className="w-[23px] h-9 transform"
+        ></div>
       </div>
     </div>
   );
