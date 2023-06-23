@@ -87,7 +87,7 @@ const TestCarousel = () => {
   useEffect(() => {
     if (!carouselHover) {
       const interval = setInterval(() => {
-        setCarouselSlide((prevIndex) => (prevIndex + 1) % carouselData.length);
+        handleNext();
       }, 5000);
 
       return () => clearInterval(interval);

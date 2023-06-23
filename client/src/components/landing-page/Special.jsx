@@ -39,7 +39,7 @@ const Special = () => {
       setTimeout(() => {
         setTransition(false);
       }, 10);
-    }, 300);
+    }, 600);
   };
 
   const handleMinusCarousel = () => {
@@ -49,7 +49,7 @@ const Special = () => {
       setTimeout(() => {
         setTransition(false);
       }, 10);
-    }, 300);
+    }, 600);
   };
 
   return (
@@ -77,7 +77,7 @@ const Special = () => {
                   <div
                     id="special-offers-group"
                     className={`flex ${transition && "opacity-0"}
-                   transition-all transform-gpu duration-500 ease-in-out`}
+                   transition-all transform-gpu duration-1000 ease-in-out`}
                     key={carousel.id}
                   >
                     {carousel.items.map((item, index) => {
