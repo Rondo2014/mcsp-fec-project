@@ -34,7 +34,7 @@ export const AuthProvider = ({ children }) => {
         },
       }
     );
-    console.log(response.data);
+    // console.log(response.data);
     const token = response?.data?.token;
     const profilePic = response?.data?.results.profile_pic;
 

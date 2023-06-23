@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import Carousel from './Carousel.jsx';
 import { useParams } from "react-router-dom";
 
-function CategoryDiv({ currentGame, setCurrentGame, allGames }) {
+function CategoryDiv({ currentGame, setCurrentGame, categories }) {
   const [games, setGames] = useState({});
   const { id } = useParams();
-  console.log(allGames)
+  console.log(categories)
   return (
     <div id='category-Div-container' className='flex items-center cursor-pointer'>
       <div
@@ -29,7 +29,7 @@ function CategoryDiv({ currentGame, setCurrentGame, allGames }) {
           {id}
       </div>
         <Carousel 
-          allGames={allGames}
+          categories={categories}
           currentGame={currentGame}
           setCurrentGame={setCurrentGame}
         />

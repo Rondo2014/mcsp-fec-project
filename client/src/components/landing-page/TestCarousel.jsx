@@ -30,7 +30,7 @@ const TestCarousel = () => {
       try {
         const response = await api.get("/api/games/recommended");
         const data = response.data;
-        console.log(data);
+        // console.log(data);
         const minipics = data.map((images) => {
           return images.images.slice(0, 4);
         });

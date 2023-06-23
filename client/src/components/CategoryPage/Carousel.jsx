@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-function Carousel({ currentGame, setCurrentGame, allGames }) {
+function Carousel({ currentGame, setCurrentGame, categories }) {
 //all games is an array of objects,
 //currentGame is an index of an object in the array
   return (
