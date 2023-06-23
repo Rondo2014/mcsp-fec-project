@@ -17,7 +17,6 @@ const CategoryPage = () => {
         const res = await api.get(`/api/games/${id}`);
         setCategories(res.data);
         setLoading(false);
-        console.log("current game", currentGame);
       } catch (error) {
         console.log(error);
       }
@@ -59,7 +58,9 @@ const CategoryPage = () => {
         {/* navebar of categories */}
         {/* Popular titles */}
         <div id="popular-titles-container">
-          <PopularTitles />
+          <PopularTitles 
+          categories={categories}
+          />
         </div>
       </div>
     </div>

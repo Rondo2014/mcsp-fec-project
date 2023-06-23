@@ -17,7 +17,7 @@ function Carousel({ currentGame, setCurrentGame, categories }) {
   return (
     <div
       id="carousel-container"
-      className="absolute w-[940px] mx-auto top-0 left-0 right-0"
+      className="absolute w-[940px] mx-auto top-0 left-0 right-0 bg"
     >
       <div
         id="left-arrow"
@@ -75,7 +75,7 @@ function Carousel({ currentGame, setCurrentGame, categories }) {
               className="object-center object-cover h-[300px] w-[257px] drop-shadow-lg"
             />
             <div id="price-compatibility" className="w-[258px] h-10 bg-black">
-              <div id="price" className="text-[white] text-center">
+              <div id="price" className="text-[white] text-center pt-2">
                 {categories[currentGame].price === 0
                   ? "Free to Play"
                   : `$${categories[currentGame].price}`}

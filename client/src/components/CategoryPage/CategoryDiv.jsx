@@ -5,7 +5,6 @@ import { useParams } from "react-router-dom";
 function CategoryDiv({ currentGame, setCurrentGame, categories }) {
   const [games, setGames] = useState({});
   const { id } = useParams();
-  console.log(categories);
   return (
     <div
       id="category-Div-container"
