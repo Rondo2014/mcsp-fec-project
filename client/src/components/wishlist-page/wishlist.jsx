@@ -1,37 +1,18 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import api from "../../api/axios.js";
 
 const Wishlist = () => {
-  const wishlistItems = [
-    // DUMMY DATA, you can delete once hooked up to DB
-    {
-      id: 1,
-      title: "METAL GEAR SOLID Δ: SNAKE EATER",
-      price: 0,
-      image:
-        "https://cdn.akamai.steamstatic.com/steam/apps/2417610/capsule_616x353.jpg?t=1685602485",
-      rank: 1,
-      tags: [
-        "Action",
-        "Stealth",
-        "Cinematic",
-        "Action-Adventure",
-        "Third-Person Shooter",
-      ],
-      reviews: [],
-      releaseDate: null,
-    },
-    {
-      id: 2,
-      title: "BLAH",
-      price: 23,
-      rank: 2,
-      img: "",
-      tags: ["Steath", "Story-Driven"],
-      reviews: [],
-      releaseDate: 0o7,
-    },
-  ];
-
+  const [game, setGame] = useState([]);
+  useEffect(() => {
+    const getGame = async () => {
+      const data = await api.get("/api/wishlist", {
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      });
+      setGame(data.data);
+      console.log(data.data);
+    };
+    getGame();
+  }, []);
   const WishlistRow = ({ item }) => {
     return (
       <div className="wishlist-row flex-col max-w-[940px] mx-auto relative bg-gray-700 bg-opacity-90 text-gray-500 px-6 py-4 mb-2 h-[171px] w-full shadow-md transition-colors duration-300">
@@ -142,9 +123,6 @@ const Wishlist = () => {
           </div>
         </div>
       </div>
-      {wishlistItems.map((item) => (
-        <WishlistRow key={item.id} item={item} />
-      ))}
     </div>
   );
 };
