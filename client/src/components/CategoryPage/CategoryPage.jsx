@@ -9,6 +9,7 @@ const CategoryPage = () => {
   const [categories, setCategories] = useState([]);
   const [currentGame, setCurrentGame] = useState(0);
   const [loading, setLoading] = useState(true);
+  const [transition, setTransition] = useState(false);
   //pass game state down to category div
   const { id } = useParams();
   useEffect(() => {
@@ -25,9 +26,12 @@ const CategoryPage = () => {
   }, []);
 
   return (
-    <div className="w-full h-full bg-[#030406]">
+    <div className="w-full bg-[black]">
       <StoreNavBar />
       <div
+        className={`${
+          transition ? "opacity-0" : "opacity-100"
+        } transition-opacity duration-1000 ease-in-out`}
         style={{
           backgroundImage:
             "radial-gradient(farthest-side at 50% 40%, rgba(0, 0, 0, 0) 70%, black), linear-gradient(to right, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)), linear-gradient(to left, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0))",
@@ -49,6 +53,8 @@ const CategoryPage = () => {
           <div>loading...</div>
         ) : (
           <CategoryDiv
+            transition={transition}
+            setTransition={setTransition}
             categories={categories}
             currentGame={currentGame}
             setCurrentGame={setCurrentGame}

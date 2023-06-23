@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 const Special = () => {
   const [activeCarousel, setActiveCarousel] = useState(1);
   const [featuredGames, setFeaturedGames] = useState([]);
+  const [transition, setTransition] = useState(false);
 
   const chunk = (arr, size) => {
     const newArr = [];
@@ -32,11 +33,23 @@ const Special = () => {
   }, []);
 
   const handleAddCarousel = () => {
-    setActiveCarousel((prev) => (prev % 4) + 1);
+    setTransition(true);
+    setTimeout(() => {
+      setActiveCarousel((prev) => (prev % 4) + 1);
+      setTimeout(() => {
+        setTransition(false);
+      }, 10);
+    }, 600);
   };
 
   const handleMinusCarousel = () => {
-    setActiveCarousel((prev) => ((prev - 2 + 4) % 4) + 1);
+    setTransition(true);
+    setTimeout(() => {
+      setActiveCarousel((prev) => ((prev - 2 + 4) % 4) + 1);
+      setTimeout(() => {
+        setTransition(false);
+      }, 10);
+    }, 600);
   };
 
   return (
@@ -63,7 +76,8 @@ const Special = () => {
                 return (
                   <div
                     id="special-offers-group"
-                    className="flex transition duration-[400ms] cursor-pointer"
+                    className={`flex ${transition && "opacity-0"}
+                   transition-all transform-gpu duration-1000 ease-in-out`}
                     key={carousel.id}
                   >
                     {carousel.items.map((item, index) => {
