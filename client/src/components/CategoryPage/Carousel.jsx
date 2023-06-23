@@ -35,7 +35,7 @@ function Carousel({
 
   return (
     <div
-      id="carousel-container"
+      id="carousel"
       className="absolute w-[940px] mx-auto top-0 left-0 right-0"
     >
       <div
@@ -59,7 +59,7 @@ function Carousel({
       </div>
       <div
         id="right-arrow"
-        className=" mb-5 relative top-[270px] left-[950px] bg-cover flex-grow h-full flex items-center justify-center"
+        className=" mb-5 relative top-[290px] left-[950px] bg-cover flex-grow h-full flex items-center justify-center"
         style={{
           background:
             "linear-gradient( to left, rgba( 0, 0, 0, 0.3) 5%,rgba( 0, 0, 0, 0) 95%)",

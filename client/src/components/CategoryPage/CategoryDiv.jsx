@@ -23,22 +23,20 @@ function CategoryDiv({
         id="image-container"
         className="h-full w-full bg-cover bg-center"
       ></div>
-      <div id="carousel-container relative">
-        <div
-          id="carousel-title"
-          className="text-white text-5xl font-bold
-      absolute top-[320px] left-[855px] drop-shadow-lg"
-        >
-          {id}
-        </div>
-        <Carousel
-          transition={transition}
-          setTransition={setTransition}
-          categories={categories}
-          currentGame={currentGame}
-          setCurrentGame={setCurrentGame}
-        />
+      <div
+        id="carousel-title"
+        className="text-white text-5xl font-bold
+      relative bottom-[670px] right-[800px] drop-shadow-lg"
+      >
+        {id}
       </div>
+      <Carousel
+        transition={transition}
+        setTransition={setTransition}
+        categories={categories}
+        currentGame={currentGame}
+        setCurrentGame={setCurrentGame}
+      />
     </div>
   );
 }
