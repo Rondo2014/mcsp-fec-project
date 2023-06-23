@@ -36,7 +36,7 @@ function Carousel({
   return (
     <div
       id="carousel"
-      className="relative w-[940px] mx-auto top-[-600px] left-[-130px]  h-full flex flex-row items-center justify-center"
+      className="relative w-[970px] left-[-220px] mx-auto top-[-600px] h-full flex flex-row items-center justify-center"
     >
       <div
         id="left-arrow"
