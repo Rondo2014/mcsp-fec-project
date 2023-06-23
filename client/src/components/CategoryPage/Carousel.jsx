@@ -60,7 +60,7 @@ function Carousel({
       <div className="mx-[20px]">
         <div
           id="carousel"
-          className="h-[400px] w-[940px] mx-auto relative flex grid-cols-2"
+          className="h-[340px] w-[940px] mx-auto relative flex grid-cols-2"
         >
           <div
             id="game-image"
