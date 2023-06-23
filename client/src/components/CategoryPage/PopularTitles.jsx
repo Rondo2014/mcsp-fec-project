@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function PopularTitles({ categories }) {
   return (
@@ -16,7 +17,7 @@ function PopularTitles({ categories }) {
             key={category.id}
             className="h-[170px] w-[300px] mt-[0px] rounded-lg hover:shadow-md hover:shadow-[#fafafa9b] mr-2 hover:scale-105 transition duration-300 ease-in-out cursor-pointer"
           >
-            <img src={category.game_image} className="" />
+            <Link to={`/product/${category.id}`} ><img src={category.game_image} className="" /></Link>
             <div className="text-white text-center mt-[3px]">
               {category.title}
             </div>
