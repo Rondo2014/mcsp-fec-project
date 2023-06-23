@@ -7,6 +7,7 @@ import Signup from "./components/user/signup/Signup";
 import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import Wishlist from "./components/wishlist-page/wishlist";
+import CategoryPage from "./components/CategoryPage/CategoryPage";
 
 function App() {
   const storedRecentlyViewed = sessionStorage.getItem("recentlyViewed");
@@ -39,6 +40,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/wishlist" element={<Wishlist />} />
+        <Route path="/category/:id" element={<CategoryPage />} />
       </Routes>
       <Footer />
     </div>
