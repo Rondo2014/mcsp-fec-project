@@ -14,6 +14,7 @@ export const logUserIn = async (req, res) => {
     // if there is no username or password send an error
     if (username === "" || password === "")
       return res.status(400).json({ message: "Provide Username and Password" });
+    console.log(password);
 
     // send information through the query
     const results = await db.query(logIn, [username]);
@@ -24,13 +25,13 @@ export const logUserIn = async (req, res) => {
         message: "Username or Password Invalid",
         hint: "Be Sure You Have An Account",
       });
-
     // validate password with bcrypt compare method
     const user = results.rows[0];
-    const validPassword = await validatePassword(user, password);
-    console.log(user.password);
+    console.log(user);
+    await validatePassword(user, password);
+
     // if no data is fetched from the database send an error
-    if (results.rowCount === 0 || !validPassword)
+    if (results.rowCount === 0)
       return res.status(400).json({ message: "Username Or Password Invalid" });
 
     // create token containing user id

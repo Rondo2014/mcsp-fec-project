@@ -21,7 +21,7 @@ export const hasPasswordMiddleware = (req, res, next) => {
       next();
     });
   } else {
-    next();
+    return res.status(400).json({ message: "Incorrect Username Or Password" });
   }
 };
 

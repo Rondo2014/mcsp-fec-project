@@ -32,7 +32,7 @@ router.get("/game/:id", getGameById); // fetch single game
 /**
  * USER ROUTES
  */
-router.post("/login", logUserIn);
+router.post("/login", hasPasswordMiddleware, logUserIn);
 router.post("/register", hasPasswordMiddleware, registerUser);
 
 /**
