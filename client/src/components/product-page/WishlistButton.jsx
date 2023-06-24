@@ -4,8 +4,8 @@ import { useNavigate } from "react-router-dom";
 
 const WishlistButton = ({ gameId }) => {
   const [err, setErr] = useState("");
-  const [inWishlist, setInWishlist] = useState(false);
   const navigate = useNavigate();
+
   const addToWishlist = async () => {
     try {
       const response = await api.post(
@@ -19,7 +19,7 @@ const WishlistButton = ({ gameId }) => {
         setErr("Game added to ");
       }
     } catch (error) {
-      console.error(error);
+      console.log(error);
       if (error.response.data.error) {
         setErr(error?.response?.data?.error);
         setTimeout(() => {

@@ -20,15 +20,19 @@ export const hasPasswordMiddleware = (req, res, next) => {
       //continue with the post request
       next();
     });
+  }
+  // ensure password is long enough
+  if (password.length <= 5) {
+    return res.status(400).json({ message: "Password to short" });
   } else {
-    return res.status(400).json({ message: "Incorrect Username Or Password" });
+    next();
   }
 };
 
 // creates a token containing the users id and a unique signature
 export const createToken = (username) => {
   const token = jwt.sign({ id: username.id }, process.env.SECRET_ACCESS_TOKEN, {
-    expiresIn: "1h",
+    expiresIn: "1d",
   });
   return token;
 };

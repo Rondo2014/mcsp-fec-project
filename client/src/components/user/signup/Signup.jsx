@@ -16,8 +16,9 @@ const Signup = () => {
     e.preventDefault();
     setError(null);
 
-    form.password !== form.confirmPassword &&
-      setError("Passwords do not match");
+    if (form.password !== form.confirmPassword) {
+      return setError("Passwords do not match");
+    }
 
     form.age === false &&
       setError("You must be 13 years or older to register for an account");

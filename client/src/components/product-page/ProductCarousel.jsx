@@ -1,10 +1,14 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import WishlistButton from "./WishlistButton";
+import AuthProvider from "../context/AuthProvider";
+import { useNavigate } from "react-router-dom";
 
-const ProductCarousel = ({ game }) => {
+const ProductCarousel = ({ game, wishlistCount, wishlistRefresher }) => {
   const [carouselData, setCarouselData] = useState([]);
   const [mainDisplay, setMainDisplay] = useState(0);
   const [handlePosition, setHandlePosition] = useState(0);
+  const { auth } = useContext(AuthProvider);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const images = game.images.map((image) => ({
@@ -245,24 +249,40 @@ const ProductCarousel = ({ game }) => {
           </div>
         </div>
       </div>
-      <div className="absolute top-[739.5px] w-[940px] h-[64px] p-[16px] bg-[rgba(0,0,0,0.2)]">
-        <div className="flex">
-          <div className="flex flex-row">
-            <WishlistButton gameId={game.id} />
-            <div className="w-[73px] h-[30px] mr-[3px] bg-[#67c1f533] text-[#67c1f5] px-[15px] text-[15px] pt-[3px] rounded-sm cursor-pointer hover:bg-[#66C0F4] hover:text-white">
-              Follow
+      {auth.username ? (
+        <>
+          <div className="absolute top-[739.5px] w-[940px] h-[64px] p-[16px] bg-[rgba(0,0,0,0.2)]">
+            <div className="flex">
+              <div className="flex flex-row">
+                <WishlistButton gameId={game.id} />
+                <div className="w-[73px] h-[30px] mr-[3px] bg-[#67c1f533] text-[#67c1f5] px-[15px] text-[15px] pt-[3px] rounded-sm cursor-pointer hover:bg-[#66C0F4] hover:text-white">
+                  Follow
+                </div>
+                <div className="w-[72px] h-[30px] bg-[#67c1f533] text-[#67c1f5] px-[15px] text-[15px] pt-[3px] rounded-sm cursor-pointer hover:bg-[#66C0F4] hover:text-white">
+                  Ignore
+                </div>
+              </div>
             </div>
-            <div className="w-[72px] h-[30px] bg-[#67c1f533] text-[#67c1f5] px-[15px] text-[15px] pt-[3px] rounded-sm cursor-pointer hover:bg-[#66C0F4] hover:text-white">
-              Ignore
+            <div className="relative">
+              <div className="absolute right-0 top-[-30px] w-[72px] h-[30px] bg-[#67c1f533] text-[#67c1f5] px-[15px] text-[15px] pt-[3px] rounded-sm cursor-pointer hover:bg-[#66C0F4] hover:text-white">
+                Ignore
+              </div>
             </div>
           </div>
-        </div>
-        <div className="relative">
-          <div className="absolute right-0 top-[-30px] w-[72px] h-[30px] bg-[#67c1f533] text-[#67c1f5] px-[15px] text-[15px] pt-[3px] rounded-sm cursor-pointer hover:bg-[#66C0F4] hover:text-white">
-            Ignore
+        </>
+      ) : (
+        <div className="absolute top-[739.5px] w-[940px] h-[46px] p-[16px] bg-[rgba(0,0,0,0.2)]">
+          <div className="text-[#c6d4df] text-[12px] relative top-[-5px]">
+            <span
+              className="text-white hover:text-[#66C0F4] cursor-pointer"
+              onClick={() => navigate("/login")}
+            >
+              Sign in
+            </span>{" "}
+            to add this item to your wishlist, follow it, or mark it as ignored
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };
