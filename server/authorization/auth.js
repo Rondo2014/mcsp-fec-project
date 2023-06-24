@@ -54,7 +54,7 @@ export const headerDecoder = (header) => {
 // ensures user provided correct password
 export const validatePassword = (username, password) => {
   // compares password to hashed password using bcrypt
-  return bcrypt.compare(password, username.password);
+  return bcrypt.compare(username.password, password);
 };
 
 // unsures user provided valid email structure

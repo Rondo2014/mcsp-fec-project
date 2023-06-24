@@ -13,10 +13,6 @@ const ProductPage = ({ setRecentlyViewed, recentlyViewed }) => {
 
   const { id } = useParams();
 
-
-    
-  
-
   useEffect(() => {
     const getGame = async () => {
       try {

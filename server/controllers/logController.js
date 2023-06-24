@@ -27,10 +27,10 @@ export const logUserIn = async (req, res) => {
 
     // validate password with bcrypt compare method
     const user = results.rows[0];
-    validatePassword(user, password);
-
+    const validPassword = await validatePassword(user, password);
+    console.log(user.password);
     // if no data is fetched from the database send an error
-    if (results.rowCount === 0)
+    if (results.rowCount === 0 || !validPassword)
       return res.status(400).json({ message: "Username Or Password Invalid" });
 
     // create token containing user id
