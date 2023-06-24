@@ -10,7 +10,7 @@ const Sidebar = ({ recentlyViewed }) => {
   return (
     <div
       id="sidebar"
-      className="absolute left-[-225px] top-[-30px] pt-[31px] mb-10 "
+      className="opacity-0 2xl:opacity-100 absolute left-[-225px] top-[-30px] pt-[31px] mb-10 transform-gpu translate-x-36 2xl:translate-x-0 transition-all duration-500 ease-in-out"
     >
       <div
         id="sidebar block"

@@ -14,15 +14,29 @@ const TestCarousel = () => {
   const [hasSale, setHasSale] = useState(false);
   const [gameSale, setGameSale] = useState([]);
   const [id, setId] = useState([]);
+  const [transition, setTransition] = useState(false);
 
   const handleNext = () => {
-    setCarouselSlide((prevIndex) => (prevIndex + 1) % carouselData.length);
+    setTransition(true);
+    setTimeout(() => {
+      setCarouselSlide((prevIndex) => (prevIndex + 1) % carouselData.length);
+      setTimeout(() => {
+        setTransition(false);
+      }, 10);
+    }, 300);
   };
 
   const handlePrev = () => {
-    setCarouselSlide(
-      (prevIndex) => (prevIndex - 1 + carouselData.length) % carouselData.length
-    );
+    setTransition(true);
+    setTimeout(() => {
+      setCarouselSlide(
+        (prevIndex) =>
+          (prevIndex - 1 + carouselData.length) % carouselData.length
+      );
+      setTimeout(() => {
+        setTransition(false);
+      }, 10);
+    }, 300);
   };
 
   useEffect(() => {
@@ -30,7 +44,7 @@ const TestCarousel = () => {
       try {
         const response = await api.get("/api/games/recommended");
         const data = response.data;
-        console.log(data);
+        // console.log(data);
         const minipics = data.map((images) => {
           return images.images.slice(0, 4);
         });
@@ -73,7 +87,7 @@ const TestCarousel = () => {
   useEffect(() => {
     if (!carouselHover) {
       const interval = setInterval(() => {
-        setCarouselSlide((prevIndex) => (prevIndex + 1) % carouselData.length);
+        handleNext();
       }, 5000);
 
       return () => clearInterval(interval);
@@ -105,7 +119,9 @@ const TestCarousel = () => {
                     : miniPics[carouselSlide][miniHover]
                 }
                 alt={`Image ${carouselSlide + 1}`}
-                className="my-auto w-[600px] h-full drop-shadow-lg z-10"
+                className={`my-auto w-[600px] h-full drop-shadow-lg z-10 ${
+                  transition ? "opacity-0" : "opacity-100"
+                } transition-all duration-300 ease-in-out`}
                 style={{
                   boxShadow: "8px 0px 5px rgba(0, 0, 0, .8)",
                 }}
@@ -156,13 +172,19 @@ const TestCarousel = () => {
                     'url("https://store.cloudflare.steamstatic.com/public/images/v6/home/background_maincap_2.jpg")',
                 }}
               >
-                <div className="absolute left-4 top-8 text-[28px] text-white font-normal tracking-wide overflow-clip my-[-30px]">
+                <div
+                  className={`absolute left-4 top-8 text-[28px] text-white font-normal tracking-wide overflow-clip my-[-30px] ${
+                    transition ? "opacity-0" : "opacity-100"
+                  } transition-all duration-300 ease-in-out`}
+                >
                   {title[carouselSlide]}
                 </div>
                 <div className="grid grid-cols-2 items-center mt-[90px]">
                   {miniPics[carouselSlide].map((miniPic, index) => (
                     <div
-                      className="w-full px-2 py-3"
+                      className={`w-full px-2 py-3 ${
+                        transition ? "opacity-0" : "opacity-100"
+                      } transition-all duration-300 ease-in-out`}
                       key={`miniPic-${index}`}
                       onMouseEnter={() => setMiniHover(index)}
                       onMouseLeave={() => setMiniHover(null)}
@@ -175,13 +197,21 @@ const TestCarousel = () => {
                       />
                     </div>
                   ))}
-                  <div className="mt-[8px] pl-[6px] inline-block w-[298px]">
+                  <div
+                    className={`mt-[8px] pl-[6px] inline-block w-[298px] ${
+                      transition ? "opacity-0" : "opacity-100"
+                    } transition-all duration-300 ease-in-out`}
+                  >
                     <div className="text-[21px] font-extralight min-h-auto pr-[10px] pt-[6px] leading-[18px] text-[#fff] ml-4">
                       Now Available
                     </div>
                   </div>
                   {!hasSale[carouselSlide] ? (
-                    <div className="absolute b-[10px] left-[20px] leading-[15px] bottom-3 flex">
+                    <div
+                      className={`absolute b-[10px] left-[20px] leading-[15px] bottom-3 flex ${
+                        transition ? "opacity-0" : "opacity-100"
+                      } transition-all duration-300 ease-in-out`}
+                    >
                       <div className="p-0 flex items-center flex-row flex-shrink justify-end">
                         <div className="px-[6px] text-white text-[11px] leading-3 cursor-pointer">
                           {gamePrice[carouselSlide] !== 0
@@ -191,7 +221,11 @@ const TestCarousel = () => {
                       </div>
                     </div>
                   ) : (
-                    <div className="absolute b-[10px] left-[20px] leading-[15px] bottom-3 flex">
+                    <div
+                      className={`absolute b-[10px] left-[20px] leading-[15px] bottom-3 flex ${
+                        transition ? "opacity-0" : "opacity-100"
+                      } transition-all duration-300 ease-in-out`}
+                    >
                       <div className="p-0 flex items-center flex-row flex-shrink justify-end">
                         <div className="px-[6px] text-[#738895] text-[11px] leading-3 cursor-pointer">
                           <div
