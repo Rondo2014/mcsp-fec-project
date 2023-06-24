@@ -6,7 +6,7 @@ import Login from "./components/user/login/Login";
 import Signup from "./components/user/signup/Signup";
 import { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
-import Wishlist from "./components/wishlist-page/wishlist";
+import Wishlist from "./components/wishlist-page/Wishlist";
 import CategoryPage from "./components/CategoryPage/CategoryPage";
 
 function App() {

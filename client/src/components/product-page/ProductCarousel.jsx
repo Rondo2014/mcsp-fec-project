@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import WishlistButton from "./WishlistButton";
 
 const ProductCarousel = ({ game }) => {
   const [carouselData, setCarouselData] = useState([]);
@@ -241,6 +242,24 @@ const ProductCarousel = ({ game }) => {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+      <div className="absolute top-[739.5px] w-[940px] h-[64px] p-[16px] bg-[rgba(0,0,0,0.2)]">
+        <div className="flex">
+          <div className="flex flex-row">
+            <WishlistButton gameId={game.id} />
+            <div className="w-[73px] h-[30px] mr-[3px] bg-[#67c1f533] text-[#67c1f5] px-[15px] text-[15px] pt-[3px] rounded-sm cursor-pointer hover:bg-[#66C0F4] hover:text-white">
+              Follow
+            </div>
+            <div className="w-[72px] h-[30px] bg-[#67c1f533] text-[#67c1f5] px-[15px] text-[15px] pt-[3px] rounded-sm cursor-pointer hover:bg-[#66C0F4] hover:text-white">
+              Ignore
+            </div>
+          </div>
+        </div>
+        <div className="relative">
+          <div className="absolute right-0 top-[-30px] w-[72px] h-[30px] bg-[#67c1f533] text-[#67c1f5] px-[15px] text-[15px] pt-[3px] rounded-sm cursor-pointer hover:bg-[#66C0F4] hover:text-white">
+            Ignore
           </div>
         </div>
       </div>
