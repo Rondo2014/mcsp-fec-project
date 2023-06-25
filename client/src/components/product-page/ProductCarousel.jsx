@@ -45,7 +45,6 @@ const ProductCarousel = ({ game }) => {
     setHandlePosition((index / (carouselData.length - 1)) * 100);
   };
 
-  console.log(carouselData);
   return (
     <div className="w-[940px] mx-auto mb-[100px]">
       <div

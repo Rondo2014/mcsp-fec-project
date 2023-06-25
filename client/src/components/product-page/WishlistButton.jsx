@@ -1,11 +1,12 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import api from "../../api/axios.js";
 import { useNavigate } from "react-router-dom";
-import { AuthProvider } from "../context/AuthProvider.jsx";
+import WishlistContext from "../context/WishlistProvider.jsx";
 
 const WishlistButton = ({ gameId }) => {
   const [err, setErr] = useState("");
   const navigate = useNavigate();
+  const { getWishlist } = useContext(WishlistContext);
 
   const addToWishlist = async () => {
     try {
@@ -18,6 +19,7 @@ const WishlistButton = ({ gameId }) => {
       );
       if (response) {
         setErr("Game added to wishlist");
+        getWishlist();
       }
     } catch (error) {
       console.log(error);
@@ -44,7 +46,7 @@ const WishlistButton = ({ gameId }) => {
       >
         Add to your wishlist
       </div>
-      <div className="text-red-500 absolute top-5 right-[30%]">{`${err}`}</div>
+      <div className="text-[#57cbde] absolute top-5 right-[30%]">{`${err}`}</div>
     </div>
   );
 };

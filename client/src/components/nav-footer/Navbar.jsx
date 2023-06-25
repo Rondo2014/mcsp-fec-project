@@ -48,8 +48,6 @@ const Navbar = () => {
     }
   }, [isLoggedIn, username]);
 
-  console.log(NAVLINKS);
-
   return (
     <div className=" w-full text-[14px] font-normal bg-navbar px-4 tracking-wider z-50">
       <div id="content" className="w-[940px] h-[104px] m-auto z-50">
