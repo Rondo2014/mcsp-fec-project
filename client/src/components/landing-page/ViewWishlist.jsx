@@ -25,9 +25,6 @@ const ViewWishlist = () => {
       console.error(error);
       if (error.response.data.error) {
         setErr(error?.response?.data?.error);
-        setTimeout(() => {
-          return navigate("/login");
-        }, 3000);
       }
     }
   };
