@@ -32,23 +32,23 @@ const Wishlist = () => {
 
   return (
     <>
-      <div className="bg-[#202326]">
+      <div className="bg-[#202326] h-screen">
         <div className=" mx-auto max-w-[940px] container pt-8">
-          <div className="mb-6">
-            <div className="flex flex-row">
+          <div className="mb-3">
+            <div className="flex flex-row mb-5">
               <img
                 src={localStorage.getItem("profile_picture")}
-                className="w-[67px] h-[67px]"
+                className="w-[67px] h-[67px] "
               />
-              <h2 className="p-4 text-white text-[26px]">
-                {localStorage.getItem("username")} Wishlist
+              <h2 className="p-4 text-white text-[26px] capitalize">
+                {localStorage.getItem("username").toUpperCase()}'S WISHLIST
               </h2>
             </div>
             <div className=" flex flex-row">
               <input
                 type="text"
                 placeholder="Search by name or tag"
-                className="min-w-[556px] h-[38px] px-[10px] py-[7px] bg-[rgba(0,0,0,0.1)]  border-black border-[1px] rounded-sm"
+                className="min-w-[556px] h-[38px] px-[10px] py-[7px] bg-[rgba(0,0,0,0.1)]  border-black border-[1px] rounded-[4px]"
               />
               <div className="w-full pl-[20px] text-white">
                 <div className="flex flex-row">
@@ -72,8 +72,9 @@ const Wishlist = () => {
             </div>
           </div>
         </div>
+
+        <WishlistRow game={game} />
       </div>
-      <WishlistRow game={game} />
     </>
   );
 };
