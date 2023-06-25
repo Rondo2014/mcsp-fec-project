@@ -14,9 +14,12 @@ import AuthContext from "../context/AuthProvider";
 
 const LandingPage = ({ recentlyViewed }) => {
   const [allGames, setAllGames] = useState([]);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const { auth } = useContext(AuthContext);
 
-  const isLoggedIn = auth?.token;
+  useEffect(() => {
+    auth.token ? setIsLoggedIn(true) : setIsLoggedIn(false);
+  }, [auth]);
 
   useEffect(() => {
     const getGames = async () => {
@@ -33,7 +36,7 @@ const LandingPage = ({ recentlyViewed }) => {
   return (
     <div className="w-full">
       <div className=" w-[972px] relative mx-auto">
-        <StoreNavBar />
+        <StoreNavBar isLoggedIn={isLoggedIn} />
         <Sidebar recentlyViewed={recentlyViewed} />
         <TestCarousel />
         <Special />

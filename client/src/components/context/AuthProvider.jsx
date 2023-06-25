@@ -25,24 +25,28 @@ export const AuthProvider = ({ children }) => {
   };
 
   const handleLogin = async (username, password) => {
-    const response = await api.post(
-      "/api/login",
-      JSON.stringify({ username, password }),
-      {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    try {
+      const response = await api.post(
+        "/api/login",
+        JSON.stringify({ username, password }),
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      console.log(response.data);
+      const token = response?.data?.token;
+      const profilePic = response?.data?.results.profile_pic;
+      localStorage.setItem("token", token);
+      localStorage.setItem("username", username);
+      localStorage.setItem("profile_picture", profilePic);
+      setAuth({ token });
+    } catch (error) {
+      console.log(error);
+      return false;
+    }
     // console.log(response.data);
-    const token = response?.data?.token;
-    const profilePic = response?.data?.results.profile_pic;
-
-    localStorage.setItem("token", token);
-    localStorage.setItem("username", username);
-    localStorage.setItem("profile_picture", profilePic);
-
-    setAuth({ token });
     return true;
   };
 

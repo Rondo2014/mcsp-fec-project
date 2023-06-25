@@ -1,7 +1,7 @@
 import ViewWishlist from "./ViewWishlist";
 import { STORE_NAV_LINKS_HOVER, STORE_NAV_LINKS } from "./utils";
 
-const StoreNavBar = () => {
+const StoreNavBar = ({ isLoggedIn }) => {
   const handleHover = (e) => {
     e.target.style.background =
       "linear-gradient(90deg,  rgba(58, 120, 177, 0.8) 40.38%, rgba(62, 103, 150, 0.919) 100.23%)";
@@ -32,13 +32,15 @@ const StoreNavBar = () => {
                   className="absolute top-[-25px] right-0"
                 >
                   <div className="flex flex-row">
-                    <ViewWishlist />
-                    <div
-                      id="wishlist-button"
-                      className="w-[96px] h-[20px] bg-[#6e8902] px-[25px] pt-[3px]  text-[#a1cd07] text-[11px] uppercase text-center hover:bg-[#88af04] hover:text-[black] cursor-pointer"
-                    >
-                      Cart(0)
-                    </div>
+                    {isLoggedIn && <ViewWishlist />}
+                    {isLoggedIn && (
+                      <div
+                        id="wishlist-button"
+                        className="w-[96px] h-[20px] bg-[#6e8902] px-[25px] pt-[3px]  text-[#a1cd07] text-[11px] uppercase text-center hover:bg-[#88af04] hover:text-[black] cursor-pointer"
+                      >
+                        Cart(0)
+                      </div>
+                    )}
                   </div>
                 </div>
                 <div id="store-nav" className="flex h-[35px]">

@@ -1,11 +1,19 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import api from "../../api/axios.js";
 import { useNavigate } from "react-router-dom";
+import AuthContext from "../context/AuthProvider.jsx";
 
 const ViewWishlist = () => {
   const [wishlistLength, setWishlistLength] = useState([]);
   const [err, setErr] = useState("");
   const navigate = useNavigate();
+  const { auth } = useContext(AuthContext);
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    auth.token ? setIsLoggedIn(true) : setIsLoggedIn(false);
+  }, [auth]);
 
   useEffect(() => {
     getWishlist();
