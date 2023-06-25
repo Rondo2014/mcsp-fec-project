@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import api from "../../api/axios.js";
 import { useNavigate } from "react-router-dom";
 
-const ViewWishlist = ({ wishlistCount }) => {
+const ViewWishlist = () => {
   const [wishlistLength, setWishlistLength] = useState([]);
   const [err, setErr] = useState("");
   const navigate = useNavigate();
@@ -20,7 +20,7 @@ const ViewWishlist = ({ wishlistCount }) => {
       if (data.data.message) {
         return setWishlistLength(0);
       }
-      setWishlistLength(data.data);
+      setWishlistLength(data.data.length);
     } catch (error) {
       console.error(error);
       if (error.response.data.error) {
@@ -45,7 +45,7 @@ const ViewWishlist = ({ wishlistCount }) => {
       className="w-[118px] h-[20px] px-[25px] pt-[3px] bg-[#93b3c8] text-white text-[11px] uppercase text-center mr-[1px] hover:bg-[#DCDEDF]  cursor-pointer] hover:text-[black] cursor-pointer"
       onClick={wishlistClickHandler}
     >
-      Wishlist({wishlistLength.length})
+      Wishlist({wishlistLength != null ? wishlistLength : 0})
     </div>
   );
 };

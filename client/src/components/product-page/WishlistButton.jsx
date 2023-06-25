@@ -1,6 +1,7 @@
 import { useState } from "react";
 import api from "../../api/axios.js";
 import { useNavigate } from "react-router-dom";
+import { AuthProvider } from "../context/AuthProvider.jsx";
 
 const WishlistButton = ({ gameId }) => {
   const [err, setErr] = useState("");
@@ -16,7 +17,7 @@ const WishlistButton = ({ gameId }) => {
         }
       );
       if (response) {
-        setErr("Game added to ");
+        setErr("Game added to wishlist");
       }
     } catch (error) {
       console.log(error);

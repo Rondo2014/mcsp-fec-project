@@ -3,7 +3,7 @@ import WishlistButton from "./WishlistButton";
 import AuthProvider from "../context/AuthProvider";
 import { useNavigate } from "react-router-dom";
 
-const ProductCarousel = ({ game, wishlistCount, wishlistRefresher }) => {
+const ProductCarousel = ({ game }) => {
   const [carouselData, setCarouselData] = useState([]);
   const [mainDisplay, setMainDisplay] = useState(0);
   const [handlePosition, setHandlePosition] = useState(0);
@@ -22,7 +22,7 @@ const ProductCarousel = ({ game, wishlistCount, wishlistRefresher }) => {
     }));
 
     setCarouselData([...videos, ...images]);
-  }, [game]);
+  }, [game, auth.username]);
 
   const handleLeftClick = () => {
     const newIndex =

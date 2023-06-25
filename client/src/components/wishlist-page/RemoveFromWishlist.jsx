@@ -1,4 +1,3 @@
-import { useParams } from "react-router-dom";
 import api from "../../api/axios.js";
 import AuthProvider from "../context/AuthProvider.jsx";
 import { useContext } from "react";
