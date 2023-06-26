@@ -2,7 +2,7 @@
 INSERT INTO games (title, pub_date, on_sale, category, tags, game_image, special_img, price, sale_deal, deal_ends, description, developer, publisher, reviews, images, videos)
 VALUES
     ('The Witcher® 3: Wild Hunt', 'May 18, 2015', FALSE, ARRAY['RPG'], ARRAY['RPG', 'Open World', 'Story Rich'], 'https://cdn.akamai.steamstatic.com/steam/apps/292030/header.jpg?t=1675178392', NULL, 39.99, NULL, NULL,'You are Geralt of Rivia, mercenary monster slayer. Before you stands a war-torn, monster-infested continent you can explore at will. Your current contract? Tracking down Ciri — the Child of Prophecy, a living weapon that can alter the shape of the world.',
-    'Chris Antoni', 'Chris Antoni', ARRAY['Great game!', 'Highly addictive.'], 
+    'CD PROJEKT RED', 'CD PROJEKT RED', ARRAY['Great game!', 'Highly addictive.'], 
     ARRAY['https://cdn.akamai.steamstatic.com/steam/apps/292030/ss_5710298af2318afd9aa72449ef29ac4a2ef64d8e.1920x1080.jpg?t=1675178392','https://cdn.akamai.steamstatic.com/steam/apps/292030/ss_0901e64e9d4b8ebaea8348c194e7a3644d2d832d.1920x1080.jpg?t=1675178392','https://cdn.akamai.steamstatic.com/steam/apps/292030/ss_112b1e176c1bd271d8a565eacb6feaf90f240bb2.1920x1080.jpg?t=1675178392','https://cdn.akamai.steamstatic.com/steam/apps/292030/ss_d1b73b18cbcd5e9e412c7a1dead3c5cd7303d2ad.1920x1080.jpg?t=1675178392','https://cdn.akamai.steamstatic.com/steam/apps/292030/ss_107600c1337accc09104f7a8aa7f275f23cad096.1920x1080.jpg?t=1675178392'],
     ARRAY['https://cdn.akamai.steamstatic.com/steam/apps/256927229/movie480_vp9.webm?t=1674829921']),
 
