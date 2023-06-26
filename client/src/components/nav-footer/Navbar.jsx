@@ -56,7 +56,7 @@ const Navbar = () => {
           className=" float-left pt-[30px] w-[176px] h-[44px] mr-5"
         >
           <span id="logo-holder">
-            <a href="/">
+            <Link to="/">
               <img
                 src={
                   "https://store.cloudflare.steamstatic.com/public/shared/images/header/logo_steam.svg?t=962016"
@@ -64,7 +64,7 @@ const Navbar = () => {
                 alt="logo"
                 className="w-[200px] aspect-auto"
               />
-            </a>
+            </Link>
           </span>
         </div>
         <div id="nav-container">
@@ -104,13 +104,13 @@ const Navbar = () => {
                 onMouseLeave={handleStoreLeave}
               >
                 {NAV_SUBLINKS_STORE.map((link) => (
-                  <a
+                  <Link
                     key={link.name}
-                    href="/"
+                    to="/"
                     className="uppercase text-[11px] text-[#b8b6b4] px-[10px] block py-1 hover:text-white"
                   >
                     {link.name}
-                  </a>
+                  </Link>
                 ))}
               </div>
             )}

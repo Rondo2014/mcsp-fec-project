@@ -23,9 +23,10 @@ export const viewWishlist = async (req, res) => {
 
 export const AddToWishlist = async (req, res) => {
   try {
+    // token from header
     const token = headerDecoder(req.headers.authorization);
     const { gameId } = req.body;
-
+    //assign id to users id
     const id = Number(token.id);
 
     // if game ID is NaN return an error
@@ -57,8 +58,10 @@ export const AddToWishlist = async (req, res) => {
 
 export const removeFromWishlist = async (req, res) => {
   try {
+    // token from header
     const token = headerDecoder(req.headers.authorization);
     const { gameId } = req.body;
+    // assign id to users id
     const id = Number(token.id);
 
     // if game ID is NaN return an error
