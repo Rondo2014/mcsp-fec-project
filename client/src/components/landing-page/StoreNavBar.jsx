@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import ViewWishlist from "./ViewWishlist";
 import { STORE_NAV_LINKS_HOVER, STORE_NAV_LINKS } from "./utils";
 
@@ -56,8 +57,8 @@ const StoreNavBar = ({ isLoggedIn }) => {
                     </div>
                   ))}
                   {STORE_NAV_LINKS.map((link, index) => (
-                    <a
-                      href="/"
+                    <Link
+                      to={"/"}
                       key={index}
                       className="p-[1px] inline-block cur whitespace-nowrap text-[#e5e5e5] text-[13px] leading-8 font-bold pr-[10px] pl-[15px]"
                       style={{ textShadow: "0px 2px 3px rgba(0, 0, 0, 0.3)" }}
@@ -65,7 +66,7 @@ const StoreNavBar = ({ isLoggedIn }) => {
                       onMouseLeave={handleHoverLeave}
                     >
                       {link}
-                    </a>
+                    </Link>
                   ))}
                   <div
                     id="search-flex-spacer"

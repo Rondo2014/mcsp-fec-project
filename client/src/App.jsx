@@ -21,7 +21,7 @@ function App() {
   }, [recentlyViewed]);
 
   return (
-    <div className="">
+    <div className="h-full relative">
       <Navbar />
       <Routes>
         <Route

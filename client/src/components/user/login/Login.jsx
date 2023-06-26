@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import QR from "../../../assets/QR.png";
 import LoginBottom from "./LoginBottom";
 import AuthContext from "../../context/AuthProvider";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const { handleLogin } = useContext(AuthContext);
@@ -105,12 +105,12 @@ const Login = () => {
                     >
                       {error ? error : success ? "Success!" : ""}
                     </div>
-                    <a
-                      href="/signup"
+                    <Link
+                      to={"/signup"}
                       className="text-[#afafaf] text-[12px] cursor-pointer underline text-center"
                     >
                       Help, I can't sign in
-                    </a>
+                    </Link>
                   </form>
                   <div className="flex-0 grid gap-1 ml-[40px]">
                     <div>

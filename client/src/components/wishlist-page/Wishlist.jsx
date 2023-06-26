@@ -36,7 +36,7 @@ const Wishlist = () => {
 
   return (
     <>
-      <div className="bg-[#202326] bg-cover h-screen mb-20">
+      <div className="bg-[#202326] bg-cover ">
         <div className=" mx-auto max-w-[940px] container pt-8">
           <div className="mb-3">
             <div className="flex flex-row mb-5">
