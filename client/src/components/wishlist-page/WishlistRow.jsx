@@ -4,7 +4,7 @@ import RemoveFromWishlist from "./RemoveFromWishlist";
 const WishlistRow = ({ game }) => {
   return (
     <div
-      className="mx-auto w-[940px] pt-3"
+      className="mx-auto w-[940px] pt-3 "
       style={{ borderTop: "1px solid #4d4f51" }}
     >
       {game !== null &&

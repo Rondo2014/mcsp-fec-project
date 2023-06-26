@@ -7,8 +7,13 @@ const ProductCarousel = ({ game }) => {
   const [carouselData, setCarouselData] = useState([]);
   const [mainDisplay, setMainDisplay] = useState(0);
   const [handlePosition, setHandlePosition] = useState(0);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const { auth } = useContext(AuthProvider);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    auth.token ? setIsLoggedIn(true) : setIsLoggedIn(false);
+  }, [auth]);
 
   useEffect(() => {
     const images = game.images.map((image) => ({
@@ -43,6 +48,11 @@ const ProductCarousel = ({ game }) => {
   const handleMiniClick = (index) => {
     setMainDisplay(index);
     setHandlePosition((index / (carouselData.length - 1)) * 100);
+  };
+
+  const handleQueueClick = () => {
+    navigate(`/product/${Math.ceil(Math.random() * 24)}`);
+    location.reload();
   };
 
   return (
@@ -248,7 +258,7 @@ const ProductCarousel = ({ game }) => {
           </div>
         </div>
       </div>
-      {auth.username ? (
+      {isLoggedIn ? (
         <>
           <div className="absolute top-[739.5px] w-[940px] h-[64px] p-[16px] bg-[rgba(0,0,0,0.2)]">
             <div className="flex">
@@ -263,8 +273,12 @@ const ProductCarousel = ({ game }) => {
               </div>
             </div>
             <div className="relative">
-              <div className="absolute right-0 top-[-30px] w-[72px] h-[30px] bg-[#67c1f533] text-[#67c1f5] px-[15px] text-[15px] pt-[3px] rounded-sm cursor-pointer hover:bg-[#66C0F4] hover:text-white">
-                Ignore
+              {" "}
+              <div
+                className="absolute right-0 top-[-30px] w-[174px] h-[30px] bg-[#67c1f533] text-[#67c1f5] px-[15px] text-[15px] pt-[3px] rounded-sm cursor-pointer hover:bg-[#66C0F4] hover:text-white"
+                onClick={handleQueueClick}
+              >
+                View Your Queue {`=>`}
               </div>
             </div>
           </div>

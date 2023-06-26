@@ -11,9 +11,7 @@ const ProductPage = ({ setRecentlyViewed, recentlyViewed }) => {
   const [game, setGame] = useState({});
   const [loading, setIsLoading] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
   const { auth } = useContext(AuthContext);
-
   const { id } = useParams();
 
   useEffect(() => {
