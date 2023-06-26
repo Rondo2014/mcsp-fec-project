@@ -106,7 +106,7 @@ const ProductCarousel = ({ game }) => {
                     id="date"
                     className="max-h-[30px] overflow-hidden text-[#8f98a0] leading-4"
                   >
-                    place holder
+                    {game.pub_date}
                   </div>
                 </div>
                 <div id="developer" className="flex leading-4">
