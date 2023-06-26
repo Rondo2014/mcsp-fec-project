@@ -92,7 +92,7 @@ const Navbar = () => {
             id="nav-content"
             className="relative z-50 opacity-100 top-[64px] pointer-events-auto transition-opacity duration-300 ease-out"
             style={{
-              right: showStore ? "-220px" : "-275px",
+              right: showStore ? "-200px" : "-255px",
               opacity: showCommunity || showStore ? "1" : "0",
             }}
           >
