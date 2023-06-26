@@ -41,7 +41,11 @@ const Wishlist = () => {
                 className="w-[67px] h-[67px] "
               />
               <h2 className="p-4 text-white text-[26px] capitalize">
-                {localStorage.getItem("username").toUpperCase()}'S WISHLIST
+                {localStorage.getItem("username")
+                  ? `${localStorage
+                      .getItem("username")
+                      .toUpperCase()}'S WISHLIST`
+                  : `Sign In to View Wishlist`}
               </h2>
             </div>
             <div className=" flex flex-row">

@@ -119,7 +119,7 @@ const TestCarousel = () => {
                     : miniPics[carouselSlide][miniHover]
                 }
                 alt={`Image ${carouselSlide + 1}`}
-                className={`my-auto w-[600px] h-full drop-shadow-lg z-10 ${
+                className={`my-auto min-w-[616px] h-full drop-shadow-lg z-10 ${
                   transition ? "opacity-0" : "opacity-100"
                 } transition-all duration-300 ease-in-out`}
                 style={{
@@ -130,7 +130,7 @@ const TestCarousel = () => {
 
               <div
                 id="arrow-left"
-                className="left-[-28px] absolute top-[13%] w-auto h-auto py-9 px-[11px] cursor-pointer"
+                className="left-[-28px] absolute top-[15%] w-auto h-auto py-9 px-[11px] cursor-pointer"
                 style={{
                   background:
                     "linear-gradient( to right, rgba( 0, 0, 0, 0.3) 5%,rgba( 0, 0, 0, 0) 95%)",
@@ -148,7 +148,7 @@ const TestCarousel = () => {
               </div>
               <div
                 id="arrow-right"
-                className="right-[-28px] absolute top-[13%] w-auto h-auto py-9 px-[11px] cursor-pointer"
+                className="right-[-28px] absolute top-[15%] w-auto h-auto py-9 px-[11px] cursor-pointer"
                 style={{
                   background:
                     "linear-gradient( to left, rgba( 0, 0, 0, 0.3) 5%,rgba( 0, 0, 0, 0) 95%)",
@@ -179,12 +179,12 @@ const TestCarousel = () => {
                 >
                   {title[carouselSlide]}
                 </div>
-                <div className="grid grid-cols-2 items-center mt-[90px]">
+                <div className="grid grid-cols-2 items-center mt-[90px] gap-x-6">
                   {miniPics[carouselSlide].map((miniPic, index) => (
                     <div
                       className={`w-full px-2 py-3 ${
                         transition ? "opacity-0" : "opacity-100"
-                      } transition-all duration-300 ease-in-out`}
+                      } transition-all duration-300 ease-in-out relative right-[30px]`}
                       key={`miniPic-${index}`}
                       onMouseEnter={() => setMiniHover(index)}
                       onMouseLeave={() => setMiniHover(null)}
@@ -193,7 +193,7 @@ const TestCarousel = () => {
                       <img
                         src={miniPic}
                         alt={`MiniPic ${carouselSlide}`}
-                        className="h-[69px] w-[162px] hover:brightness-125 cursor-pointer mt-[-13px] mr-[-10px]"
+                        className="h-[69px] min-w-[162px] hover:brightness-125 cursor-pointer mt-[-13px] mr-[-10px]"
                       />
                     </div>
                   ))}
