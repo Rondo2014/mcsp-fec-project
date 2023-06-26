@@ -36,7 +36,7 @@ const ProductCarousel = ({ game }) => {
     setMainDisplay(
       (prevIndex) => (prevIndex - 1 + carouselData.length) % carouselData.length
     );
-    setHandlePosition((newIndex / (carouselData.length - 1)) * 90);
+    setHandlePosition((newIndex / carouselData.length) * 90);
     carouselData.length - 1 === newIndex || carouselData.length - 2 === newIndex
       ? setLastSlide(true)
       : setLastSlide(false);
@@ -64,8 +64,6 @@ const ProductCarousel = ({ game }) => {
     navigate(`/product/${Math.ceil(Math.random() * 24)}`);
     location.reload();
   };
-
-  console.log(lastSlide);
 
   return (
     <div className="w-[940px] mx-auto mb-[100px]">
