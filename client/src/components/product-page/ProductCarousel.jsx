@@ -8,6 +8,7 @@ const ProductCarousel = ({ game }) => {
   const [mainDisplay, setMainDisplay] = useState(0);
   const [handlePosition, setHandlePosition] = useState(0);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [lastSlide, setLastSlide] = useState(false);
   const { auth } = useContext(AuthProvider);
   const navigate = useNavigate();
 
@@ -35,25 +36,36 @@ const ProductCarousel = ({ game }) => {
     setMainDisplay(
       (prevIndex) => (prevIndex - 1 + carouselData.length) % carouselData.length
     );
-    setHandlePosition((newIndex / (carouselData.length - 1)) * 100);
+    setHandlePosition((newIndex / (carouselData.length - 1)) * 90);
+    carouselData.length - 1 === newIndex || carouselData.length - 2 === newIndex
+      ? setLastSlide(true)
+      : setLastSlide(false);
   };
 
   const handleRightClick = () => {
     const newIndex =
       (mainDisplay + 1 + carouselData.length) % carouselData.length;
     setMainDisplay((prevIndex) => (prevIndex + 1) % carouselData.length);
-    setHandlePosition((newIndex / (carouselData.length - 1)) * 100);
+    setHandlePosition((newIndex / (carouselData.length - 1)) * 90);
+    carouselData.length - 1 === newIndex || carouselData.length - 2 === newIndex
+      ? setLastSlide(true)
+      : setLastSlide(false);
   };
 
   const handleMiniClick = (index) => {
     setMainDisplay(index);
-    setHandlePosition((index / (carouselData.length - 1)) * 100);
+    setHandlePosition((index / (carouselData.length - 1)) * 90);
+    carouselData.length - 1 === index || carouselData.length - 2 === index
+      ? setLastSlide(true)
+      : setLastSlide(false);
   };
 
   const handleQueueClick = () => {
     navigate(`/product/${Math.ceil(Math.random() * 24)}`);
     location.reload();
   };
+
+  console.log(lastSlide);
 
   return (
     <div className="w-[940px] mx-auto mb-[100px]">
@@ -180,7 +192,11 @@ const ProductCarousel = ({ game }) => {
                 id="highlight-strip"
                 className="mt-[4px] relative h-[69px] mb-1 overflow-x-hidden overflow-y-hidden z-40 w-auto"
               >
-                <div className="w-[1940px] left-0 absolute overflow-clip">
+                <div
+                  className={`w-[1940px] left-0 absolute overflow-clip  ${
+                    lastSlide ? "-translate-x-32" : "translate-x-0"
+                  } duration-300 transition-all`}
+                >
                   {carouselData.map((item, index) => (
                     <div
                       className={`float-left h-[65px] w-[116px] cursor-pointer text-center m-[2px] bg-black relative ${
