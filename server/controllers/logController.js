@@ -17,7 +17,7 @@ export const logUserIn = async (req, res) => {
     console.log(password);
 
     // send information through the query
-    const results = await db.query(logIn, [username]);
+    const results = await db.query(logIn, [username.toUpperCase()]);
 
     // if results return no data send error
     if (results.rowCount === 0)
@@ -65,17 +65,19 @@ export const registerUser = async (req, res) => {
         .json({ message: "Provide Username, Email, and Password" });
 
     // if email is not the correct format send user a message.
-    if (!validateEmail(email))
+    if (!validateEmail(email.toLowerCase()))
       return res.status(400).json({ message: "Invalid Email Address" });
 
     // if username exists in database return message to user
-    const checkForUsername = await db.query(usernameCheck, [username]);
+    const checkForUsername = await db.query(usernameCheck, [
+      username.toUpperCase(),
+    ]);
 
     if (checkForUsername.rowCount !== 0)
       return res.status(400).json({ message: "Username is Taken" });
 
     // if email exists in database already return message to user
-    const checkForEmail = await db.query(emailCheck, [email]);
+    const checkForEmail = await db.query(emailCheck, [email.toLowerCase()]);
 
     if (checkForEmail.rowCount !== 0)
       return res.status(400).json({ message: "Email Address Already In Use" });
