@@ -69,10 +69,10 @@ const Navbar = () => {
         </div>
         <div id="nav-container">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.name}
               className="block cursor-pointer relative pt-[45px] px-[7px] pb-[7px] leading-4 float-left text-[14px] text-[#b8b6b4] uppercase hover:text-white"
-              href={link.path}
+              to={link.path}
               onMouseEnter={() => {
                 if (link.name === "Store") {
                   setShowStore(true);
@@ -86,7 +86,7 @@ const Navbar = () => {
               }}
             >
               {link.name}
-            </a>
+            </Link>
           ))}
           <div
             id="nav-content"
@@ -239,7 +239,7 @@ const Navbar = () => {
               >
                 <img
                   src={profilePic}
-                  className="w-[32px] h-[32px] p-[1px] border-none "
+                  className="w-[32px] h-[32px] p-[1px] border-none"
                   alt=""
                 />
               </a>
