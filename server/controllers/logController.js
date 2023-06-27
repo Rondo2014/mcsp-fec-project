@@ -81,7 +81,11 @@ export const registerUser = async (req, res) => {
       return res.status(400).json({ message: "Email Address Already In Use" });
 
     // send data to database
-    const results = await db.query(postUser, [username, email, password]);
+    const results = await db.query(postUser, [
+      username.toUpperCase(),
+      email.toLowerCase(),
+      password,
+    ]);
 
     // get user from database
     const user = results.rows[0];

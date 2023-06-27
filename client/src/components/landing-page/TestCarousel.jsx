@@ -129,7 +129,7 @@ const TestCarousel = () => {
                     : miniPics[carouselSlide][miniHover]
                 }
                 alt={`Image ${carouselSlide + 1}`}
-                className={`my-auto w-[600px] h-full drop-shadow-lg z-10 ${
+                className={`my-auto min-w-[616px] h-full drop-shadow-lg z-10 ${
                   transition ? "opacity-0" : "opacity-100"
                 } transition-all duration-1000 ease-in-out`}
                 style={{
@@ -140,7 +140,7 @@ const TestCarousel = () => {
 
               <div
                 id="arrow-left"
-                className="left-[-28px] absolute top-[13%] w-auto h-auto py-9 px-[11px] cursor-pointer"
+                className="left-[-28px] absolute top-[15%] w-auto h-auto py-9 px-[11px] cursor-pointer"
                 style={{
                   background:
                     "linear-gradient( to right, rgba( 0, 0, 0, 0.3) 5%,rgba( 0, 0, 0, 0) 95%)",
@@ -158,7 +158,7 @@ const TestCarousel = () => {
               </div>
               <div
                 id="arrow-right"
-                className="right-[-28px] absolute top-[13%] w-auto h-auto py-9 px-[11px] cursor-pointer"
+                className="right-[-28px] absolute top-[15%] w-auto h-auto py-9 px-[11px] cursor-pointer"
                 style={{
                   background:
                     "linear-gradient( to left, rgba( 0, 0, 0, 0.3) 5%,rgba( 0, 0, 0, 0) 95%)",
