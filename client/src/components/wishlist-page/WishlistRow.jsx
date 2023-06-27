@@ -65,7 +65,7 @@ const WishlistRow = ({ game }) => {
                               ${item.price}
                             </div>
                           </div>
-                          <div className="absolute w-[108px] h-[30px] text-center bg-[#69a01f] top-[3px] right-[3px] text-[#b6d985] rounded-[2px] pt-[2.7px]">
+                          <div className="absolute w-[108px] h-[30px] text-center bg-[#69a01f] top-[3px] right-[3px] text-[#b6d985] hover:bg-[#7fa24e] hover:text-white rounded-[2px] pt-[2.7px] cursor-pointer">
                             <span className="">Add to Cart</span>
                           </div>
                         </div>
@@ -83,7 +83,7 @@ const WishlistRow = ({ game }) => {
                           {item.tags.map((tag, index) => (
                             <span
                               key={index}
-                              className="inline-block mr-[4px] border px-[2px] border-white border-opacity-20 text-gray-500 text-[12px] rounded cursor-pointer"
+                              className="inline-block mr-[4px] border px-[2px] border-white border-opacity-20 text-gray-500 text-[12px] rounded cursor-pointer hover:bg-[#9d9d9d27]"
                             >
                               {tag}
                             </span>

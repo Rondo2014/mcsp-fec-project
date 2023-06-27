@@ -15,7 +15,7 @@ CREATE TABLE users(
 
 CREATE TABLE games(
     id          SERIAL PRIMARY KEY,
-    users_id    VARCHAR(15) REFERENCES users(id),
+    users_id    INT REFERENCES users(id),
     title       VARCHAR(50) NOT NULL,
     pub_date    TEXT NOT NULL,
     on_sale     BOOLEAN DEFAULT FALSE,
