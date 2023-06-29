@@ -1,5 +1,6 @@
 import { createContext, useState, useEffect } from "react";
 import api from "../../api/axios.js";
+import AuthContext from "./AuthProvider.jsx";
 
 const WishlistContext = createContext({});
 
@@ -7,6 +8,8 @@ export const WishlistProvider = ({ children }) => {
   const [wishlist, setWishlist] = useState([]);
   const [err, setErr] = useState("");
   const [wishlistLength, setWishlistLength] = useState(0);
+
+  const { isLoggedIn } = AuthContext;
 
   const getWishlist = async () => {
     try {
@@ -27,7 +30,9 @@ export const WishlistProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    getWishlist();
+    if (isLoggedIn) {
+      getWishlist();
+    }
   }, [wishlistLength]);
   return (
     <WishlistContext.Provider

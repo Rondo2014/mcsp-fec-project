@@ -9,11 +9,11 @@ import { HashRouter } from "react-router-dom";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <HashRouter basename="/">
-      <WishlistProvider>
-        <AuthProvider>
+      <AuthProvider>
+        <WishlistProvider>
           <App />
-        </AuthProvider>
-      </WishlistProvider>
+        </WishlistProvider>
+      </AuthProvider>
     </HashRouter>
   </React.StrictMode>
 );
