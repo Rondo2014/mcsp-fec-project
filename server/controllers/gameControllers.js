@@ -38,7 +38,8 @@ export const getGameById = async (req, res) => {
 // fetches games that are on the recommended carousel
 export const getRecommendedGames = async (req, res) => {
   try {
-    if (client.exists("recommendedGames") === 1) {
+    if ((await client.exists("recommendedGames")) === 1) {
+      console.log("Fetching recommended games from cache");
       const data = await client.get("recommendedGames");
       return res.status(200).json(JSON.parse(data));
     } else {
@@ -47,11 +48,8 @@ export const getRecommendedGames = async (req, res) => {
         return res.status(400).json({ message: "No Recommended Games" });
       }
       // Store the data in the cache
-      client.set(
-        "recommendedGames",
-        3600, // Cache expiration time in seconds (e.g., 1 hour)
-        JSON.stringify(results.rows)
-      );
+      client.set("recommendedGames", JSON.stringify(results.rows));
+      client.expire("recommendedGames", 60 * 60 * 86_400);
       // Return the data to the client
       res.status(200).json(results.rows);
     }
@@ -64,7 +62,8 @@ export const getRecommendedGames = async (req, res) => {
 // fetches games that are on sale in the database
 export const getFeaturedGames = async (req, res) => {
   try {
-    if (client.exists("featuredGames") === 1) {
+    if ((await client.exists("featuredGames")) === 1) {
+      console.log("Fetching featured games from cache");
       const data = await client.get("featuredGames");
       return res.status(200).json(JSON.parse(data));
     } else {
@@ -73,11 +72,8 @@ export const getFeaturedGames = async (req, res) => {
       if (results.rowCount === 0)
         return res.status(400).json({ message: "No Featured Games" });
 
-      client.set(
-        "featuredGames",
-        3600, // Cache expiration time in seconds (e.g., 1 hour)
-        JSON.stringify(results.rows)
-      );
+      client.set("featuredGames", JSON.stringify(results.rows));
+      client.expire("featuredGames", 60 * 60 * 86_400);
       res.status(200).json(results.rows);
     }
   } catch (error) {
