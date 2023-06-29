@@ -39,7 +39,7 @@ const Special = () => {
       setTimeout(() => {
         setTransition(false);
       }, 10);
-    }, 600);
+    }, 300);
   };
 
   const handleMinusCarousel = () => {
@@ -49,7 +49,17 @@ const Special = () => {
       setTimeout(() => {
         setTransition(false);
       }, 10);
-    }, 600);
+    }, 300);
+  };
+
+  const handleThumbClick = (id) => {
+    setTransition(true);
+    setTimeout(() => {
+      setActiveCarousel(id);
+      setTimeout(() => {
+        setTransition(false);
+      }, 10);
+    }, 300);
   };
 
   return (
@@ -219,7 +229,7 @@ const Special = () => {
         <div
           className="inline-block w-[15px] h-[9px] rounded-sm  transition-colors duration-300 cursor-pointer my-3 mx-[2px]"
           key={"thumb" + 1}
-          onClick={() => setActiveCarousel(1)}
+          onClick={() => handleThumbClick(1)}
           style={{
             backgroundColor:
               1 === activeCarousel
@@ -230,7 +240,7 @@ const Special = () => {
         <div
           className="inline-block w-[15px] h-[9px] rounded-sm  transition-colors duration-300 cursor-pointer my-3 mx-[2px]"
           key={"thumb" + 2}
-          onClick={() => setActiveCarousel(2)}
+          onClick={() => handleThumbClick(2)}
           style={{
             backgroundColor:
               2 === activeCarousel
@@ -241,7 +251,7 @@ const Special = () => {
         <div
           className="inline-block w-[15px] h-[9px] rounded-sm  transition-colors duration-300 cursor-pointer my-3 mx-[2px]"
           key={"thumb" + 3}
-          onClick={() => setActiveCarousel(3)}
+          onClick={() => handleThumbClick(3)}
           style={{
             backgroundColor:
               3 === activeCarousel
@@ -252,7 +262,7 @@ const Special = () => {
         <div
           className="inline-block w-[15px] h-[9px] rounded-sm  transition-colors duration-300 cursor-pointer my-3 mx-[2px]"
           key={"thumb" + 4}
-          onClick={() => setActiveCarousel(4)}
+          onClick={() => handleThumbClick(4)}
           style={{
             backgroundColor:
               4 === activeCarousel

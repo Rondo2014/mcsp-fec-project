@@ -23,7 +23,7 @@ const TestCarousel = () => {
       setTimeout(() => {
         setTransition(false);
       }, 10);
-    }, 300);
+    }, 500);
   };
 
   const handlePrev = () => {
@@ -36,7 +36,7 @@ const TestCarousel = () => {
       setTimeout(() => {
         setTransition(false);
       }, 10);
-    }, 300);
+    }, 500);
   };
 
   useEffect(() => {
@@ -94,6 +94,16 @@ const TestCarousel = () => {
     }
   }, [carouselHover, carouselData.length]);
 
+  const handleThumbClick = (index) => {
+    setTransition(true);
+    setTimeout(() => {
+      setCarouselSlide(index);
+      setTimeout(() => {
+        setTransition(false);
+      }, 10);
+    }, 500);
+  };
+
   const navigate = useNavigate(id);
 
   return (
@@ -111,7 +121,7 @@ const TestCarousel = () => {
             onMouseEnter={() => setCarouselHover(true)}
             onMouseLeave={() => setCarouselHover(false)}
           >
-            <div className="flex flex-cols carousel h-full transition duration-300 ease-in-out">
+            <div className="flex flex-cols carousel h-full transition duration-[1s] ease-in-out">
               <img
                 src={
                   miniHover === null
@@ -121,7 +131,7 @@ const TestCarousel = () => {
                 alt={`Image ${carouselSlide + 1}`}
                 className={`my-auto min-w-[616px] h-full drop-shadow-lg z-10 ${
                   transition ? "opacity-0" : "opacity-100"
-                } transition-all duration-300 ease-in-out`}
+                } transition-all duration-1000 ease-in-out`}
                 style={{
                   boxShadow: "8px 0px 5px rgba(0, 0, 0, .8)",
                 }}
@@ -175,7 +185,7 @@ const TestCarousel = () => {
                 <div
                   className={`absolute left-4 top-8 text-[28px] text-white font-normal tracking-wide overflow-clip my-[-30px] ${
                     transition ? "opacity-0" : "opacity-100"
-                  } transition-all duration-300 ease-in-out`}
+                  } transition-all duration-[1s] ease-in-out`}
                 >
                   {title[carouselSlide]}
                 </div>
@@ -184,7 +194,7 @@ const TestCarousel = () => {
                     <div
                       className={`w-full px-2 py-3 ${
                         transition ? "opacity-0" : "opacity-100"
-                      } transition-all duration-300 ease-in-out relative right-[30px]`}
+                      } transition-all duration-[1s] ease-in-out`}
                       key={`miniPic-${index}`}
                       onMouseEnter={() => setMiniHover(index)}
                       onMouseLeave={() => setMiniHover(null)}
@@ -255,7 +265,7 @@ const TestCarousel = () => {
                   <div
                     className="inline-block w-[15px] h-[9px] rounded-sm  transition-colors duration-300 cursor-pointer my-3 mx-[2px]"
                     key={"thumb" + item.id}
-                    onClick={() => setCarouselSlide(index)}
+                    onClick={() => handleThumbClick(index)}
                     style={{
                       backgroundColor:
                         index === carouselSlide

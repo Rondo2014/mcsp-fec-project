@@ -17,10 +17,35 @@ const Purchase = ({ game }) => {
           id="purchase-actions"
           className="absolute right-4 bottom-[-17px] left-4 whitespace-nowrap text-right"
         >
-          <div className=" h-8 align-bottom inline-block bg-black py-[2px] pr-[2px] rounded-sm whitespace-nowrap">
-            <div className="bg text-[13px] pt-2 px-3 h-6 relative inline-block align-middle top-[-5px] ml-[2px] text-right text-[#c6d4df]">
-              {game.price !== 0 ? `$${game.price}` : "Free to play"}
-            </div>
+          <div className=" h-8 align-bottom flex inline-flex bg-black py-[2px] pr-[2px] rounded-sm whitespace-nowrap">
+            {game.sale_deal ? (
+              <>
+                <div className=" inline-block h-8 leading-8 text-[25px] text-center overflow-hidden px-[6px] font-medium text-[#BEEE11] bg-[#4c6b22]">
+                  -{game.sale_deal}%
+                </div>
+                <div className="inline-block relative align-top h-8 bg-[#344654] pl-1">
+                  <div className="absolute left-auto right-[6px] top-[2px] text-[11px] w-fit text-[#738895] leading-3">
+                    <div
+                      style={{ boxShadow: "0 0 2px #000000" }}
+                      className="left-0 right-0 absolute top-[43%] border-b-[1.5px] border-[#738895] text-[11px] -skew-y-[8deg]"
+                    ></div>
+                    ${game.price}
+                  </div>
+                  <div className="pl-2 pt-[13px] pr-[6px] text-[14px] text-[#BEEE11] leading-4">
+                    $
+                    {(game.price - (game.price * game.sale_deal) / 100).toFixed(
+                      2
+                    )}
+                  </div>
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="">
+                  {game.price !== 0 ? `$${game.price}` : "Free to play"}
+                </div>
+              </>
+            )}
             <div className="relative text-[12px] inline-block ml-[2px] align-middle">
               <a
                 className="rounded-sm border-none p-[1px] inline-block cursor-pointer text-[#d2efa9] text-right text-[12px] whitespace-nowrap group"

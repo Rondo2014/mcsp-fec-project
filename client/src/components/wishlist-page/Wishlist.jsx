@@ -1,16 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../../api/axios.js";
 import WishlistRow from "./WishlistRow.jsx";
+import WishlistContext from "../context/WishlistProvider.jsx";
 
 const Wishlist = () => {
   const [game, setGame] = useState([]);
+
+  const { wishlistLength } = useContext(WishlistContext);
+
   console.log(game);
   const navigate = useNavigate();
 
   useEffect(() => {
     getGame();
-  }, []);
+  }, [wishlistLength]);
 
   const getGame = async () => {
     try {
@@ -32,7 +36,7 @@ const Wishlist = () => {
 
   return (
     <>
-      <div className="bg-[#202326] h-screen">
+      <div className="bg-[#202326] bg-cover h-screen">
         <div className=" mx-auto max-w-[940px] container pt-8">
           <div className="mb-3">
             <div className="flex flex-row mb-5">
@@ -76,8 +80,7 @@ const Wishlist = () => {
             </div>
           </div>
         </div>
-
-        <WishlistRow game={game} />
+        {game.length > 0 && <WishlistRow game={game} />}
       </div>
     </>
   );

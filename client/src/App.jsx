@@ -62,7 +62,7 @@ function App() {
   }, []);
 
   return (
-    <div className="">
+    <div className="h-full relative">
       <Navbar />
       <ButtonContainer wishlistLength={wishlistLength} />
       <Routes>

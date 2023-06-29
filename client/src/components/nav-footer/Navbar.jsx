@@ -48,8 +48,6 @@ const Navbar = () => {
     }
   }, [isLoggedIn, username]);
 
-  console.log(NAVLINKS);
-
   return (
     <div className=" w-full text-[14px] font-normal bg-navbar px-4 tracking-wider z-50">
       <div id="content" className="w-[940px] h-[104px] m-auto z-50">
@@ -58,7 +56,7 @@ const Navbar = () => {
           className=" float-left pt-[30px] w-[176px] h-[44px] mr-5"
         >
           <span id="logo-holder">
-            <a href="/">
+            <Link to="/">
               <img
                 src={
                   "https://store.cloudflare.steamstatic.com/public/shared/images/header/logo_steam.svg?t=962016"
@@ -66,15 +64,15 @@ const Navbar = () => {
                 alt="logo"
                 className="w-[200px] aspect-auto"
               />
-            </a>
+            </Link>
           </span>
         </div>
         <div id="nav-container">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.name}
               className="block cursor-pointer relative pt-[45px] px-[7px] pb-[7px] leading-4 float-left text-[14px] text-[#b8b6b4] uppercase hover:text-white"
-              href={link.path}
+              to={link.path}
               onMouseEnter={() => {
                 if (link.name === "Store") {
                   setShowStore(true);
@@ -88,13 +86,13 @@ const Navbar = () => {
               }}
             >
               {link.name}
-            </a>
+            </Link>
           ))}
           <div
             id="nav-content"
             className="relative z-50 opacity-100 top-[64px] pointer-events-auto transition-opacity duration-300 ease-out"
             style={{
-              right: showStore ? "-220px" : "-275px",
+              right: showStore ? "-200px" : "-255px",
               opacity: showCommunity || showStore ? "1" : "0",
             }}
           >
@@ -106,13 +104,13 @@ const Navbar = () => {
                 onMouseLeave={handleStoreLeave}
               >
                 {NAV_SUBLINKS_STORE.map((link) => (
-                  <a
+                  <Link
                     key={link.name}
-                    href="/"
+                    to="/"
                     className="uppercase text-[11px] text-[#b8b6b4] px-[10px] block py-1 hover:text-white"
                   >
                     {link.name}
-                  </a>
+                  </Link>
                 ))}
               </div>
             )}
@@ -241,7 +239,7 @@ const Navbar = () => {
               >
                 <img
                   src={profilePic}
-                  className="w-[32px] h-[32px] p-[1px] border-none "
+                  className="w-[32px] h-[32px] p-[1px] border-none"
                   alt=""
                 />
               </a>
