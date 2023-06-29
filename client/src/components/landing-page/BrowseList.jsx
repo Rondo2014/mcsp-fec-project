@@ -95,6 +95,7 @@ const BrowseList = ({ allGames }) => {
                   <div className="absolute left-0 top-0 z-10 leading-[69px]">
                     <img
                       src={game.game_image}
+                      loading="lazy"
                       alt="image"
                       className="overflow-clip clip h-[69px] w-48"
                     />

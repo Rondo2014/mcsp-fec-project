@@ -205,7 +205,7 @@ const ProductCarousel = ({ game }) => {
                       onClick={() => handleMiniClick(index)}
                     >
                       {item.type === "image" ? (
-                        <img src={item.url} />
+                        <img src={item.url} loading="lazy" />
                       ) : (
                         <>
                           <img

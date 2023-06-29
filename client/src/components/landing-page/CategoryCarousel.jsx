@@ -41,6 +41,7 @@ const CategoryCarousel = () => {
       >
         <img
           src={category.image}
+          loading="lazy"
           alt={category.name}
           className="w-48 h-32 object-cover rounded-lg hover:shadow-md hover:shadow-[#1A9FFF] mr-2 hover:scale-105 transition duration-300 ease-in-out cursor-pointer"
         />

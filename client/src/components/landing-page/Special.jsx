@@ -120,6 +120,7 @@ const Special = () => {
                             <Link to={`/product/${item.id}`}>
                               <img
                                 className="overflow-clip h-[271px] w-full"
+                                loading="lazy"
                                 src={item.special_img}
                                 alt=""
                               />
