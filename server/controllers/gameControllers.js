@@ -8,7 +8,10 @@ import {
   recommendedGames,
 } from "./queries.js";
 
-const client = createClient();
+const client = createClient({
+  url: process.env.REDIS_URL,
+});
+
 await client.connect();
 
 // fetches all games from Database
