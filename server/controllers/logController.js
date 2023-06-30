@@ -82,13 +82,13 @@ export const registerUser = async (req, res) => {
     ]);
 
     if (checkForUsername.rowCount !== 0)
-      return res.status(200).json({ message: "Username is Taken" });
+      return res.status(400).json({ message: "Username is Taken" });
 
     // if email exists in database already return message to user
     const checkForEmail = await db.query(emailCheck, [email.toLowerCase()]);
 
     if (checkForEmail.rowCount !== 0)
-      return res.status(200).json({ message: "Email Address Already In Use" });
+      return res.status(400).json({ message: "Email Address Already In Use" });
 
     // send data to database
     const results = await db.query(postUser, [
