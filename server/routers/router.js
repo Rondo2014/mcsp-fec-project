@@ -6,7 +6,11 @@ import {
   getGameCategory,
   getRecommendedGames,
 } from "../controllers/gameControllers.js";
-import { logUserIn, registerUser } from "../controllers/logController.js";
+import {
+  getUsers,
+  logUserIn,
+  registerUser,
+} from "../controllers/logController.js";
 import { hasPasswordMiddleware, protectRoutes } from "../authorization/auth.js";
 import {
   AddToWishlist,
@@ -32,8 +36,9 @@ router.get("/game/:id", getGameById); // fetch single game
 /**
  * USER ROUTES
  */
-router.post("/login", hasPasswordMiddleware, logUserIn);
-router.post("/register", hasPasswordMiddleware, registerUser);
+router.get("/users", getUsers);
+router.post("/login", logUserIn);
+router.post("/register", registerUser);
 
 /**
  * WISHLIST ROUTES

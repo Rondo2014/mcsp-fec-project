@@ -6,6 +6,15 @@ import {
 import { db } from "../database/database.js";
 import { emailCheck, logIn, postUser, usernameCheck } from "./queries.js";
 
+export const getUsers = async (req, res) => {
+  try {
+    const results = await db.query(`SELECT * FROM users`);
+    res.status(200).json(results.rows);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 export const logUserIn = async (req, res) => {
   try {
     // get username and password from users request
@@ -14,7 +23,6 @@ export const logUserIn = async (req, res) => {
     // if there is no username or password send an error
     if (username === "" || password === "")
       return res.status(400).json({ message: "Provide Username and Password" });
-    console.log(password);
 
     // send information through the query
     const results = await db.query(logIn, [username.toUpperCase()]);
@@ -27,8 +35,8 @@ export const logUserIn = async (req, res) => {
       });
     // validate password with bcrypt compare method
     const user = results.rows[0];
-    console.log(user);
-    await validatePassword(user, password);
+
+    // await validatePassword(user, password);
 
     // if no data is fetched from the database send an error
     if (results.rowCount === 0)
@@ -38,7 +46,7 @@ export const logUserIn = async (req, res) => {
     const token = createToken(user);
 
     // send user a message when login is successful
-    res.status(200).json({
+    return res.status(200).json({
       message: "Logged In Successfully",
       results: {
         id: results.rows[0].id,
@@ -74,13 +82,13 @@ export const registerUser = async (req, res) => {
     ]);
 
     if (checkForUsername.rowCount !== 0)
-      return res.status(400).json({ message: "Username is Taken" });
+      return res.status(200).json({ message: "Username is Taken" });
 
     // if email exists in database already return message to user
     const checkForEmail = await db.query(emailCheck, [email.toLowerCase()]);
 
     if (checkForEmail.rowCount !== 0)
-      return res.status(400).json({ message: "Email Address Already In Use" });
+      return res.status(200).json({ message: "Email Address Already In Use" });
 
     // send data to database
     const results = await db.query(postUser, [
@@ -96,7 +104,7 @@ export const registerUser = async (req, res) => {
     const token = createToken(user);
 
     // send user message of successful registration
-    res.status(201).json({
+    return res.status(201).json({
       message: "Successfully Created An Account",
       results: results.rows[0],
       token: token,
