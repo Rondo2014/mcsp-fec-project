@@ -38,7 +38,7 @@ export const getGameById = async (req, res) => {
 // fetches games that are on the recommended carousel
 export const getRecommendedGames = async (req, res) => {
   try {
-    if (client.exists("recommendedGames") === 1) {
+    if ((await client.exists("recommendedGames")) === 1) {
       const data = await client.get("recommendedGames");
       return res.status(200).json(JSON.parse(data));
     } else {
@@ -64,7 +64,7 @@ export const getRecommendedGames = async (req, res) => {
 // fetches games that are on sale in the database
 export const getFeaturedGames = async (req, res) => {
   try {
-    if (client.exists("featuredGames") === 1) {
+    if ((await client.exists("featuredGames")) === 1) {
       const data = await client.get("featuredGames");
       return res.status(200).json(JSON.parse(data));
     } else {

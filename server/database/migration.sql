@@ -3,7 +3,7 @@ DROP TABLE IF EXISTS users;
 
 CREATE TABLE users(
     id          SERIAL PRIMARY KEY,
-    username    VARCHAR(15) UNIQUE NOT NULL,
+    username    VARCHAR(55) UNIQUE NOT NULL,
     email       VARCHAR(55) UNIQUE NOT NULL,
     password    VARCHAR(100) NOT NULL,
     profile_pic TEXT DEFAULT 'https://avatars.akamai.steamstatic.com/edaa20340d62693f770abe27f02efffd58013d6a.jpg',
@@ -34,4 +34,5 @@ CREATE TABLE games(
     videos      TEXT[] 
 );
 
+-- CREATE INDEX username ON users(username) 
 
